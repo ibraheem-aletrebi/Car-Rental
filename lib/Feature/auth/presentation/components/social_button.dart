@@ -7,11 +7,11 @@ class SocialButton extends StatelessWidget {
   const SocialButton({
     super.key,
     required this.socialIconPath,
-    required this.socialName,
+    required this.socialName, this.onPressed,
   });
   final String socialIconPath;
   final String socialName;
-
+  final  void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
@@ -22,7 +22,7 @@ class SocialButton extends StatelessWidget {
         minimumSize: Size(double.infinity, 52),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(62)),
       ),
-      onPressed: () {},
+      onPressed:onPressed,
       label: Text(socialName, style: AppStyles.semiBold14),
       icon: SvgPicture.asset(socialIconPath),
     );

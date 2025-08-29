@@ -1,4 +1,5 @@
 import 'package:car_rental/Feature/auth/presentation/view/sign_in_view.dart';
+import 'package:car_rental/Feature/auth/presentation/view/sign_up_view.dart';
 import 'package:car_rental/Feature/home/presentation/view/main_view.dart';
 import 'package:car_rental/Feature/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:car_rental/core/routing/routes.dart';
@@ -18,12 +19,18 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
         settings: settings,
       );
 
-      
+    case Routes.kSignUpView:
+      return MaterialPageRoute(
+        builder: (context) => SignUpView(),
+        settings: settings,
+      );
+
     case Routes.kMainView:
       return MaterialPageRoute(
         builder: (context) => MainView(),
         settings: settings,
       );
+
     default:
       return MaterialPageRoute(
         builder: (context) => Scaffold(),

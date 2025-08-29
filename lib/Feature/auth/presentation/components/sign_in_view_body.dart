@@ -1,8 +1,9 @@
 import 'package:car_rental/Feature/auth/presentation/components/auth_header_section.dart';
 import 'package:car_rental/Feature/auth/presentation/components/auth_redirect_text.dart';
-import 'package:car_rental/Feature/auth/presentation/components/auth_social_buttons_section.dart';
 import 'package:car_rental/Feature/auth/presentation/components/or_divider.dart';
 import 'package:car_rental/Feature/auth/presentation/components/sign_in_form_section.dart';
+import 'package:car_rental/Feature/auth/presentation/components/sign_in_social_button.dart';
+import 'package:car_rental/core/routing/routes.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,7 @@ class SignInViewBody extends StatelessWidget {
                 HeightSpace(height: 25),
                 OrDivider(),
                 HeightSpace(height: 25),
-                AuthSocialButtonsSection(),
+                SignInSocialButton(),
                 HeightSpace(height: 10),
               ],
             ),
@@ -38,7 +39,9 @@ class SignInViewBody extends StatelessWidget {
               child: AuthRedirectText(
                 message: 'Don\'t have an account?',
                 actionText: ' Sign Up.',
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, Routes.kSignUpView);
+                },
               ),
             ),
           ),

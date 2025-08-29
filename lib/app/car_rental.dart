@@ -1,3 +1,6 @@
+
+import 'package:car_rental/core/routing/on_generate_route.dart';
+import 'package:car_rental/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 
 class CarRental extends StatelessWidget {
@@ -5,11 +8,11 @@ class CarRental extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Scaffold(),
+      onGenerateRoute: onGenerateRoute,
+      initialRoute: Routes.kOnboardingView,
     );
   }
 }

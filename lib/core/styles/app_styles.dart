@@ -17,6 +17,12 @@ abstract class AppStyles {
      color: AppColors.kWhiteColor,
   );
 
+    static const TextStyle semiBold40 =TextStyle(
+    fontSize: 40,
+    fontWeight: FontWeight.w600,
+     color: AppColors.kWhiteColor,
+  );
+
   static const TextStyle semiBold30 =TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.w600,

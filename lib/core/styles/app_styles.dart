@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 
 abstract class AppStyles {
 
-
+  static const String kFontFamily = 'Roboto';
   static const TextStyle bold18 =TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w700,

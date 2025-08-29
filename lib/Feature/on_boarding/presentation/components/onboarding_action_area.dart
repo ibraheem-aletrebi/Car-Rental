@@ -21,7 +21,7 @@ class OnboardingActionArea extends StatelessWidget {
         CustomButton(
           text: onboardingControllers.isLastPage() ? 'Get Started' : 'Next',
           onPressed: () {
-            goTo(onboardingControllers, context);
+            goToNext(onboardingControllers, context);
           },
         ),
         HeightSpace(height: 30),
@@ -29,11 +29,11 @@ class OnboardingActionArea extends StatelessWidget {
     );
   }
 
-  goTo(OnboardingCubit onboardingControllers, BuildContext context) async {
+  goToNext(OnboardingCubit onboardingControllers, BuildContext context) async {
     if (onboardingControllers.isLastPage()) {
       await PreferenceManegar().setBool(StorageKey.shownOnBoarding, true);
       if (context.mounted) {
-        Navigator.pushReplacementNamed(context, Routes.kMainView);
+        Navigator.pushReplacementNamed(context, Routes.kSignInView);
       }
     } else {
       onboardingControllers.changePage(onboardingControllers.currentIndex + 1);

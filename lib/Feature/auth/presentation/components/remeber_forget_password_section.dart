@@ -1,0 +1,25 @@
+import 'package:car_rental/Feature/auth/presentation/components/remeber_me.dart';
+import 'package:car_rental/core/styles/app_colors.dart';
+import 'package:car_rental/core/styles/app_styles.dart';
+import 'package:flutter/material.dart';
+
+class RemeberForgetPasswordSection extends StatelessWidget {
+  const RemeberForgetPasswordSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        RemeberMe(),
+        GestureDetector(
+          onTap: () {},
+          child: Text(
+            'Forgot Password?',
+            style: AppStyles.regular16.copyWith(color: AppColors.kPrimaryColor),
+          ),
+        ),
+      ],
+    );
+  }
+}

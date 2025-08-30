@@ -55,7 +55,7 @@ class ForgetPasswordViewBody extends StatelessWidget {
               ),
             ),
 
-            /// Bottom link
+            
             AuthRedirectText(
               message: 'Create a ',
               actionText: 'New Account',

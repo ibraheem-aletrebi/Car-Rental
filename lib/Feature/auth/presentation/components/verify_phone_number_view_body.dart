@@ -1,4 +1,3 @@
-
 import 'package:car_rental/Feature/auth/presentation/components/country_drop_down_button.dart';
 import 'package:car_rental/Feature/auth/presentation/components/title_subtitle_section.dart';
 import 'package:car_rental/core/routing/routes.dart';
@@ -46,7 +45,7 @@ class VerifyPhoneNumberViewBody extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(
                           context,
-                          Routes.kVerifyPhoneNumberView,
+                          Routes.kVerificationCodeView,
                         );
                       },
                     ),

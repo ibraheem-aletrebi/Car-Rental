@@ -3,8 +3,8 @@ import 'package:car_rental/core/styles/app_styles.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class AuthRedirectText extends StatelessWidget {
-  const AuthRedirectText({
+class RedirectText extends StatelessWidget {
+  const RedirectText({
     super.key,
     required this.message,
     required this.actionText,

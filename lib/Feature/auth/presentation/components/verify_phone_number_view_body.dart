@@ -1,4 +1,5 @@
-import 'package:car_rental/Feature/auth/presentation/components/auth_redirect_text.dart';
+
+import 'package:car_rental/Feature/auth/presentation/components/country_drop_down_button.dart';
 import 'package:car_rental/Feature/auth/presentation/components/title_subtitle_section.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:car_rental/core/styles/assets.dart';
@@ -8,8 +9,8 @@ import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ForgetPasswordViewBody extends StatelessWidget {
-  const ForgetPasswordViewBody({super.key});
+class VerifyPhoneNumberViewBody extends StatelessWidget {
+  const VerifyPhoneNumberViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +30,15 @@ class ForgetPasswordViewBody extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     TitleSubtitleSection(
-                      title: 'Reset your password',
-                      subTitle:
-                          'Enter the email address associated with your account and we\'ll send you a link to reset your password.',
+                      title: 'Verify your phone number',
+                      subTitle: 'We have sent you an SMS with a code to number',
                     ),
                     HeightSpace(height: 40),
+                    CountryDropDownButton(),
+                    HeightSpace(),
                     CustomTextFormField(
-                      hintText: 'Email',
-                      keyboardType: TextInputType.emailAddress,
+                      hintText: 'Phone Number',
+                      keyboardType: TextInputType.phone,
                     ),
                     HeightSpace(height: 28),
                     CustomButton(
@@ -48,24 +50,10 @@ class ForgetPasswordViewBody extends StatelessWidget {
                         );
                       },
                     ),
-                    HeightSpace(height: 28),
-                    AuthRedirectText(
-                      message: 'Back to ',
-                      actionText: 'Sign In',
-                      onTap: () => Navigator.pop(context),
-                    ),
                   ],
                 ),
               ),
             ),
-          ),
-
-          AuthRedirectText(
-            message: 'Create a ',
-            actionText: 'New Account',
-            onTap: () {
-              Navigator.pushReplacementNamed(context, Routes.kSignUpView);
-            },
           ),
         ],
       ),

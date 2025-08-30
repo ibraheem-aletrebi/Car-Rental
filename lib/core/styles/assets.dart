@@ -18,6 +18,8 @@ class Assets {
 
   static const String imagesFerrariLogo = "assets/images/ferrari_logo.svg";
 
+  static const String imagesFlag = "assets/images/flag.svg";
+
   static const String imagesLamborghiniIcon = "assets/images/lamborghini_icon.svg";
 
   static const String imagesLightLogo = "assets/images/light_logo.svg";
@@ -25,6 +27,8 @@ class Assets {
   static const String imagesOnboarding1 = "assets/images/onboarding1.png";
 
   static const String imagesOnboarding2 = "assets/images/onboarding2.png";
+
+  static const String imagesSpalshUp12 = "assets/images/spalsh_up12.png";
 
   static const String imagesTeslaLogo = "assets/images/tesla_logo.svg";
 }

@@ -1,5 +1,7 @@
 import 'package:car_rental/core/styles/app_colors.dart';
+import 'package:car_rental/core/styles/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CountryDropDownButton extends StatefulWidget {
   const CountryDropDownButton({super.key});
@@ -21,7 +23,7 @@ class _CountryDropDownButtonState extends State<CountryDropDownButton> {
         backgroundColor: WidgetStatePropertyAll(AppColors.kWhiteColor),
         elevation: const WidgetStatePropertyAll(0), // shadow
         padding: const WidgetStatePropertyAll(
-          EdgeInsets.symmetric(vertical: 8, horizontal: 6),
+          EdgeInsets.symmetric(vertical: 6, horizontal: 8),
         ),
         shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
@@ -36,16 +38,21 @@ class _CountryDropDownButtonState extends State<CountryDropDownButton> {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: AppColors.kWhiteColor, // background
+        fillColor: AppColors.kWhiteColor,
+        prefixIconConstraints: BoxConstraints(minWidth: 22, minHeight: 40),
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: 12,
+          horizontal: 16,
           vertical: 10,
         ),
         border: buidBorder(),
         enabledBorder: buidBorder(),
         focusedBorder: buidBorder(),
       ),
-      leadingIcon: Icon(Icons.emoji_flags_outlined),
+      leadingIcon: Padding(
+        padding: const EdgeInsets.only(left: 8.0, right: 8.0), // customize here
+        child: Icon(Icons.public, color: AppColors.kSecondaryColor),
+      ),
+
       hintText: 'Country',
       onSelected: (String? value) {
         setState(() {
@@ -56,7 +63,13 @@ class _CountryDropDownButtonState extends State<CountryDropDownButton> {
         return DropdownMenuEntry<String>(
           value: value,
           label: value,
-          leadingIcon: Icon(Icons.emoji_flags_outlined),
+          leadingIcon: Padding(
+            padding: const EdgeInsets.only(
+              left: 8.0,
+              right: 8.0,
+            ), // customize here
+            child: SvgPicture.asset(Assets.imagesFlag),
+          ),
         );
       }).toList(),
     );

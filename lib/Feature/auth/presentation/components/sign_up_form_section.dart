@@ -25,7 +25,12 @@ class SignUpFormSection extends StatelessWidget {
         HeightSpace(),
         CountryDropDownButton(),
         HeightSpace(height: 30),
-        CustomButton(text: 'Sign up', onPressed: () {}),
+        CustomButton(
+          text: 'Sign up',
+          onPressed: () {
+            Navigator.pushNamed(context, Routes.kMainView);
+          },
+        ),
         HeightSpace(),
         CustomButton(
           textColor: AppColors.kPrimaryColor,

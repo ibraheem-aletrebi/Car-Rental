@@ -5,19 +5,29 @@ import 'package:car_rental/core/services/local_services/storage_key.dart';
 import 'package:car_rental/core/styles/app_colors.dart';
 import 'package:car_rental/core/styles/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CarRental extends StatelessWidget {
   const CarRental({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        scaffoldBackgroundColor: Color(0xFFEDEDED),
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.kPrimaryColor),
-        fontFamily: AppStyles.kFontFamily,
-      ),
-      onGenerateRoute: onGenerateRoute,
-      initialRoute: getInitialRoute(),
+    return ScreenUtilInit(
+      designSize: const Size(430, 971),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return MaterialApp(
+          theme: ThemeData(
+            scaffoldBackgroundColor: Color(0xFFEDEDED),
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: AppColors.kPrimaryColor,
+            ),
+            fontFamily: AppStyles.kFontFamily,
+          ),
+          onGenerateRoute: onGenerateRoute,
+          initialRoute: getInitialRoute(),
+        );
+      },
     );
   }
 

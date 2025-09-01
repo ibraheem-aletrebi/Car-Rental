@@ -6,6 +6,16 @@ class Assets {
 
   static const String iconsGoogleIcon = "assets/icons/google_icon.svg";
 
+  static const String iconsHome = "assets/icons/Home.svg";
+
+  static const String iconsInbox = "assets/icons/inbox.svg";
+
+  static const String iconsNotifications = "assets/icons/Notifications.svg";
+
+  static const String iconsSearch = "assets/icons/Search.svg";
+
+  static const String iconsUser = "assets/icons/User.svg";
+
   static const String imagesBmwIcon = "assets/images/bmw_icon.svg";
 
   static const String imagesCar = "assets/images/car.svg";

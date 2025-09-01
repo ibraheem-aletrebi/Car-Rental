@@ -24,7 +24,7 @@ class CustomButton extends StatelessWidget {
         backgroundColor: backgroundColor ?? AppColors.kPrimaryColor,
         minimumSize: Size(double.infinity, 52),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(62)),
-        side: BorderSide(color: borderColor ?? AppColors.kStokeColor, width: 1),
+        side: BorderSide(color: borderColor ?? Colors.transparent, width: 1),
       ),
       onPressed: onPressed,
       child: Text(text, style: AppStyles.bold18.copyWith(color: textColor)),

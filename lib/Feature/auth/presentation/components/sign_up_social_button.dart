@@ -12,19 +12,12 @@ class SignUpSocialButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Visibility(
-          visible: Platform.isIOS,
-          child: Column(
-            children: [
-              HeightSpace(height: 18),
-              SocialButton(
-                socialIconPath: Assets.iconsAppleIcon,
-                socialName: 'Apple',
-                onPressed: () {},
-              ),
-            ],
-          ),
+        SocialButton(
+          socialIconPath: Assets.iconsAppleIcon,
+          socialName: 'Apple',
+          onPressed: () {},
         ),
+        HeightSpace(height: 18),
         SocialButton(
           socialIconPath: Assets.iconsGoogleIcon,
           socialName: 'Google',

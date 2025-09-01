@@ -4,27 +4,41 @@ class Assets {
   
   static const String iconsAppleIcon = "assets/icons/apple_icon.svg";
 
+  static const String iconsFavorate = "assets/icons/favorate.svg";
+
+  static const String iconsFilter = "assets/icons/filter.svg";
+
   static const String iconsGoogleIcon = "assets/icons/google_icon.svg";
 
   static const String iconsHome = "assets/icons/Home.svg";
 
   static const String iconsInbox = "assets/icons/inbox.svg";
 
+  static const String iconsLocation = "assets/icons/location.svg";
+
+  static const String iconsMoney = "assets/icons/money.svg";
+
   static const String iconsNotifications = "assets/icons/Notifications.svg";
+
+  static const String iconsRating = "assets/icons/rating.svg";
 
   static const String iconsSearch = "assets/icons/Search.svg";
 
+  static const String iconsSeats = "assets/icons/seats.svg";
+
   static const String iconsUser = "assets/icons/User.svg";
 
-  static const String imagesBmwIcon = "assets/images/bmw_icon.svg";
+  static const String imagesBmw = "assets/images/bmw.png";
 
-  static const String imagesCar = "assets/images/car.svg";
+  static const String imagesBmwIcon = "assets/images/bmw_icon.svg";
 
   static const String imagesCarIcon = "assets/images/car_icon.png";
 
   static const String imagesCarLogo = "assets/images/car_logo.svg";
 
   static const String imagesDarkLogo = "assets/images/dark_logo.svg";
+
+  static const String imagesFerrariCar = "assets/images/ferrari_car.png";
 
   static const String imagesFerrariLogo = "assets/images/ferrari_logo.svg";
 
@@ -41,5 +55,7 @@ class Assets {
   static const String imagesSpalshUp12 = "assets/images/spalsh_up12.png";
 
   static const String imagesTeslaLogo = "assets/images/tesla_logo.svg";
+
+  static const String imagesUser = "assets/images/user.jpeg";
 }
 

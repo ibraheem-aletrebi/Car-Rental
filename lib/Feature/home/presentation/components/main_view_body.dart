@@ -25,7 +25,6 @@ class _MainViewBodyState extends State<MainViewBody> {
       alignment: Alignment.bottomCenter,
       children: [
         Container(
-        
           color: AppColors.kDarkWhite,
           child: IndexedStack(
             index: _currentIndex,

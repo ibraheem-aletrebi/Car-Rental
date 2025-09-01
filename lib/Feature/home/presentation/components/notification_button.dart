@@ -1,0 +1,29 @@
+import 'package:car_rental/core/styles/app_colors.dart';
+import 'package:car_rental/core/styles/app_styles.dart';
+import 'package:car_rental/core/styles/assets.dart';
+import 'package:car_rental/core/widgets/custom_icon_button.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class NotificationButton extends StatelessWidget {
+  const NotificationButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.topRight,
+      children: [
+        CustomIconButton(onPressed: () {}, iconPath: Assets.iconsNotifications),
+        CircleAvatar(
+          radius: 10.r,
+          backgroundColor: AppColors.kPrimaryColor,
+
+          child: Text(
+            '2',
+            style: AppStyles.semiBold12.copyWith(color: AppColors.kWhiteColor),
+          ),
+        ),
+      ],
+    );
+  }
+}

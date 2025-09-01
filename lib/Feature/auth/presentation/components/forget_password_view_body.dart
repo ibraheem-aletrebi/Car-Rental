@@ -1,12 +1,11 @@
+import 'package:car_rental/Feature/auth/presentation/components/custom_logo.dart';
 import 'package:car_rental/Feature/auth/presentation/components/redirect_text.dart';
 import 'package:car_rental/Feature/auth/presentation/components/title_subtitle_section.dart';
 import 'package:car_rental/core/routing/routes.dart';
-import 'package:car_rental/core/styles/assets.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ForgetPasswordViewBody extends StatelessWidget {
   const ForgetPasswordViewBody({super.key});
@@ -17,10 +16,7 @@ class ForgetPasswordViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Column(
         children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: SvgPicture.asset(Assets.imagesLightLogo, width: 105),
-          ),
+    CustomLogo(),
           Expanded(
             child: Center(
               child: SingleChildScrollView(

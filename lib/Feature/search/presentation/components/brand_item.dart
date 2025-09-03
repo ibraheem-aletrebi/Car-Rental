@@ -1,5 +1,3 @@
-// ignore: file_names
-// ignore: file_names
 import 'package:car_rental/Feature/search/domain/entities/brand_entity.dart';
 import 'package:car_rental/core/styles/app_colors.dart';
 import 'package:car_rental/core/styles/app_styles.dart';

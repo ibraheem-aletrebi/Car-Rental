@@ -1,7 +1,8 @@
 import 'package:car_rental/Feature/auth/presentation/components/social_button.dart';
-import 'package:car_rental/core/styles/assets.dart';
+
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SignUpSocialButton extends StatelessWidget {
   const SignUpSocialButton({super.key});
@@ -11,13 +12,13 @@ class SignUpSocialButton extends StatelessWidget {
     return Column(
       children: [
         SocialButton(
-          socialIconPath: Assets.iconsAppleIcon,
-          socialName: 'Apple',
+          icon: FontAwesomeIcons.facebook,
+          socialName: 'Facebook',
           onPressed: () {},
         ),
         HeightSpace(height: 18),
         SocialButton(
-          socialIconPath: Assets.iconsGoogleIcon,
+          icon: FontAwesomeIcons.google,
           socialName: 'Google',
           onPressed: () {},
         ),

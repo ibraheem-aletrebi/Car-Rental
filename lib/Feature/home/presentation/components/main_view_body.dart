@@ -22,7 +22,6 @@ class _MainViewBodyState extends State<MainViewBody> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: Alignment.bottomCenter,
       children: [
         Container(
           color: AppColors.kDarkWhite,
@@ -31,9 +30,14 @@ class _MainViewBodyState extends State<MainViewBody> {
             children: [HomeView(), SearchView(), HomeView()],
           ),
         ),
-        CustomBottomNavigationBar(
-          onTabSelected: _onTabSelected,
-          currentIndex: _currentIndex,
+        Positioned(
+          left: 0,
+          bottom: 20,
+          right: 0,
+          child: CustomBottomNavigationBar(
+            onTabSelected: _onTabSelected,
+            currentIndex: _currentIndex,
+          ),
         ),
       ],
     );

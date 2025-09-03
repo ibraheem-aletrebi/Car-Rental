@@ -9,28 +9,30 @@ class CarBrands extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-
-      children: [
-        Text('Brands', style: AppStyles.semiBold16),
-        HeightSpace(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: List.generate(4, (index) {
-            return Column(
-              spacing: 18.h,
-              children: [
-                CircleAvatar(
-                  radius: 30.r,
-                  backgroundImage: AssetImage(Assets.imagesBmw),
-                ),
-                Text('BMW', style: AppStyles.semiBold12),
-              ],
-            );
-          }),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Brands', style: AppStyles.semiBold16),
+          HeightSpace(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List.generate(4, (index) {
+              return Column(
+                spacing: 18.h,
+                children: [
+                  CircleAvatar(
+                    radius: 30.r,
+                    backgroundImage: AssetImage(Assets.imagesBmw),
+                  ),
+                  Text('BMW', style: AppStyles.semiBold12),
+                ],
+              );
+            }),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,26 +1,24 @@
 import 'package:car_rental/Feature/home/domain/entities/car_entity.dart';
 import 'package:car_rental/Feature/home/presentation/components/car_image_header.dart';
-import 'package:car_rental/Feature/home/presentation/components/car_info_section.dart';
+import 'package:car_rental/Feature/search/presentation/components/recommended_car_info.dart';
 import 'package:car_rental/core/styles/app_colors.dart';
 import 'package:car_rental/core/styles/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeCarItem extends StatelessWidget {
-  const HomeCarItem({super.key});
+class RecommendedItem extends StatelessWidget {
+  const RecommendedItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 186.w,
-      height: 240.h,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
+        color: AppColors.kWhiteColor,
         borderRadius: BorderRadius.circular(15.r),
         border: Border.all(color: AppColors.kDarkWhite, width: 2),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: CarImageHeader(
@@ -29,16 +27,15 @@ class HomeCarItem extends StatelessWidget {
               onFavoritePressed: () {},
             ),
           ),
-          Expanded(
-            child: CarInfoSection(
+          Flexible(
+            child: RecommendedCarInfo(
               carEntity: CarEntity(
                 name: 'Ferrari',
+                imagePath: Assets.imagesFerrariCar,
                 rating: 4.5,
                 location: 'New York',
-                pricePerDay: 100,
-                imagePath: Assets.imagesFerrariCar,
                 seats: 4,
-                isFavorite: false,
+                pricePerDay: 100,
               ),
             ),
           ),

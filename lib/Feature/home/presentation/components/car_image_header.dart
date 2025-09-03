@@ -19,7 +19,6 @@ class CarImageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: Alignment.topRight,
       children: [
         Container(
           decoration: BoxDecoration(
@@ -28,13 +27,17 @@ class CarImageHeader extends StatelessWidget {
           ),
           child: Center(child: Image.asset(imagePath, fit: BoxFit.contain)),
         ),
-        CustomIconButton(
-          padding: 4.r,
-          iconSize: 16.r,
-          backgroundColor: isFavorite ? Colors.red : AppColors.kWhiteColor,
-          iconColor: isFavorite ? Colors.white : AppColors.kPrimaryColor,
-          onPressed: onFavoritePressed,
-          iconPath: Assets.iconsFavorate,
+        Positioned(
+          top: 8,
+          right: 8,
+          child: CustomIconButton(
+            padding: 5.r,
+            iconSize: 16.r,
+            backgroundColor: isFavorite ? Colors.red : AppColors.kWhiteColor,
+            iconColor: isFavorite ? Colors.white : AppColors.kPrimaryColor,
+            onPressed: onFavoritePressed,
+            iconPath: Assets.iconsFavorate,
+          ),
         ),
       ],
     );

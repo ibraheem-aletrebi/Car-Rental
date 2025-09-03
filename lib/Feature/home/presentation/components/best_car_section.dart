@@ -1,4 +1,4 @@
-import 'package:car_rental/Feature/home/presentation/components/home_car_item.dart';
+import 'package:car_rental/Feature/home/presentation/components/best_car_item.dart';
 import 'package:car_rental/Feature/home/presentation/components/section_header.dart';
 import 'package:car_rental/core/styles/app_styles.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
@@ -23,10 +23,10 @@ class BestCarsSection extends StatelessWidget {
         Text('Available', style: AppStyles.regular12),
         HeightSpace(height: 18),
         SizedBox(
-          height: 240.h,
+          height: 300.h,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => HomeCarItem(),
+            itemBuilder: (context, index) => BestCarItem(),
             separatorBuilder: (context, index) => WidthSpace(),
             itemCount: 10,
           ),

@@ -1,4 +1,4 @@
-import 'package:car_rental/Feature/auth/presentation/components/country_drop_down_button.dart';
+import 'package:car_rental/Feature/auth/presentation/components/paginated_country_dropdown.dart';
 import 'package:car_rental/Feature/auth/presentation/components/custom_logo.dart';
 import 'package:car_rental/Feature/auth/presentation/components/title_subtitle_section.dart';
 import 'package:car_rental/core/routing/routes.dart';
@@ -6,7 +6,6 @@ import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
-
 
 class VerifyPhoneNumberViewBody extends StatelessWidget {
   const VerifyPhoneNumberViewBody({super.key});
@@ -30,7 +29,7 @@ class VerifyPhoneNumberViewBody extends StatelessWidget {
                       subTitle: 'We have sent you an SMS with a code to number',
                     ),
                     HeightSpace(height: 40),
-                    CountryDropDownButton(),
+                    PaginatedCountryDropdown(onChanged: (value) {}),
                     HeightSpace(),
                     CustomTextFormField(
                       hintText: 'Phone Number',

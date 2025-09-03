@@ -1,3 +1,4 @@
+import 'package:car_rental/Feature/search/presentation/components/search_view_body.dart';
 import 'package:flutter/material.dart';
 
 class SearchView extends StatelessWidget {
@@ -5,10 +6,6 @@ class SearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text('Search'),  
-      ),
-    );
+    return Scaffold(body: SafeArea(child: SearchViewBody()));
   }
 }

@@ -7,18 +7,21 @@ class CustomIconButton extends StatelessWidget {
   const CustomIconButton({
     super.key,
     required this.onPressed,
-    required this.iconPath,
+    this.iconPath,
     this.backgroundColor,
     this.padding,
     this.iconColor,
     this.iconSize,
+    this.icon,
   });
   final void Function()? onPressed;
-  final String iconPath;
+  final String? iconPath;
   final Color? backgroundColor;
   final double? padding;
   final Color? iconColor;
   final double? iconSize;
+  final IconData? icon;
+
   @override
   Widget build(BuildContext context) {
     return IconButton.outlined(
@@ -27,15 +30,20 @@ class CustomIconButton extends StatelessWidget {
         backgroundColor: backgroundColor ?? Colors.transparent,
         minimumSize: Size(40.w, 40.h),
         side: const BorderSide(color: AppColors.kStokeColor, width: 2),
+        shape: CircleBorder(),
       ),
       onPressed: onPressed,
-      icon: SvgPicture.asset(
-        iconPath,
-        colorFilter: iconColor == null
-            ? null
-            : ColorFilter.mode(iconColor!, BlendMode.srcIn),
-        width: iconSize,
-      ),
+      icon: icon == null
+          ? iconPath == null
+                ? const SizedBox.shrink()
+                : SvgPicture.asset(
+                    iconPath!,
+                    colorFilter: iconColor == null
+                        ? null
+                        : ColorFilter.mode(iconColor!, BlendMode.srcIn),
+                    width: iconSize,
+                  )
+          : Icon(icon, color: iconColor),
     );
   }
 }

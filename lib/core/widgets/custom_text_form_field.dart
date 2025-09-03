@@ -37,6 +37,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       onSaved: widget.onSaved,
       validator: widget.validator,
       obscureText: isObscureText,
+      
       obscuringCharacter: '*',
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(

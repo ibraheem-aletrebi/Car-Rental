@@ -14,14 +14,20 @@ class NotificationButton extends StatelessWidget {
       alignment: Alignment.topRight,
       children: [
         CustomIconButton(onPressed: () {}, iconPath: Assets.iconsNotifications),
-        CircleAvatar(
-          radius: 10.r,
-          backgroundColor: AppColors.kPrimaryColor,
-
-          child: Text(
-            '2',
-            style: AppStyles.semiBold12.copyWith(color: AppColors.kWhiteColor),
-          ),
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            CircleAvatar(
+              radius: 10.r,
+              backgroundColor: AppColors.kPrimaryColor,
+            ),
+            Text(
+              '2',
+              style: AppStyles.semiBold12.copyWith(
+                color: AppColors.kWhiteColor,
+              ),
+            ),
+          ],
         ),
       ],
     );

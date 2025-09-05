@@ -6,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PopularItem extends StatelessWidget {
-  const PopularItem({
-    super.key,
-  });
+  const PopularItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +17,12 @@ class PopularItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.kDarkWhite,
           borderRadius: BorderRadius.circular(15.r),
-          border: Border.all(
-            color: AppColors.kStokeColor,
-            width: 2,
-          ),
+          border: Border.all(color: AppColors.kStokeColor, width: 1),
         ),
         child: Row(
           spacing: 10,
           children: [
-            Image.asset(
-              Assets.imagesFerrariCar,
-              fit: BoxFit.contain,
-            ),
+            Image.asset(Assets.imagesFerrariCar, fit: BoxFit.contain),
             Column(
               spacing: 5,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +32,7 @@ class PopularItem extends StatelessWidget {
                   'Ferrari',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: AppStyles.semiBold16,
+                  style: AppStyles.semiBold14,
                 ),
                 IconTextRow(
                   iconPath: Assets.iconsRating,
@@ -50,7 +42,9 @@ class PopularItem extends StatelessWidget {
                 IconTextRow(
                   iconPath: Assets.iconsMoney,
                   text: r'$100/Day',
-                  textStyle: AppStyles.semiBold12,
+                  textStyle: AppStyles.regular12.copyWith(
+                    color: Color(0xFF000000),
+                  ),
                 ),
               ],
             ),

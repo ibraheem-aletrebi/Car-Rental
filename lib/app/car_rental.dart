@@ -18,9 +18,10 @@ class CarRental extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp(
           theme: ThemeData(
-            scaffoldBackgroundColor: Color(0xFFEDEDED),
+            // scaffoldBackgroundColor: Color(0xFFEDEDED),
             colorScheme: ColorScheme.fromSeed(
               seedColor: AppColors.kPrimaryColor,
+              primary: AppColors.kPrimaryColor,
             ),
             fontFamily: AppStyles.kFontFamily,
           ),

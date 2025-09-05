@@ -3,7 +3,7 @@ import 'package:car_rental/Feature/home/presentation/components/notification_but
 import 'package:car_rental/Feature/home/presentation/components/user_image.dart';
 import 'package:car_rental/core/widgets/width_space.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -11,7 +11,7 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+      padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
           CustomLogo(),

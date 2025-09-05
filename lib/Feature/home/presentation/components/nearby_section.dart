@@ -4,7 +4,6 @@ import 'package:car_rental/core/styles/assets.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:car_rental/core/widgets/width_space.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NearbySection extends StatelessWidget {
   const NearbySection({super.key});
@@ -20,7 +19,7 @@ class NearbySection extends StatelessWidget {
         ),
         HeightSpace(),
         SizedBox(
-          height: 124.h,
+          height: MediaQuery.sizeOf(context).height / 7.5,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) =>

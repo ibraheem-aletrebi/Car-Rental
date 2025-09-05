@@ -11,7 +11,7 @@ class PopularSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.0.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.0.w),
       child: Column(
         children: [
           SectionHeader(
@@ -21,7 +21,7 @@ class PopularSection extends StatelessWidget {
           ),
           HeightSpace(),
           SizedBox(
-            height: MediaQuery.sizeOf(context).height / 7.5,
+            height: MediaQuery.sizeOf(context).height * .12,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               separatorBuilder: (context, index) => WidthSpace(),
@@ -36,4 +36,3 @@ class PopularSection extends StatelessWidget {
     );
   }
 }
-

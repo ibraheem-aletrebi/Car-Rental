@@ -37,7 +37,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       onSaved: widget.onSaved,
       validator: widget.validator,
       obscureText: isObscureText,
-      
+
       obscuringCharacter: '*',
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
@@ -56,7 +56,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         suffixIcon: widget.isPassword
             ? IconButton(
                 icon: Icon(
-                  isObscureText ? Icons.visibility : Icons.visibility_off,
+                  isObscureText ? Icons.visibility_off : Icons.visibility,
                   color: AppColors.kSecondaryColor,
                 ),
                 onPressed: () {

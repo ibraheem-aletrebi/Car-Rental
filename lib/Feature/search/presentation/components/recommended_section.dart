@@ -10,7 +10,7 @@ class RecommendedSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.0.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.0.w),
       child: Column(
         children: [
           SectionHeader(
@@ -26,7 +26,7 @@ class RecommendedSection extends StatelessWidget {
               crossAxisCount: 2,
               mainAxisSpacing: 15,
               crossAxisSpacing: 5,
-              childAspectRatio: .69,
+              childAspectRatio: .65,
             ),
             itemBuilder: (BuildContext context, int index) {
               return RecommendedItem();

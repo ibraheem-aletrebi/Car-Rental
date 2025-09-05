@@ -3,6 +3,7 @@ import 'package:car_rental/Feature/home/presentation/view/home_view.dart';
 import 'package:car_rental/Feature/search/presentation/view/search_view.dart';
 import 'package:car_rental/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MainViewBody extends StatefulWidget {
   const MainViewBody({super.key});
@@ -32,7 +33,7 @@ class _MainViewBodyState extends State<MainViewBody> {
         ),
         Positioned(
           left: 0,
-          bottom: 20,
+          bottom: 10.h,
           right: 0,
           child: CustomBottomNavigationBar(
             onTabSelected: _onTabSelected,

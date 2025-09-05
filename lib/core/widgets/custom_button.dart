@@ -35,9 +35,11 @@ class CustomButton extends StatelessWidget {
         side: BorderSide(color: borderColor ?? Colors.transparent, width: 1),
       ),
       onPressed: onPressed,
-      child: Text(
-        text,
-        style: textStyle ?? AppStyles.bold18.copyWith(color: textColor),
+      child: FittedBox(
+        child: Text(
+          text,
+          style: textStyle ?? AppStyles.bold18.copyWith(color: textColor),
+        ),
       ),
     );
   }

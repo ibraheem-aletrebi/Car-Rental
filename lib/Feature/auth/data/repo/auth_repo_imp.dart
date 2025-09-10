@@ -7,6 +7,7 @@ import 'package:car_rental/core/Error/failure.dart';
 import 'package:car_rental/core/services/network_services/api_service.dart';
 import 'package:car_rental/core/services/network_services/back_end_end_point.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class AuthRepoImp extends AuthRepo {
   final ApiService apiService;
@@ -25,6 +26,10 @@ class AuthRepoImp extends AuthRepo {
       log(response.toString());
       return Right(TokenModel.fromJson(response['tokens']));
     } catch (e) {
+      log('error: ${e.toString()} From -> auth repo imp sign in');
+      if ((e is DioException)) {
+        return left(ServerFailure.fromDioError(e));
+      }
       return Left(ServerFailure(e.toString()));
     }
   }
@@ -49,9 +54,12 @@ class AuthRepoImp extends AuthRepo {
           'country': userModel.countryModel?.toJson() ?? 'EG',
         },
       );
-
       return Right(TokenModel.fromJson(response['tokens']));
     } catch (e) {
+      log('error: ${e.toString()} From -> auth repo imp sign up');
+      if ((e is DioException)) {
+        return left(ServerFailure.fromDioError(e));
+      }
       return Left(ServerFailure(e.toString()));
     }
   }

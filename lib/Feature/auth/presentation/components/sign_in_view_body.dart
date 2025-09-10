@@ -38,7 +38,7 @@ class SignInViewBody extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: RedirectText(
                 message: 'Don\'t have an account?',
-                actionText: ' Sign Up.',
+                actionText: ' SignUp.',
                 onTap: () {
                   Navigator.pushNamed(context, Routes.kSignUpView);
                 },

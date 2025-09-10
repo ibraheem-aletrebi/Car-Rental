@@ -14,7 +14,9 @@ class SignUpFormSection extends StatelessWidget {
       children: [
         CustomTextFormField(hintText: 'Full Name'),
         HeightSpace(),
-        CustomTextFormField(hintText: 'Email/Phone Number'),
+        CustomTextFormField(hintText: 'Email'),
+        HeightSpace(),
+        CustomTextFormField(hintText: 'Phone Number'),
         HeightSpace(),
         CustomTextFormField(
           hintText: 'Password',

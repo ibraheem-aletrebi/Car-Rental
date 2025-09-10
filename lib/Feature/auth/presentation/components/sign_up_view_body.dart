@@ -36,7 +36,7 @@ class SignUpViewBody extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: RedirectText(
                 message: 'Don\'t have an account?',
-                actionText: ' Sign Up.',
+                actionText: ' SignIn.',
                 onTap: () {
                   Navigator.pop(context);
                 },

@@ -11,7 +11,7 @@ class ApiService {
           log('REQUEST[${options.method}] => PATH: ${options.path}');
 
           // مثال: تضيف Header ثابت
-          options.headers['Authorization'] = 'Bearer your_token_here';
+          // options.headers['Authorization'] = 'Bearer your_token_here';
 
           return handler.next(options); // لازم تكمّل
         },
@@ -22,7 +22,7 @@ class ApiService {
         },
         onError: (DioException e, handler) {
           // لو حصل Error
-          log('ERROR[${e.response?.statusCode}] => MESSAGE: ${e.message}');
+          log('ERROR[${e.response?.statusCode}] => DATA: ${e.response?.data}');
           return handler.next(e);
         },
       ),

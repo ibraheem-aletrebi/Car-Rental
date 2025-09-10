@@ -7,4 +7,20 @@ class CountryModel {
     required this.countryName,
     required this.imageUrl,
   });
+
+  factory CountryModel.fromJson(Map<String, dynamic> json) {
+    return CountryModel(
+      countryCode: json['countryCode'],
+      countryName: json['countryName'],
+      imageUrl: json['imageUrl'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'countryCode': countryCode,
+      'countryName': countryName,
+      'imageUrl': imageUrl,
+    };
+  }
 }

@@ -7,46 +7,47 @@ import 'package:car_rental/core/routing/routes.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 
+
 class SignInViewBody extends StatelessWidget {
   const SignInViewBody({super.key});
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AuthHeaderSection(
-                  title: 'Welcome Back\nReady to hit the road.',
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AuthHeaderSection(
+                      title: 'Welcome Back\nReady to hit the road.',
+                    ),
+                    HeightSpace(height: 40),
+                    SignInFormSection(),
+                    HeightSpace(height: 25),
+                    OrDivider(),
+                    HeightSpace(height: 25),
+                    SignInSocialButton(),
+                    HeightSpace(height: 10),
+                  ],
                 ),
-                HeightSpace(height: 40),
-                SignInFormSection(),
-                HeightSpace(height: 25),
-                OrDivider(),
-                HeightSpace(height: 25),
-                SignInSocialButton(),
-                HeightSpace(height: 10),
-              ],
-            ),
-          ),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: RedirectText(
-                message: 'Don\'t have an account?',
-                actionText: ' SignUp.',
-                onTap: () {
-                  Navigator.pushNamed(context, Routes.kSignUpView);
-                },
               ),
-            ),
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: RedirectText(
+                    message: 'Don\'t have an account?',
+                    actionText: ' SignUp.',
+                    onTap: () {
+                      Navigator.pushNamed(context, Routes.kSignUpView);
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        );
   }
 }

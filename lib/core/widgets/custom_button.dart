@@ -14,6 +14,7 @@ class CustomButton extends StatelessWidget {
     this.width,
     this.height,
     this.textStyle,
+    this.isLoading = false,
   });
   final String text;
   final void Function()? onPressed;
@@ -23,7 +24,7 @@ class CustomButton extends StatelessWidget {
   final double? width;
   final double? height;
   final TextStyle? textStyle;
-
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -34,12 +35,14 @@ class CustomButton extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(62)),
         side: BorderSide(color: borderColor ?? Colors.transparent, width: 1),
       ),
-      onPressed: onPressed,
+      onPressed: isLoading ? null : onPressed,
       child: FittedBox(
-        child: Text(
-          text,
-          style: textStyle ?? AppStyles.bold18.copyWith(color: textColor),
-        ),
+        child: isLoading
+            ? const CircularProgressIndicator()
+            : Text(
+                text,
+                style: textStyle ?? AppStyles.bold18.copyWith(color: textColor),
+              ),
       ),
     );
   }

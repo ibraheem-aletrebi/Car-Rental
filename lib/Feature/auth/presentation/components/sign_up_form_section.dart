@@ -55,6 +55,7 @@ class _SignUpFormSectionState extends State<SignUpFormSection> {
           PaginatedCountryDropdown(onChanged: (value) {}),
           HeightSpace(height: 30),
           CustomButton(
+            isLoading: context.watch<SignUpCubit>().state is SignUpLoading,
             text: 'Sign up',
             onPressed: () {
               formKey.currentState?.save();

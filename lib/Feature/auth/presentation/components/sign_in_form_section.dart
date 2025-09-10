@@ -43,9 +43,7 @@ class _SignInFormSectionState extends State<SignInFormSection> {
           HeightSpace(),
           CustomTextFormField(
             onSaved: (value) {
-              setState(() {
                 password = value!;
-              });
             },
             hintText: 'Password',
             isPassword: true,

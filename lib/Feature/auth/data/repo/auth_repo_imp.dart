@@ -31,7 +31,6 @@ class AuthRepoImp extends AuthRepo {
 
   @override
   Future<Either<Failure, Unit>> logout() {
-    // TODO: implement logout
     throw UnimplementedError();
   }
 
@@ -44,14 +43,14 @@ class AuthRepoImp extends AuthRepo {
         endPoint: BackEndEndPoint.signUpEndPoint,
         data: {
           // 'phone': userModel.phone,
-          'country': userModel.countryModel?.toJson() ?? 'EG',
           'full_name': userModel.fullName,
           'email': userModel.email,
           'password': userModel.password,
+          'country': userModel.countryModel?.toJson() ?? 'EG',
         },
       );
 
-      return Right(TokenModel.fromJson(response));
+      return Right(TokenModel.fromJson(response['tokens']));
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }

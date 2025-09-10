@@ -27,7 +27,7 @@ class SignUpFormSection extends StatelessWidget {
         CustomButton(
           text: 'Sign up',
           onPressed: () {
-            Navigator.pushNamed(context, Routes.kMainView);
+            Navigator.pushNamed(context, Routes.kVerifyPhoneNumberView);
           },
         ),
         // HeightSpace(),

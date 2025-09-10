@@ -56,6 +56,8 @@ class Assets {
 
   static const String imagesSpalshUp12 = "assets/images/spalsh_up12.png";
 
+  static const String imagesSuccessResetPassword = "assets/images/success_reset_password.png";
+
   static const String imagesTeslaLogo = "assets/images/tesla_logo.svg";
 
   static const String imagesUser = "assets/images/user.jpeg";

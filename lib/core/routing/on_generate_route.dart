@@ -1,4 +1,7 @@
+import 'package:car_rental/Feature/auth/presentation/view/email_verification_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/forget_password_view.dart';
+import 'package:car_rental/Feature/auth/presentation/view/reset_new_password_view.dart';
+import 'package:car_rental/Feature/auth/presentation/view/reset_password_success_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/sign_in_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/sign_up_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/verification_code_view.dart';
@@ -30,6 +33,22 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     case Routes.kForgotPasswordView:
       return MaterialPageRoute(
         builder: (context) => ForgetPasswordView(),
+        settings: settings,
+      );
+    case Routes.kEmailVerificationView:
+      return MaterialPageRoute(
+        builder: (context) => EmailVerificationView(),
+        settings: settings,
+      );
+    case Routes.kResetNewPasswordView:
+      return MaterialPageRoute(
+        builder: (context) => ResetNewPasswordView(),
+        settings: settings,
+      );
+
+    case Routes.kResetPasswordSuccessView:
+      return MaterialPageRoute(
+        builder: (context) => ResetPasswordSuccessView(),
         settings: settings,
       );
     case Routes.kVerifyPhoneNumberView:

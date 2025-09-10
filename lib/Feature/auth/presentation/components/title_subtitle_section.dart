@@ -7,15 +7,25 @@ class TitleSubtitleSection extends StatelessWidget {
     super.key,
     required this.title,
     required this.subTitle,
+    this.textAlign,
   });
   final String title, subTitle;
+  final TextAlign? textAlign;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(title, style: AppStyles.semiBold30),
+        Text(
+          title,
+          style: AppStyles.semiBold30,
+          textAlign: textAlign ?? TextAlign.center,
+        ),
         HeightSpace(),
-        Text(subTitle, textAlign: TextAlign.center, style: AppStyles.regular14),
+        Text(
+          subTitle,
+          textAlign: textAlign ?? TextAlign.center,
+          style: AppStyles.regular14,
+        ),
       ],
     );
   }

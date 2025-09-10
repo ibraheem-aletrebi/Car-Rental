@@ -16,7 +16,7 @@ class ForgetPasswordViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Column(
         children: [
-    CustomLogo(),
+          CustomLogo(),
           Expanded(
             child: Center(
               child: SingleChildScrollView(
@@ -40,7 +40,7 @@ class ForgetPasswordViewBody extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(
                           context,
-                          Routes.kVerifyPhoneNumberView,
+                          Routes.kEmailVerificationView,
                         );
                       },
                     ),

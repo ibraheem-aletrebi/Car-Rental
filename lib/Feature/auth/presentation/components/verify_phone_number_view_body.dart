@@ -2,6 +2,7 @@ import 'package:car_rental/Feature/auth/presentation/components/paginated_countr
 import 'package:car_rental/Feature/auth/presentation/components/custom_logo.dart';
 import 'package:car_rental/Feature/auth/presentation/components/title_subtitle_section.dart';
 import 'package:car_rental/core/routing/routes.dart';
+import 'package:car_rental/core/styles/app_colors.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
@@ -42,6 +43,20 @@ class VerifyPhoneNumberViewBody extends StatelessWidget {
                         Navigator.pushNamed(
                           context,
                           Routes.kVerificationCodeView,
+                        );
+                      },
+                    ),
+                    HeightSpace(height: 28),
+                    CustomButton(
+                      borderColor: AppColors.kStokeColor,
+                      textColor: AppColors.kPrimaryColor,
+                      backgroundColor: AppColors.kDarkWhite,
+                      text: 'Skip for now',
+                      onPressed: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          Routes.kMainView,
+                          (route) => false,
                         );
                       },
                     ),

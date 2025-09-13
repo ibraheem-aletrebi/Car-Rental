@@ -10,4 +10,10 @@ abstract class AuthRepo {
   });
   Future<Either<Failure, TokenModel>> signUp({required UserModel userModel});
   Future<Either<Failure, Unit>> logout();
+
+  Future<Either<Failure, TokenModel>> refreshToken({
+    required String refreshToken,
+  });
+
+  
 }

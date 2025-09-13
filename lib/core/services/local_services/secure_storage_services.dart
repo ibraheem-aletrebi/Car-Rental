@@ -34,7 +34,7 @@ class SecureStorageService {
     await _secureStorage.deleteAll();
   }
 
-Future<bool> isSignedIn() async{
+  Future<bool> isSignedIn() async {
     return await _secureStorage.containsKey(key: _accessTokenKey);
   }
 }

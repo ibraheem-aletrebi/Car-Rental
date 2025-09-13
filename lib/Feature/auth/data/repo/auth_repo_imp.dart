@@ -63,4 +63,23 @@ class AuthRepoImp extends AuthRepo {
       return Left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, TokenModel>> refreshToken({
+    required String refreshToken,
+  }) async {
+    try {
+      var response = await apiService.post(
+        endPoint: BackEndEndPoint.refreshTokenEndPoint,
+        data: {'refresh': refreshToken},
+      );
+      return Right(TokenModel.fromJson(response));
+    } catch (e) {
+      log('error: ${e.toString()} From -> auth repo imp refresh token');
+      if ((e is DioException)) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return Left(ServerFailure(e.toString()));
+    }
+  }
 }

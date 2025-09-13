@@ -1,28 +1,48 @@
 import 'dart:developer';
 
+import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
+import 'package:car_rental/core/services/local_services/secure_storage_services.dart';
+import 'package:car_rental/core/services/service_locator.dart';
 import 'package:dio/dio.dart';
 
 class ApiService {
   ApiService({required this.dio}) {
     dio.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (options, handler) {
-          // قبل ما يطلع الـ Request
+           InterceptorsWrapper(
+        onRequest: (options, handler) async {
           log('REQUEST[${options.method}] => PATH: ${options.path}');
 
-          // مثال: تضيف Header ثابت
-          // options.headers['Authorization'] = 'Bearer your_token_here';
-
-          return handler.next(options); // لازم تكمّل
+          final accessToken = await SecureStorageService().getAccessToken();
+          if (accessToken != null) {
+            options.headers['Authorization'] = 'Bearer $accessToken';
+          }
+          return handler.next(options);
         },
         onResponse: (response, handler) {
           // لما ييجي Response
           log('RESPONSE[${response.statusCode}] => DATA: ${response.data}');
           return handler.next(response);
         },
-        onError: (DioException e, handler) {
-          // لو حصل Error
+        onError: (DioException e, handler) async {
           log('ERROR[${e.response?.statusCode}] => DATA: ${e.response?.data}');
+          if (e.response?.statusCode == 401) {
+            try {
+              final refreshToken = await getIt<SecureStorageService>()
+                  .getRefreshToken();
+              await getIt<AuthRepo>().refreshToken(
+                refreshToken: refreshToken!,
+              );
+              final newAccessToken = await getIt<SecureStorageService>()
+                  .getAccessToken();
+              e.requestOptions.headers['Authorization'] =
+                  'Bearer $newAccessToken';
+              final clonedRequest = await dio.fetch(e.requestOptions);
+              return handler.resolve(clonedRequest);
+            } catch (error) {
+              log('error: ${e.toString()} From -> ApiService -> onError');
+              return handler.reject(e);
+            }
+          }
           return handler.next(e);
         },
       ),

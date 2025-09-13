@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:car_rental/Feature/auth/domain/manager/sign_in_cubit/sign_in_cubit.dart';
+import 'package:car_rental/Feature/auth/presentation/manager/sign_in_cubit/sign_in_cubit.dart';
 import 'package:car_rental/Feature/auth/presentation/components/remeber_forget_password_section.dart';
 
 import 'package:car_rental/core/widgets/custom_button.dart';
@@ -18,7 +18,7 @@ class SignInFormSection extends StatefulWidget {
 
 class _SignInFormSectionState extends State<SignInFormSection> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  String emailOrPhone = '', password = '';
+  String email = '', password = '';
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -29,13 +29,13 @@ class _SignInFormSectionState extends State<SignInFormSection> {
           CustomTextFormField(
             onSaved: (value) {
               setState(() {
-                emailOrPhone = value!;
+                email = value!;
               });
             },
-            hintText: 'Email/Phone Number',
+            hintText: 'Email',
             validator: (value) {
               if (value!.isEmpty) {
-                return 'Email/Phone Number is required';
+                return 'Email is required';
               }
               return null;
             },
@@ -43,7 +43,7 @@ class _SignInFormSectionState extends State<SignInFormSection> {
           HeightSpace(),
           CustomTextFormField(
             onSaved: (value) {
-                password = value!;
+              password = value!;
             },
             hintText: 'Password',
             isPassword: true,
@@ -64,9 +64,9 @@ class _SignInFormSectionState extends State<SignInFormSection> {
             onPressed: () {
               formKey.currentState!.save();
               if (formKey.currentState!.validate()) {
-                log(emailOrPhone);
+                log(email);
                 context.read<SignInCubit>().signIn(
-                  emailOrPhone: emailOrPhone,
+                  emailOrPhone: email,
                   password: password,
                 );
               }

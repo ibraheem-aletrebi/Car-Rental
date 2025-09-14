@@ -33,8 +33,14 @@ class CarRental extends StatelessWidget {
   }
 
   String getInitialRoute() {
-    return PreferenceManegar().getBool(StorageKey.shownOnBoarding) ?? false
-        ? Routes.kSignInView
-        : Routes.kOnboardingView;
+    bool isShownOnBoarding =
+        PreferenceManegar().getBool(StorageKey.shownOnBoarding) ?? false;
+    bool isSignedIn =
+        PreferenceManegar().getBool(StorageKey.isSignedIn) ?? false;
+    if (isShownOnBoarding) {
+      return isSignedIn ? Routes.kMainView : Routes.kSignInView;
+    } else {
+      return Routes.kOnboardingView;
+    }
   }
 }

@@ -16,3 +16,8 @@ final class SignInSuccess extends SignInState {
   final TokenModel tokenModel;
   SignInSuccess(this.tokenModel);
 }
+
+final class SignInRememberChanged extends SignInState {
+  final bool rememberMe;
+  SignInRememberChanged(this.rememberMe);
+}

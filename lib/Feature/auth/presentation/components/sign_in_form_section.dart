@@ -17,13 +17,14 @@ class SignInFormSection extends StatefulWidget {
 }
 
 class _SignInFormSectionState extends State<SignInFormSection> {
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   String email = '', password = '';
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      key: _formKey,
+      autovalidateMode: _autovalidateMode,
       child: Column(
         children: [
           CustomTextFormField(
@@ -62,13 +63,17 @@ class _SignInFormSectionState extends State<SignInFormSection> {
             isLoading: context.watch<SignInCubit>().state is SignInLoading,
             text: 'Sign In',
             onPressed: () {
-              formKey.currentState!.save();
-              if (formKey.currentState!.validate()) {
+              _formKey.currentState!.save();
+              if (_formKey.currentState!.validate()) {
                 log(email);
                 context.read<SignInCubit>().signIn(
                   emailOrPhone: email,
                   password: password,
                 );
+              }else{
+                setState(() {
+                  _autovalidateMode = AutovalidateMode.always;
+                });
               }
             },
           ),

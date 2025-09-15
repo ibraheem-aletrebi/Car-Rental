@@ -13,6 +13,6 @@ final class SignUpError extends SignUpState {
 }
 
 final class SignUpSuccess extends SignUpState {
-  final TokenModel tokenModel;
-  SignUpSuccess(this.tokenModel);
+  final AuthResponseModel authResponseModel;
+  SignUpSuccess(this.authResponseModel);
 }

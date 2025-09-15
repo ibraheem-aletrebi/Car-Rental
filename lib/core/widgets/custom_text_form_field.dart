@@ -10,12 +10,20 @@ class CustomTextFormField extends StatefulWidget {
     this.onSaved,
     this.validator,
     this.keyboardType,
+    this.initialValue,
+    this.enabled = true,
+    this.controller,
   });
+
   final void Function(String?)? onSaved;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
   final String hintText;
   final bool isPassword;
+
+  final String? initialValue;
+  final bool enabled;
+  final TextEditingController? controller;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -33,11 +41,13 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
+      initialValue: widget.controller == null ? widget.initialValue : null,
       keyboardType: widget.keyboardType,
       onSaved: widget.onSaved,
       validator: widget.validator,
       obscureText: isObscureText,
-
+      enabled: widget.enabled,
       obscuringCharacter: '*',
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
@@ -46,13 +56,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
         filled: true,
         fillColor: AppColors.kWhiteColor,
-        border: buildBorder(color: Color(0xFF7F7F7F)),
+        border: buildBorder(color: const Color(0xFF7F7F7F)),
         enabledBorder: buildBorder(color: AppColors.kStokeColor),
-        focusedBorder: buildBorder(color: Color(0xFF7F7F7F)),
+        focusedBorder: buildBorder(color: const Color(0xFF7F7F7F)),
         errorBorder: buildBorder(color: AppColors.kErrorColor),
         hintText: widget.hintText,
         hintStyle: AppStyles.regular14,
-
         suffixIcon: widget.isPassword
             ? IconButton(
                 icon: Icon(
@@ -75,5 +84,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       borderSide: BorderSide(color: color, width: 2),
       borderRadius: BorderRadius.circular(10),
     );
+  }
+
+  @override
+  void dispose() {
+    widget.controller?.dispose();
+    super.dispose();
   }
 }

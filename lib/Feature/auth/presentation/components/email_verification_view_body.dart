@@ -1,3 +1,4 @@
+import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
 import 'package:car_rental/Feature/auth/presentation/components/custom_logo.dart';
 import 'package:car_rental/Feature/auth/presentation/components/email_verification_form_section.dart';
 import 'package:car_rental/Feature/auth/presentation/components/title_subtitle_section.dart';
@@ -5,8 +6,7 @@ import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 
 class EmailVerificationViewBody extends StatelessWidget {
-  const EmailVerificationViewBody({super.key});
-
+  const EmailVerificationViewBody({super.key, });
   @override
   Widget build(BuildContext context) {
     return Padding(

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
 class CustomOtpInput extends StatefulWidget {
-  const CustomOtpInput({super.key});
-
+  const CustomOtpInput({super.key, this.onCompleted});
+final void Function(String)? onCompleted;
   @override
   State<CustomOtpInput> createState() => _CustomOtpInputState();
 }
@@ -49,9 +49,8 @@ class _CustomOtpInputState extends State<CustomOtpInput> {
     return Pinput(
       defaultPinTheme: defaultPinTheme,
       focusedPinTheme: focusedPinTheme,
-      onCompleted: (pin) {
-        log(pin.toString());
-      },
+      onCompleted: widget.onCompleted,
+      
     );
   }
 }

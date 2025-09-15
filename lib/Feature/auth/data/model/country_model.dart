@@ -1,26 +1,26 @@
 class CountryModel {
-  final int countryCode;
-  final String countryName;
-  final String imageUrl;
+  final int id;
+  final String country;
+  final String abbreviation;
+
   CountryModel({
-    required this.countryCode,
-    required this.countryName,
-    required this.imageUrl,
+    required this.id,
+    required this.country,
+    required this.abbreviation,
   });
 
   factory CountryModel.fromJson(Map<String, dynamic> json) {
     return CountryModel(
-      countryCode: json['countryCode'],
-      countryName: json['countryName'],
-      imageUrl: json['imageUrl'],
+      id: json['id'] as int,
+      country: json['country'] as String,
+      abbreviation: json['abbreviation'] as String,
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'countryCode': countryCode,
-      'countryName': countryName,
-      'imageUrl': imageUrl,
-    };
+    return {'id': id, 'country': country, 'abbreviation': abbreviation};
   }
+
+  @override
+  String toString() => '$country ($abbreviation)';
 }

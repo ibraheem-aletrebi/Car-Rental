@@ -1,28 +1,32 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
-import 'package:car_rental/Feature/auth/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
-import 'package:car_rental/Feature/auth/presentation/components/sign_up_view_body.dart';
+import 'package:car_rental/Feature/auth/presentation/components/forget_password_view_body.dart';
+import 'package:car_rental/Feature/auth/presentation/manager/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignUpViewBodyBlocConsumer extends StatelessWidget {
-  const SignUpViewBodyBlocConsumer({super.key});
+class ForgetPasswordViewBodyBlocConsumer extends StatelessWidget {
+  const ForgetPasswordViewBodyBlocConsumer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SignUpCubit, SignUpState>(
+    return BlocConsumer<ForgotPasswordCubit, ForgotPasswordState>(
       listener: (context, state) {
-        if (state is SignUpSuccess) {
+        if (state is ForgotPasswordCodeSent) {
           AnimatedSnackBar.material(
-            'We are happy to have you join us',
+            'Code sent! check your email',
             type: AnimatedSnackBarType.success,
             mobilePositionSettings: const MobilePositionSettings(
               topOnAppearance: 100,
             ),
           ).show(context);
-          Navigator.pushReplacementNamed(context, Routes.kSignInView);
+          Navigator.pushNamed(
+            context,
+            Routes.kEmailVerificationView,
+            arguments: state.response,
+          );
         }
-        if (state is SignUpError) {
+        if (state is ForgotPasswordError) {
           AnimatedSnackBar.material(
             state.message,
             type: AnimatedSnackBarType.error,
@@ -33,7 +37,7 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return SignUpViewBody();
+        return ForgetPasswordViewBody();
       },
     );
   }

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:car_rental/Feature/auth/data/model/auth_response.dart';
 import 'package:car_rental/Feature/auth/data/model/token_model.dart';
 import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
 import 'package:car_rental/core/services/local_services/preference_manager.dart';
@@ -23,24 +24,18 @@ class SignInCubit extends Cubit<SignInState> {
     emit(SignInRememberChanged(rememberMe));
   }
 
-  Future<void> signIn({
-    required String emailOrPhone,
-    required String password,
-  }) async {
+  Future<void> signIn({required String email, required String password}) async {
     emit(SignInLoading());
 
-    var result = await authRepo.signIn(
-      emailOrPhone: emailOrPhone,
-      password: password,
-    );
+    var result = await authRepo.signIn(email: email, password: password);
     result.fold(
       (failure) {
         log(failure.errorMessage);
         emit(SignInError(failure.errorMessage));
       },
-      (tokenModel) async {
-        await handleRememberMe(tokenModel: tokenModel);
-        emit(SignInSuccess(tokenModel));
+      (authResponse) async {
+        await handleRememberMe(tokenModel: authResponse.tokenModel);
+        emit(SignInSuccess(authResponse));
       },
     );
   }

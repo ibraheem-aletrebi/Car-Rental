@@ -1,28 +1,28 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
-import 'package:car_rental/Feature/auth/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
-import 'package:car_rental/Feature/auth/presentation/components/sign_up_view_body.dart';
+import 'package:car_rental/Feature/auth/presentation/components/verification_code_view_body.dart';
+import 'package:car_rental/Feature/auth/presentation/manager/verify_phone_cubit/verify_phone_cubit.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignUpViewBodyBlocConsumer extends StatelessWidget {
-  const SignUpViewBodyBlocConsumer({super.key});
+class VerificationCodeViewBodyBlocConsumer extends StatelessWidget {
+  const VerificationCodeViewBodyBlocConsumer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SignUpCubit, SignUpState>(
+    return BlocConsumer<VerifyPhoneCubit, VerifyPhoneState>(
       listener: (context, state) {
-        if (state is SignUpSuccess) {
+        if (state is VerifyPhoneVerified) {
           AnimatedSnackBar.material(
-            'We are happy to have you join us',
+            'Phone number verified',
             type: AnimatedSnackBarType.success,
             mobilePositionSettings: const MobilePositionSettings(
               topOnAppearance: 100,
             ),
           ).show(context);
-          Navigator.pushReplacementNamed(context, Routes.kSignInView);
+          Navigator.pushReplacementNamed(context, Routes.kMainView);
         }
-        if (state is SignUpError) {
+        if (state is VerifyPhoneError) {
           AnimatedSnackBar.material(
             state.message,
             type: AnimatedSnackBarType.error,
@@ -33,7 +33,7 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return SignUpViewBody();
+        return const VerificationCodeViewBody();
       },
     );
   }

@@ -67,10 +67,10 @@ class _SignInFormSectionState extends State<SignInFormSection> {
               if (_formKey.currentState!.validate()) {
                 log(email);
                 context.read<SignInCubit>().signIn(
-                  emailOrPhone: email,
+                  email: email,
                   password: password,
                 );
-              }else{
+              } else {
                 setState(() {
                   _autovalidateMode = AutovalidateMode.always;
                 });

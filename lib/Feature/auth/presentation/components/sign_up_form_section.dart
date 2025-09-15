@@ -16,21 +16,28 @@ class SignUpFormSection extends StatefulWidget {
 }
 
 class _SignUpFormSectionState extends State<SignUpFormSection> {
-  var formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
+
   String? fullName, email, phone, password;
   CountryModel? countryModel;
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      key: _formKey,
+      autovalidateMode: _autovalidateMode,
       child: Column(
         children: [
           CustomTextFormField(
             hintText: 'Full Name',
             onSaved: (value) {
               fullName = value;
+            },
+            validator: (value) {
+              if (value != null && value.isEmpty) {
+                return 'Full name is required';
+              }
             },
           ),
           HeightSpace(),
@@ -39,9 +46,24 @@ class _SignUpFormSectionState extends State<SignUpFormSection> {
             onSaved: (value) {
               email = value;
             },
+            validator: (value) {
+              if (value != null && value.isEmpty) {
+                return 'Full name is required';
+              }
+            },
           ),
           HeightSpace(),
-          CustomTextFormField(hintText: 'Phone Number'),
+          CustomTextFormField(
+            hintText: 'Phone Number',
+            validator: (value) {
+              if (value != null && value.isEmpty) {
+                return 'Full name is required';
+              }
+            },
+            onSaved: (value) {
+              phone = value;
+            },
+          ),
           HeightSpace(),
           CustomTextFormField(
             onSaved: (value) {
@@ -50,25 +72,41 @@ class _SignUpFormSectionState extends State<SignUpFormSection> {
             hintText: 'Password',
             isPassword: true,
             keyboardType: TextInputType.visiblePassword,
+            validator: (value) {
+              if (value != null && value.isEmpty) {
+                return 'Full name is required';
+              }
+            },
           ),
           HeightSpace(),
-          PaginatedCountryDropdown(onChanged: (value) {}),
+          PaginatedCountryDropdown(
+            onChanged: (value) {
+              setState(() {
+                countryModel = value;
+              });
+            },
+          ),
           HeightSpace(height: 30),
           CustomButton(
             isLoading: context.watch<SignUpCubit>().state is SignUpLoading,
             text: 'Sign up',
             onPressed: () {
-              formKey.currentState?.save();
-              if (formKey.currentState!.validate()) {
+              _formKey.currentState?.save();
+
+              if (_formKey.currentState!.validate()) {
                 context.read<SignUpCubit>().signUp(
                   userModel: UserModel(
-                    null,
-                    null,
+                    country: countryModel!,
+                    phone: phone!,
                     fullName: fullName!,
                     email: email!,
-                    password: password!,
                   ),
+                    password: password!,
                 );
+              } else {
+                setState(() {
+                  _autovalidateMode = AutovalidateMode.always;
+                });
               }
               // Navigator.pushNamed(context, Routes.kVerifyPhoneNumberView);
             },

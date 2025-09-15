@@ -1,3 +1,4 @@
+import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
 import 'package:car_rental/Feature/auth/presentation/components/custom_logo.dart';
 import 'package:car_rental/Feature/auth/presentation/components/reset_new_password_form_section.dart';
 import 'package:car_rental/Feature/auth/presentation/components/title_subtitle_section.dart';
@@ -5,8 +6,11 @@ import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 
 class ResetNewPasswordViewBody extends StatelessWidget {
-  const ResetNewPasswordViewBody({super.key});
-
+  const ResetNewPasswordViewBody({
+    super.key,
+    required this.passwordResetResponseModel,
+  });
+  final PasswordResetResponseModel passwordResetResponseModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +29,9 @@ class ResetNewPasswordViewBody extends StatelessWidget {
                           'set new password and you will be able to login to your account',
                     ),
                     HeightSpace(height: 40),
-                    ResetNewPasswordFormSection(),
+                    ResetNewPasswordFormSection(
+                      passwordResetResponseModel: passwordResetResponseModel,
+                    ),
                   ],
                 ),
               ),

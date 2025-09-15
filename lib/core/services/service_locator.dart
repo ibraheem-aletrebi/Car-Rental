@@ -10,9 +10,11 @@ final getIt = GetIt.instance;
 void setUpServiceLocator() {
   getIt.registerSingleton<Dio>(Dio());
   getIt.registerSingleton(ApiService(dio: getIt<Dio>()));
-  getIt.registerSingleton<AuthRepo>(
-    AuthRepoImp(apiService: getIt<ApiService>()),
-  );
-
   getIt.registerSingleton<SecureStorageService>(SecureStorageService());
+  getIt.registerSingleton<AuthRepo>(
+    AuthRepoImp(
+      apiService: getIt<ApiService>(),
+      secureStorageService: getIt<SecureStorageService>(),
+    ),
+  );
 }

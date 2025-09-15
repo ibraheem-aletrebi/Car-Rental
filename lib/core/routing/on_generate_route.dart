@@ -1,3 +1,6 @@
+import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
+import 'package:car_rental/Feature/auth/data/model/user_model.dart';
+import 'package:car_rental/Feature/auth/data/model/verify_phone_response_model.dart';
 import 'package:car_rental/Feature/auth/presentation/view/email_verification_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/forget_password_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/reset_new_password_view.dart';
@@ -37,12 +40,16 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
       );
     case Routes.kEmailVerificationView:
       return MaterialPageRoute(
-        builder: (context) => EmailVerificationView(),
+        builder: (context) => EmailVerificationView(
+          passwordResetResponseModel: settings.arguments as PasswordResetResponseModel,
+        ),
         settings: settings,
       );
     case Routes.kResetNewPasswordView:
       return MaterialPageRoute(
-        builder: (context) => ResetNewPasswordView(),
+        builder: (context) => ResetNewPasswordView(
+          passwordResetResponseModel: settings.arguments as PasswordResetResponseModel,
+        ),
         settings: settings,
       );
 
@@ -53,13 +60,14 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
       );
     case Routes.kVerifyPhoneNumberView:
       return MaterialPageRoute(
-        builder: (context) => VerifyPhoneNumberView(),
+        builder: (context) =>
+            VerifyPhoneNumberView(userModel: settings.arguments as UserModel),
         settings: settings,
       );
 
     case Routes.kVerificationCodeView:
       return MaterialPageRoute(
-        builder: (context) => VerificationCodeView(),
+        builder: (context) => VerificationCodeView(verifyPhoneResponseModel: settings.arguments as VerifyPhoneResponseModel,),
         settings: settings,
       );
     case Routes.kMainView:

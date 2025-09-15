@@ -13,8 +13,8 @@ final class SignInError extends SignInState {
 }
 
 final class SignInSuccess extends SignInState {
-  final TokenModel tokenModel;
-  SignInSuccess(this.tokenModel);
+  final AuthResponseModel authResponseModel;
+  SignInSuccess(this.authResponseModel);
 }
 
 final class SignInRememberChanged extends SignInState {

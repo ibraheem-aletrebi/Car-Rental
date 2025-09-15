@@ -8,7 +8,7 @@ import 'package:dio/dio.dart';
 class ApiService {
   ApiService({required this.dio}) {
     dio.interceptors.add(
-           InterceptorsWrapper(
+      InterceptorsWrapper(
         onRequest: (options, handler) async {
           log('REQUEST[${options.method}] => PATH: ${options.path}');
 
@@ -29,9 +29,7 @@ class ApiService {
             try {
               final refreshToken = await getIt<SecureStorageService>()
                   .getRefreshToken();
-              await getIt<AuthRepo>().refreshToken(
-                refreshToken: refreshToken!,
-              );
+              await getIt<AuthRepo>().refreshToken(refreshToken: refreshToken!);
               final newAccessToken = await getIt<SecureStorageService>()
                   .getAccessToken();
               e.requestOptions.headers['Authorization'] =
@@ -60,8 +58,13 @@ class ApiService {
   Future<Map<String, dynamic>> post({
     required String endPoint,
     required Map<String, dynamic> data,
+    Options? options,
   }) async {
-    var response = await dio.post('$baseUrl$endPoint', data: data);
+    var response = await dio.post(
+      '$baseUrl$endPoint',
+      data: data,
+      options: options,
+    );
     return response.data;
   }
 

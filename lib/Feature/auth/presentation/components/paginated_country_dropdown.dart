@@ -1,7 +1,11 @@
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
+import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
+import 'package:car_rental/core/Error/failure.dart';
+import 'package:car_rental/core/services/service_locator.dart';
 import 'package:car_rental/core/styles/app_colors.dart';
 import 'package:car_rental/core/styles/app_styles.dart';
 import 'package:flutter/material.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:high_q_paginated_drop_down/high_q_paginated_drop_down.dart';
 
@@ -24,11 +28,9 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
   CountryModel? selectedCountry;
   final GlobalKey<FormFieldState<CountryModel>> _formKey =
       GlobalKey<FormFieldState<CountryModel>>();
-
   @override
   Widget build(BuildContext context) {
     return Row(
-      spacing: 5,
       children: [
         Container(
           decoration: BoxDecoration(
@@ -48,7 +50,6 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
         Expanded(
           child: PaginatedSearchDropdownFormField<CountryModel>.paginated(
             isEnabled: widget.isEnabled,
-
             initialValue: widget.initialValue == null
                 ? null
                 : MenuItemModel<CountryModel>(
@@ -58,26 +59,24 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
                   ),
             formKey: _formKey,
             requestItemCount: 5,
-       
             trailingClearIcon: Icon(
               FontAwesomeIcons.trash,
               color: AppColors.kSecondaryColor,
             ),
             dropDownMaxHeight: MediaQuery.sizeOf(context).height / 3,
-
             backgroundDecoration: (child) => _buildBackgroundDecoration(child),
             hintText: Text(' Country', style: AppStyles.regular14),
             paginatedRequest: (int page, String? searchText) async {
-              final paginatedList = await _fetchCountries(
-                searchQuery: searchText,
-              );
-              return paginatedList.map((e) {
-                return MenuItemModel<CountryModel>(
-                  value: e,
-                  label: e.country,
-                  child: _countryWidget(e),
-                );
-              }).toList();
+              final result = await _fetchCountries(page: page);
+              return result
+                  ?.map(
+                    (e) => MenuItemModel<CountryModel>(
+                      value: e,
+                      label: e.country,
+                      child: _countryWidget(e),
+                    ),
+                  )
+                  .toList();
             },
             validator: (val) {
               if (val == null) return 'Can\'t be empty';
@@ -116,7 +115,7 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
       enabledBorder: _buildBorder(),
       focusedBorder: _buildBorder(),
       errorBorder: _buildBorder(color: Colors.red),
-      contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+      contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
     ),
     child: child,
   );
@@ -128,49 +127,12 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
     );
   }
 
-  Future<List<CountryModel>> _fetchCountries({
-    String? searchQuery,
-    int page = 1,
-  }) async {
-    await Future.delayed(
-      const Duration(milliseconds: 500),
-    ); // Simulate network delay
+  Future<List<CountryModel>?> _fetchCountries({int page = 1}) async {
+    final result = await getIt<AuthRepo>().fetchCountries(page: page);
 
-    final allCountries = [
-      CountryModel(id: 20, country: 'Egypt', abbreviation: 'EG'),
-      CountryModel(id: 966, country: 'Saudi Arabia', abbreviation: 'SA'),
-      CountryModel(
-        id: 971,
-        country: 'United Arab Emirates',
-        abbreviation: 'AE',
-      ),
-      CountryModel(id: 962, country: 'Jordan', abbreviation: 'JO'),
-      CountryModel(id: 965, country: 'Kuwait', abbreviation: 'KW'),
-      CountryModel(id: 974, country: 'Qatar', abbreviation: 'QA'),
-      CountryModel(id: 968, country: 'Oman', abbreviation: 'OM'),
-      CountryModel(id: 973, country: 'Bahrain', abbreviation: 'BH'),
-    ];
-
-    if (searchQuery != null && searchQuery.isNotEmpty) {
-      return allCountries
-          .where(
-            (country) => country.country.toLowerCase().contains(
-              searchQuery.toLowerCase(),
-            ),
-          )
-          .toList();
-    }
-
-    final startIndex = (page - 1) * 5;
-    final endIndex = startIndex + 5;
-
-    if (startIndex >= allCountries.length) {
-      return [];
-    }
-
-    return allCountries.sublist(
-      startIndex,
-      endIndex.clamp(0, allCountries.length),
-    );
+    return result.fold((failure) {
+      // print('Error fetching countries: ${failure.errorMessage}');
+      return null;
+    }, (countries) => countries);
   }
 }

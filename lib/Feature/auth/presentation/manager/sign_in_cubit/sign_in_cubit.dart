@@ -17,7 +17,7 @@ class SignInCubit extends Cubit<SignInState> {
   final AuthRepo authRepo;
   final SecureStorageService secureStorageService;
 
-  bool rememberMe = false;
+  bool rememberMe = true;
 
   void toggleRememberMe(bool value) {
     rememberMe = value;

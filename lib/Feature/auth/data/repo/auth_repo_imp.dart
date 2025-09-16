@@ -1,6 +1,6 @@
 import 'dart:developer';
-
 import 'package:car_rental/Feature/auth/data/model/auth_response.dart';
+import 'package:car_rental/Feature/auth/data/model/country_model.dart';
 import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
 import 'package:car_rental/Feature/auth/data/model/token_model.dart';
 import 'package:car_rental/Feature/auth/data/model/user_model.dart';
@@ -185,6 +185,31 @@ class AuthRepoImp extends AuthRepo {
         return left(ServerFailure.fromDioError(e));
       }
       return Left(ServerFailure(e.toString()));
+    }
+  }
+@override
+  Future<Either<Failure, List<CountryModel>>> fetchCountries({
+    required int page,
+  }) async {
+    try {
+      var response = await apiService.get(
+        endPoint: "${BackEndEndPoint.countriesEndPoint}?page=$page",
+      );
+
+      final data = response['data'];
+      if (data is List) {
+        final List<CountryModel> result = data
+            .map((e) => CountryModel.fromJson(e as Map<String, dynamic>))
+            .toList();
+        return right(result);
+      } else {
+        return left(ServerFailure('Invalid data format'));
+      }
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
 }

@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:car_rental/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';

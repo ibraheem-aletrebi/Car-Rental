@@ -1,14 +1,15 @@
 abstract class BackEndEndPoint {
-  static const String signInEndPoint = 'login/';
-  static const String signUpEndPoint = 'register/';
-  static const String logOutEndPoint = 'logout/';
-  static const String refreshTokenEndPoint = 'token/refresh/';
+  static const String signInEndPoint = 'auth/login/';
+  static const String signUpEndPoint = 'auth/register/';
+  static const String logOutEndPoint = 'auth/logout/';
+  static const String refreshTokenEndPoint = 'auth/token/refresh/';
 
-  static const String verifyPhoneNumberEndPoint = 'phone/request_verify_code/';
+  static const String verifyPhoneNumberEndPoint =
+      'auth/phone/request_verify_code/';
   static const String verifyPhoneNumberOtpEndPoint =
-      'phone/confirm_verify_code/';
-  // static const String resendPhoneNumberOtpEndPoint = 'phone/request_verify_code/';
+      'auth/phone/confirm_verify_code/';
 
-  static const String requestResetPasswordEndPoint = 'forgot_password/';
-  static const String resetPasswordEndPoint = 'reset_password/';
+  static const String requestResetPasswordEndPoint = 'auth/forgot_password/';
+  static const String resetPasswordEndPoint = 'auth/reset_password/';
+  static const String countriesEndPoint = 'public/countries/';
 }

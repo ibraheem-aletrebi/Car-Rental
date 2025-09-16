@@ -48,7 +48,7 @@ class ApiService {
   }
 
   final Dio dio;
-  final String baseUrl = 'https://qent.up.railway.app/api/auth/';
+  final String baseUrl = 'https://qent.up.railway.app/api/';
 
   Future<Map<String, dynamic>> get({required String endPoint}) async {
     var response = await dio.get('$baseUrl$endPoint');

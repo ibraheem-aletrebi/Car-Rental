@@ -1,6 +1,5 @@
 import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
 import 'package:car_rental/Feature/auth/presentation/manager/forgot_password_cubit/forgot_password_cubit.dart';
-import 'package:car_rental/core/routing/routes.dart';
 import 'package:car_rental/core/services/local_services/preference_manager.dart';
 import 'package:car_rental/core/services/local_services/storage_key.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
@@ -41,6 +40,7 @@ class _ResetNewPasswordFormSectionState
               if (value == null || value.isEmpty) {
                 return 'Password is required';
               }
+              return null;
             },
             onSaved: (value) {
               password = value!;
@@ -56,6 +56,7 @@ class _ResetNewPasswordFormSectionState
               if (value != password) {
                 return 'Password does not match';
               }
+              return null;
             },
             onSaved: (value) {
               confirmPassword = value!;

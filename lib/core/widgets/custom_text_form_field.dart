@@ -12,7 +12,7 @@ class CustomTextFormField extends StatefulWidget {
     this.keyboardType,
     this.initialValue,
     this.enabled = true,
-    this.controller,
+    this.controller, this.onTap,
   });
 
   final void Function(String?)? onSaved;
@@ -20,7 +20,7 @@ class CustomTextFormField extends StatefulWidget {
   final TextInputType? keyboardType;
   final String hintText;
   final bool isPassword;
-
+final void Function()? onTap;
   final String? initialValue;
   final bool enabled;
   final TextEditingController? controller;
@@ -41,6 +41,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap:widget.onTap ,
       controller: widget.controller,
       initialValue: widget.controller == null ? widget.initialValue : null,
       keyboardType: widget.keyboardType,

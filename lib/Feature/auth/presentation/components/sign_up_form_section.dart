@@ -1,7 +1,7 @@
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
 import 'package:car_rental/Feature/auth/data/model/user_model.dart';
-import 'package:car_rental/Feature/auth/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:car_rental/Feature/auth/presentation/components/paginated_country_dropdown.dart';
+import 'package:car_rental/Feature/auth/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
@@ -38,6 +38,7 @@ class _SignUpFormSectionState extends State<SignUpFormSection> {
               if (value != null && value.isEmpty) {
                 return 'Full name is required';
               }
+              return null;
             },
           ),
           HeightSpace(),
@@ -50,6 +51,7 @@ class _SignUpFormSectionState extends State<SignUpFormSection> {
               if (value != null && value.isEmpty) {
                 return 'Full name is required';
               }
+              return null;
             },
           ),
           HeightSpace(),
@@ -59,6 +61,7 @@ class _SignUpFormSectionState extends State<SignUpFormSection> {
               if (value != null && value.isEmpty) {
                 return 'Full name is required';
               }
+              return null;
             },
             onSaved: (value) {
               phone = value;
@@ -76,9 +79,11 @@ class _SignUpFormSectionState extends State<SignUpFormSection> {
               if (value != null && value.isEmpty) {
                 return 'Full name is required';
               }
+              return null;
             },
           ),
           HeightSpace(),
+
           PaginatedCountryDropdown(
             onChanged: (value) {
               setState(() {
@@ -101,7 +106,7 @@ class _SignUpFormSectionState extends State<SignUpFormSection> {
                     fullName: fullName!,
                     email: email!,
                   ),
-                    password: password!,
+                  password: password!,
                 );
               } else {
                 setState(() {

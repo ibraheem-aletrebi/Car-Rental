@@ -49,6 +49,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                           if (value == null || value.isEmpty) {
                             return 'Email is required';
                           }
+                          return null;
                         },
                         onSaved: (value) {
                           email = value!;

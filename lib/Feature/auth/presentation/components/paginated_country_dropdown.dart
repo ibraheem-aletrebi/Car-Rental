@@ -1,6 +1,5 @@
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
 import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
-import 'package:car_rental/core/Error/failure.dart';
 import 'package:car_rental/core/services/service_locator.dart';
 import 'package:car_rental/core/styles/app_colors.dart';
 import 'package:car_rental/core/styles/app_styles.dart';
@@ -50,6 +49,7 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
         Expanded(
           child: PaginatedSearchDropdownFormField<CountryModel>.paginated(
             isEnabled: widget.isEnabled,
+
             initialValue: widget.initialValue == null
                 ? null
                 : MenuItemModel<CountryModel>(
@@ -66,6 +66,7 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
             dropDownMaxHeight: MediaQuery.sizeOf(context).height / 3,
             backgroundDecoration: (child) => _buildBackgroundDecoration(child),
             hintText: Text(' Country', style: AppStyles.regular14),
+
             paginatedRequest: (int page, String? searchText) async {
               final result = await _fetchCountries(page: page);
               return result
@@ -100,7 +101,7 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
   Row _countryWidget(CountryModel e) {
     return Row(
       children: [
-        Text(e.abbreviation, style: AppStyles.regular14),
+        Text(countryCodeToEmoji(e.abbreviation)),
         const SizedBox(width: 10),
         Text(e.country, style: AppStyles.regular14),
       ],
@@ -134,5 +135,10 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
       // print('Error fetching countries: ${failure.errorMessage}');
       return null;
     }, (countries) => countries);
+  }
+
+  String countryCodeToEmoji(String countryCode) {
+    final codePoints = countryCode.codeUnits.map((unit) => unit + 0x1F1A5);
+    return String.fromCharCodes(codePoints);
   }
 }

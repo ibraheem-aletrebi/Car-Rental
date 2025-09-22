@@ -13,11 +13,10 @@ class PaginatedCountryDropdown extends StatefulWidget {
     super.key,
     required this.onChanged,
     this.isEnabled = true,
-    this.initialValue,
   });
   final ValueChanged<CountryModel?> onChanged;
   final bool isEnabled;
-  final CountryModel? initialValue;
+
   @override
   State<PaginatedCountryDropdown> createState() =>
       _PaginatedCountryDropdownState();
@@ -32,38 +31,26 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
     return Row(
       children: [
         Container(
-          decoration: BoxDecoration(
-            color: AppColors.kSecondaryColor,
-            borderRadius: BorderRadius.circular(10),
-          ),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
           padding: const EdgeInsets.all(10),
-          child: Text(
-            selectedCountry == null
-                ? widget.initialValue == null
-                      ? '+0'
-                      : '+${widget.initialValue?.id.toString()}'
-                : '+${selectedCountry!.id.toString()}',
-            style: AppStyles.semiBold14.copyWith(color: AppColors.kWhiteColor),
-          ),
+          child: selectedCountry == null
+              ? Icon(FontAwesomeIcons.globe)
+              : Text(
+                  countryCodeToEmoji(selectedCountry!.abbreviation),
+                  style: TextStyle(fontSize: 24),
+                ),
         ),
         Expanded(
           child: PaginatedSearchDropdownFormField<CountryModel>.paginated(
             isEnabled: widget.isEnabled,
 
-            initialValue: widget.initialValue == null
-                ? null
-                : MenuItemModel<CountryModel>(
-                    value: widget.initialValue,
-                    label: widget.initialValue!.country,
-                    child: _countryWidget(widget.initialValue!),
-                  ),
             formKey: _formKey,
             requestItemCount: 5,
             trailingClearIcon: Icon(
               FontAwesomeIcons.trash,
               color: AppColors.kSecondaryColor,
             ),
-            dropDownMaxHeight: MediaQuery.sizeOf(context).height / 3,
+            dropDownMaxHeight: MediaQuery.sizeOf(context).height / 5,
             backgroundDecoration: (child) => _buildBackgroundDecoration(child),
             hintText: Text(' Country', style: AppStyles.regular14),
 
@@ -74,7 +61,7 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
                     (e) => MenuItemModel<CountryModel>(
                       value: e,
                       label: e.country,
-                      child: _countryWidget(e),
+                      child: Text(" ${e.country}"),
                     ),
                   )
                   .toList();

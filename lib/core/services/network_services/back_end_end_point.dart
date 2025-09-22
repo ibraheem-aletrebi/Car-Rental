@@ -12,4 +12,5 @@ abstract class BackEndEndPoint {
   static const String requestResetPasswordEndPoint = 'auth/forgot_password/';
   static const String resetPasswordEndPoint = 'auth/reset_password/';
   static const String countriesEndPoint = 'public/countries/';
+  static const String locationEndPoint = 'public/register_locations/';
 }

@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:car_rental/Feature/auth/data/model/auth_response.dart';
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
 import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
+import 'package:car_rental/Feature/auth/data/model/register_request_model.dart';
 import 'package:car_rental/Feature/auth/data/model/token_model.dart';
 import 'package:car_rental/Feature/auth/data/model/user_model.dart';
 import 'package:car_rental/Feature/auth/data/model/verify_phone_response_model.dart';
@@ -46,19 +47,12 @@ class AuthRepoImp extends AuthRepo {
 
   @override
   Future<Either<Failure, AuthResponseModel>> signUp({
-    required UserModel userModel,
-    required String password,
+    required RegisterRequestModel registerRequestModel,
   }) async {
     try {
       var response = await apiService.post(
         endPoint: BackEndEndPoint.signUpEndPoint,
-        data: {
-          'phone': userModel.phone,
-          'full_name': userModel.fullName,
-          'email': userModel.email,
-          'country_id': userModel.country.id,
-          'password': password,
-        },
+        data: registerRequestModel.toJson(),
       );
       return Right(AuthResponseModel.fromJson(response));
     } catch (e) {
@@ -187,7 +181,8 @@ class AuthRepoImp extends AuthRepo {
       return Left(ServerFailure(e.toString()));
     }
   }
-@override
+
+  @override
   Future<Either<Failure, List<CountryModel>>> fetchCountries({
     required int page,
   }) async {

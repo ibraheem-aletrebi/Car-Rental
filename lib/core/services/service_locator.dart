@@ -1,5 +1,7 @@
 import 'package:car_rental/Feature/auth/data/repo/auth_repo_imp.dart';
+import 'package:car_rental/Feature/auth/data/repo/location_repo_imp.dart';
 import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
+import 'package:car_rental/Feature/auth/domain/repo/location_repo.dart';
 import 'package:car_rental/core/services/local_services/secure_storage_services.dart';
 import 'package:car_rental/core/services/network_services/api_service.dart';
 import 'package:dio/dio.dart';
@@ -16,5 +18,8 @@ void setUpServiceLocator() {
       apiService: getIt<ApiService>(),
       secureStorageService: getIt<SecureStorageService>(),
     ),
+  );
+  getIt.registerLazySingleton<LocationRepo>(
+    () => LocationRepoImp(apiService: getIt<ApiService>()),
   );
 }

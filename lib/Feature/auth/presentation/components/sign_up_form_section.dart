@@ -1,6 +1,11 @@
+import 'dart:developer';
+
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
+import 'package:car_rental/Feature/auth/data/model/location_response_model.dart';
+import 'package:car_rental/Feature/auth/data/model/register_request_model.dart';
 import 'package:car_rental/Feature/auth/data/model/user_model.dart';
 import 'package:car_rental/Feature/auth/presentation/components/paginated_country_dropdown.dart';
+import 'package:car_rental/Feature/auth/presentation/components/paginated_location_dropdown.dart';
 import 'package:car_rental/Feature/auth/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
@@ -21,6 +26,7 @@ class _SignUpFormSectionState extends State<SignUpFormSection> {
 
   String? fullName, email, phone, password;
   CountryModel? countryModel;
+  LocationResponseModel? locationModel;
 
   @override
   Widget build(BuildContext context) {
@@ -83,12 +89,15 @@ class _SignUpFormSectionState extends State<SignUpFormSection> {
             },
           ),
           HeightSpace(),
-
+          PaginatedLocationDropdown(
+            onChanged: (value) {
+              locationModel = value;
+            },
+          ),
+          HeightSpace(),
           PaginatedCountryDropdown(
             onChanged: (value) {
-              setState(() {
-                countryModel = value;
-              });
+              countryModel = value;
             },
           ),
           HeightSpace(height: 30),
@@ -100,13 +109,15 @@ class _SignUpFormSectionState extends State<SignUpFormSection> {
 
               if (_formKey.currentState!.validate()) {
                 context.read<SignUpCubit>().signUp(
-                  userModel: UserModel(
-                    country: countryModel!,
-                    phone: phone!,
+                  registerRequestModel: RegisterRequestModel(
                     fullName: fullName!,
                     email: email!,
+                    password: password!,
+
+                    locationId: locationModel!.id,
+                    countryId: countryModel!.id,
+                    phoneNumber: phone!,
                   ),
-                  password: password!,
                 );
               } else {
                 setState(() {

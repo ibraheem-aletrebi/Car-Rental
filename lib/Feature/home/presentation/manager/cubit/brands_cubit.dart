@@ -1,0 +1,8 @@
+import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+
+part 'brands_state.dart';
+
+class BrandsCubit extends Cubit<BrandsState> {
+  BrandsCubit() : super(BrandsInitial());
+}

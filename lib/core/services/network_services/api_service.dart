@@ -20,7 +20,7 @@ class ApiService {
         },
         onResponse: (response, handler) {
           // لما ييجي Response
-          log('RESPONSE[${response.statusCode}] => DATA: ${response.data}');
+          // log('RESPONSE[${response.statusCode}] => DATA: ${response.data}');
           return handler.next(response);
         },
         onError: (DioException e, handler) async {

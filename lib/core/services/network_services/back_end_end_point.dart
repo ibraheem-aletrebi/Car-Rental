@@ -14,5 +14,5 @@ abstract class BackEndEndPoint {
   static const String countriesEndPoint = 'public/countries/';
   static const String locationEndPoint = 'public/register_locations/';
 
-  static const String carBrandsEndPoint = '/brands/';
+  static const String carBrandsEndPoint = 'brands/';
 }

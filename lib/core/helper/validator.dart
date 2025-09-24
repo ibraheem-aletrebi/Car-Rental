@@ -6,13 +6,13 @@ class Validator {
     }
     return null;
   }
+
   static String? email(String? value) {
     if (value == null || value.trim().isEmpty) {
       return "Email is required";
     }
 
-    const pattern =
-        r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$';
+    const pattern = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$';
     final regex = RegExp(pattern);
 
     if (!regex.hasMatch(value.trim())) {
@@ -20,7 +20,6 @@ class Validator {
     }
     return null;
   }
-
 
   static String? password(String? value, {int minLength = 6}) {
     if (value == null || value.isEmpty) {
@@ -31,6 +30,7 @@ class Validator {
     }
     return null;
   }
+
   static String? confirmPassword(String? value, String? original) {
     if (value == null || value.isEmpty) {
       return "Please confirm your password";
@@ -54,6 +54,20 @@ class Validator {
     }
     if (max != null && number > max) {
       return "Value must be at most $max";
+    }
+    return null;
+  }
+
+  static String? otp(String? value, int length) {
+    if (value == null || value.isEmpty) {
+      return "This field is required";
+    }
+    if (value.length != length) {
+      return "Enter a valid otp";
+    }
+    final number = int.tryParse(value);
+    if (number == null) {
+      return "Enter a valid number";
     }
     return null;
   }

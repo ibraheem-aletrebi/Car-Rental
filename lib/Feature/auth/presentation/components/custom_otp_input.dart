@@ -1,11 +1,18 @@
-
+import 'package:car_rental/core/helper/validator.dart';
 import 'package:car_rental/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
 class CustomOtpInput extends StatefulWidget {
-  const CustomOtpInput({super.key, this.onCompleted});
-final void Function(String)? onCompleted;
+  const CustomOtpInput({
+    super.key,
+    this.onCompleted,
+    this.onSubmitted,
+    this.controller,
+  });
+  final void Function(String)? onCompleted;
+  final Function(String)? onSubmitted;
+  final TextEditingController? controller;
   @override
   State<CustomOtpInput> createState() => _CustomOtpInputState();
 }
@@ -46,10 +53,12 @@ class _CustomOtpInputState extends State<CustomOtpInput> {
   @override
   Widget build(BuildContext context) {
     return Pinput(
+      validator: (value) => Validator.otp(value, 4),
+      controller: widget.controller,
       defaultPinTheme: defaultPinTheme,
       focusedPinTheme: focusedPinTheme,
       onCompleted: widget.onCompleted,
-      
+      onSubmitted: widget.onSubmitted,
     );
   }
 }

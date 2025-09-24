@@ -1,6 +1,4 @@
 import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
-import 'package:car_rental/Feature/auth/data/model/user_model.dart';
-import 'package:car_rental/Feature/auth/data/model/verify_phone_response_model.dart';
 import 'package:car_rental/Feature/auth/presentation/view/email_verification_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/forget_password_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/reset_new_password_view.dart';
@@ -8,7 +6,6 @@ import 'package:car_rental/Feature/auth/presentation/view/reset_password_success
 import 'package:car_rental/Feature/auth/presentation/view/sign_in_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/sign_up_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/verification_code_view.dart';
-import 'package:car_rental/Feature/auth/presentation/view/verify_phone_number_view.dart';
 import 'package:car_rental/Feature/home/presentation/view/main_view.dart';
 import 'package:car_rental/Feature/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:car_rental/core/routing/routes.dart';
@@ -41,14 +38,16 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     case Routes.kEmailVerificationView:
       return MaterialPageRoute(
         builder: (context) => EmailVerificationView(
-          passwordResetResponseModel: settings.arguments as PasswordResetResponseModel,
+          passwordResetResponseModel:
+              settings.arguments as PasswordResetResponseModel,
         ),
         settings: settings,
       );
     case Routes.kResetNewPasswordView:
       return MaterialPageRoute(
         builder: (context) => ResetNewPasswordView(
-          passwordResetResponseModel: settings.arguments as PasswordResetResponseModel,
+          passwordResetResponseModel:
+              settings.arguments as PasswordResetResponseModel,
         ),
         settings: settings,
       );
@@ -58,16 +57,11 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
         builder: (context) => ResetPasswordSuccessView(),
         settings: settings,
       );
-    case Routes.kVerifyPhoneNumberView:
-      return MaterialPageRoute(
-        builder: (context) =>
-            VerifyPhoneNumberView(userModel: settings.arguments as UserModel),
-        settings: settings,
-      );
 
     case Routes.kVerificationCodeView:
       return MaterialPageRoute(
-        builder: (context) => VerificationCodeView(verifyPhoneResponseModel: settings.arguments as VerifyPhoneResponseModel,),
+        builder: (context) =>
+            VerificationCodeView(phone: settings.arguments as String),
         settings: settings,
       );
     case Routes.kMainView:

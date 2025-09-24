@@ -4,7 +4,6 @@ import 'package:car_rental/Feature/auth/data/model/country_model.dart';
 import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
 import 'package:car_rental/Feature/auth/data/model/sign_up_request_model.dart';
 import 'package:car_rental/Feature/auth/data/model/token_model.dart';
-import 'package:car_rental/Feature/auth/data/model/verify_phone_response_model.dart';
 import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
 import 'package:car_rental/core/Error/failure.dart';
 import 'package:car_rental/core/services/local_services/secure_storage_services.dart';
@@ -75,51 +74,6 @@ class AuthRepoImp extends AuthRepo {
       return Right(TokenModel.fromJson(response));
     } catch (e) {
       log('error: ${e.toString()} From -> auth repo imp refresh token');
-      if ((e is DioException)) {
-        return left(ServerFailure.fromDioError(e));
-      }
-      return Left(ServerFailure(e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, VerifyPhoneResponseModel>> verifyPhoneNumber({
-    required String phoneNumber,
-  }) async {
-    try {
-      String? accessToken = await secureStorageService.getAccessToken();
-
-      var response = await apiService.post(
-        endPoint: BackEndEndPoint.verifyPhoneNumberEndPoint,
-        data: {'phone': phoneNumber},
-        options: Options(headers: {'Authorization': 'Bearer $accessToken'}),
-      );
-      return right(VerifyPhoneResponseModel.fromJson(response));
-    } catch (e) {
-      log('error: ${e.toString()} From -> auth repo imp verify phone number');
-      if ((e is DioException)) {
-        return left(ServerFailure.fromDioError(e));
-      }
-      return Left(ServerFailure(e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, dynamic>> verifyPhoneNumberOtp({
-    required String otp,
-    required String verifyToken,
-  }) async {
-    try {
-      var response = await apiService.post(
-        endPoint: BackEndEndPoint.verifyPhoneNumberOtpEndPoint,
-        data: {'code': otp, 'verify_token': verifyToken},
-      );
-      log(response.toString());
-      return right(response);
-    } catch (e) {
-      log(
-        'error: ${e.toString()} From -> auth repo imp verify phone number otp',
-      );
       if ((e is DioException)) {
         return left(ServerFailure.fromDioError(e));
       }

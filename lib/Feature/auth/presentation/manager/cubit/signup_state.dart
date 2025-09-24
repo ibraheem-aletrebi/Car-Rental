@@ -11,7 +11,13 @@ class SignupInitial extends SignupState {}
 
 class SignupLoading extends SignupState {}
 
-class SignupSuccess extends SignupState {}
+class SignupSuccess extends SignupState {
+  final AuthResponseModel authResponseModel;
+  const SignupSuccess(this.authResponseModel);
+
+  @override
+  List<Object> get props => [authResponseModel];
+}
 
 class SignupFailure extends SignupState {
   final String message;

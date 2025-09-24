@@ -12,9 +12,11 @@ class VerifyPhoneCodeSent extends VerifyPhoneState {
   VerifyPhoneCodeSent({required this.verifyPhoneResponseModel});
 }
 
-class VerifyPhoneVerified extends VerifyPhoneState {}
+class VerifyPhoneVerified extends VerifyPhoneState {
+  
+}
 
-class VerifyPhoneCodeResent extends VerifyPhoneState {}
+
 
 class VerifyPhoneError extends VerifyPhoneState {
   final String message;

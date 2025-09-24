@@ -14,14 +14,10 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<SignupCubit, SignupState>(
       listener: (context, state) {
         if (state is SignupSuccess) {
-          showAnimatedSnackBar(
-            context: context,
-            message: 'We are happy to have you join us',
-            type: AnimatedSnackBarType.success,
-          );
           Navigator.pushReplacementNamed(
             context,
-            Routes.kVerifyPhoneNumberView,
+            arguments: state.authResponseModel.userModel.phone,
+            Routes.kVerificationCodeView,
           );
         }
         if (state is SignupFailure) {

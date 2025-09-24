@@ -9,3 +9,5 @@ void main() async {
   setUpServiceLocator();
   runApp(CarRental());
 }
+
+  

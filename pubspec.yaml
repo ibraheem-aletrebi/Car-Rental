@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   animated_snack_bar: ^0.4.0
+  another_flushbar: ^1.12.32
   bloc: ^9.0.0
   cached_network_image: ^3.4.1
   country_code_picker: ^3.4.0

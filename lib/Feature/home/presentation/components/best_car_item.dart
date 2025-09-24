@@ -1,14 +1,15 @@
 import 'package:car_rental/Feature/home/domain/entities/car_entity.dart';
 import 'package:car_rental/Feature/home/presentation/components/car_image_header.dart';
 import 'package:car_rental/Feature/home/presentation/components/car_info_section.dart';
+import 'package:car_rental/core/models/car_model.dart';
 import 'package:car_rental/core/styles/app_colors.dart';
 import 'package:car_rental/core/styles/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BestCarItem extends StatelessWidget {
-  const BestCarItem({super.key});
-
+  const BestCarItem({super.key, required this.carModel});
+  final CarModel carModel ;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -24,22 +25,14 @@ class BestCarItem extends StatelessWidget {
           children: [
             Expanded(
               child: CarImageHeader(
-                imagePath: Assets.imagesFerrariCar,
+                imagePath: carModel.image,
                 isFavorite: false,
                 onFavoritePressed: () {},
               ),
             ),
             Expanded(
               child: CarInfoSection(
-                carEntity: CarEntity(
-                  name: 'Ferrari',
-                  rating: 4.5,
-                  location: 'New York',
-                  pricePerDay: 100,
-                  imagePath: Assets.imagesFerrariCar,
-                  seats: 4,
-                  isFavorite: false,
-                ),
+              carModel: carModel,
               ),
             ),
           ],

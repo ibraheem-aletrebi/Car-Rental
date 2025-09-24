@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:car_rental/Feature/auth/data/model/auth_response.dart';
 import 'package:car_rental/Feature/auth/data/model/register_request_model.dart';
-import 'package:car_rental/Feature/auth/data/model/user_model.dart';
 import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
 import 'package:meta/meta.dart';
 part 'sign_up_state.dart';

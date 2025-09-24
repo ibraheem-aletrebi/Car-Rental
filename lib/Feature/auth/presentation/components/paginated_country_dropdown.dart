@@ -85,15 +85,6 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
     );
   }
 
-  Row _countryWidget(CountryModel e) {
-    return Row(
-      children: [
-        Text(countryCodeToEmoji(e.abbreviation)),
-        const SizedBox(width: 10),
-        Text(e.country, style: AppStyles.regular14),
-      ],
-    );
-  }
 
   InputDecorator _buildBackgroundDecoration(Widget child) => InputDecorator(
     decoration: InputDecoration(

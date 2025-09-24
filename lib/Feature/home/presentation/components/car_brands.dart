@@ -1,11 +1,9 @@
 import 'package:car_rental/Feature/home/presentation/components/car_brand_item.dart';
-import 'package:car_rental/Feature/home/presentation/manager/cubit/brands_cubit.dart';
-import 'package:car_rental/core/models/brand_model.dart';
+import 'package:car_rental/Feature/home/presentation/manager/brand_cubit/brands_cubit.dart';
 import 'package:car_rental/core/styles/app_styles.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CarBrands extends StatelessWidget {
   const CarBrands({super.key});

@@ -1,15 +1,14 @@
-import 'package:car_rental/Feature/home/domain/entities/car_entity.dart';
 import 'package:car_rental/Feature/home/presentation/components/icon_text_row.dart';
+import 'package:car_rental/core/models/car_model.dart';
 import 'package:car_rental/core/styles/app_colors.dart';
 import 'package:car_rental/core/styles/app_styles.dart';
 import 'package:car_rental/core/styles/assets.dart';
-// Import our new component
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CarInfoSection extends StatelessWidget {
-  final CarEntity carEntity;
-  const CarInfoSection({super.key, required this.carEntity});
+  final CarModel carModel;
+  const CarInfoSection({super.key, required this.carModel});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class CarInfoSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            carEntity.name,
+            carModel.name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: AppStyles.semiBold14,
@@ -28,14 +27,14 @@ class CarInfoSection extends StatelessWidget {
 
           IconTextRow(
             iconPath: Assets.iconsRating,
-            text: carEntity.rating.toString(),
+            text: carModel.averageRate.toString(),
             textStyle: AppStyles.semiBold12,
           ),
           SizedBox(height: 7.h),
 
           IconTextRow(
             iconPath: Assets.iconsLocation,
-            text: carEntity.location,
+            text: carModel.location.name,
             textStyle: AppStyles.regular12,
           ),
           SizedBox(height: 7.h),
@@ -45,17 +44,18 @@ class CarInfoSection extends StatelessWidget {
             children: [
               IconTextRow(
                 iconPath: Assets.iconsSeats,
-                text: '${carEntity.seats} Seats',
+                text: '${carModel.seatingCapacity} Seats',
                 textStyle: AppStyles.semiBold12,
               ),
-
-              IconTextRow(
-                iconPath: Assets.iconsMoney,
-                text: '\$${carEntity.pricePerDay}/Day',
-                textStyle: AppStyles.semiBold12.copyWith(
-                  color: AppColors.kPrimaryColor,
-                ),
-              ),
+              carModel.dailyRent == null
+                  ? const SizedBox.shrink()
+                  : IconTextRow(
+                      iconPath: Assets.iconsMoney,
+                      text: '\$${carModel.dailyRent?.round()}/Day',
+                      textStyle: AppStyles.semiBold12.copyWith(
+                        color: AppColors.kPrimaryColor,
+                      ),
+                    ),
             ],
           ),
         ],

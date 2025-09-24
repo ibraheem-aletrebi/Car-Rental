@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:car_rental/Feature/home/domain/repos/home_repo.dart';
 import 'package:car_rental/core/Error/failure.dart';
 import 'package:car_rental/core/models/brand_model.dart';
+import 'package:car_rental/core/models/car_model.dart';
 import 'package:car_rental/core/services/network_services/api_service.dart';
 import 'package:car_rental/core/services/network_services/back_end_end_point.dart';
 import 'package:dartz/dartz.dart';
@@ -29,4 +30,49 @@ class HomeRepoImp extends HomeRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, List<CarModel>>> fetchBestCars() async{
+     try {
+      var response = await _apiService.get(
+        endPoint: BackEndEndPoint.bestCarsEndPoint,
+      );
+      final data = response['data'] as List<dynamic>;
+      final List<CarModel> result = data
+          .map((e) => CarModel.fromJson(e as Map<String, dynamic>))
+          .toList();
+      return right(result);
+    } catch (e) {
+      log('error: ${e.toString()} From -> home repo imp fetch best cars');
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, List<CarModel>>> fetchNearbyCars()async {
+      try {
+        var response = await _apiService.get(
+          endPoint: BackEndEndPoint.nearbyCarsEndPoint,
+        );
+        final data = response['data'] as List<dynamic>;
+        final List<CarModel> result = data
+            .map((e) => CarModel.fromJson(e as Map<String, dynamic>))
+            .toList();
+        return right(result);
+      } catch (e) {
+        log('error: ${e.toString()} From -> home repo imp fetch nearby cars');
+        if (e is DioException) {
+          return left(ServerFailure.fromDioError(e));
+        }
+        return left(ServerFailure(e.toString()));
+      }
+  }
+
+
+  
+
+  
 }

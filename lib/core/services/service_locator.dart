@@ -28,4 +28,5 @@ void setUpServiceLocator() {
   getIt.registerSingleton<HomeRepo>(
     HomeRepoImp(apiService: getIt<ApiService>()),
   );
+  
 }

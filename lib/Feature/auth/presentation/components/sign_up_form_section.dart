@@ -1,9 +1,7 @@
-import 'dart:developer';
 
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
 import 'package:car_rental/Feature/auth/data/model/location_response_model.dart';
 import 'package:car_rental/Feature/auth/data/model/register_request_model.dart';
-import 'package:car_rental/Feature/auth/data/model/user_model.dart';
 import 'package:car_rental/Feature/auth/presentation/components/paginated_country_dropdown.dart';
 import 'package:car_rental/Feature/auth/presentation/components/paginated_location_dropdown.dart';
 import 'package:car_rental/Feature/auth/presentation/manager/sign_up_cubit/sign_up_cubit.dart';

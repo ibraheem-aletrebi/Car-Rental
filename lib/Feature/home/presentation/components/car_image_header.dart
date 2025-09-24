@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:car_rental/core/styles/app_colors.dart';
 import 'package:car_rental/core/styles/assets.dart';
 import 'package:car_rental/core/widgets/custom_icon_button.dart';
@@ -25,7 +26,14 @@ class CarImageHeader extends StatelessWidget {
             color: AppColors.kStokeColor,
             borderRadius: BorderRadius.vertical(top: Radius.circular(15.r)),
           ),
-          child: Center(child: Image.asset(imagePath, fit: BoxFit.contain)),
+          child: Center(
+            child: CachedNetworkImage(
+              imageUrl: imagePath,
+              fit: BoxFit.cover,
+              errorWidget: (context, url, error) =>
+                  const Icon(Icons.error, size: 40),
+            ),
+          ),
         ),
         Positioned(
           top: 8,

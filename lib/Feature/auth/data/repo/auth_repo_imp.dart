@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:car_rental/Feature/auth/data/model/auth_response.dart';
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
 import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
-import 'package:car_rental/Feature/auth/data/model/register_request_model.dart';
+import 'package:car_rental/Feature/auth/data/model/sign_up_request_model.dart';
 import 'package:car_rental/Feature/auth/data/model/token_model.dart';
 import 'package:car_rental/Feature/auth/data/model/verify_phone_response_model.dart';
 import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
@@ -46,7 +46,7 @@ class AuthRepoImp extends AuthRepo {
 
   @override
   Future<Either<Failure, AuthResponseModel>> signUp({
-    required RegisterRequestModel registerRequestModel,
+    required SignUpRequestModel registerRequestModel,
   }) async {
     try {
       var response = await apiService.post(

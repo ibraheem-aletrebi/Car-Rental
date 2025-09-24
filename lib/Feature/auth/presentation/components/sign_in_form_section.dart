@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:car_rental/Feature/auth/presentation/manager/sign_in_cubit/sign_in_cubit.dart';
 import 'package:car_rental/Feature/auth/presentation/components/remeber_forget_password_section.dart';
+import 'package:car_rental/core/helper/validator.dart';
 
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
@@ -34,12 +35,7 @@ class _SignInFormSectionState extends State<SignInFormSection> {
               });
             },
             hintText: 'Email',
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Email is required';
-              }
-              return null;
-            },
+            validator: (value) => Validator.email(value),
           ),
           HeightSpace(),
           CustomTextFormField(
@@ -49,12 +45,7 @@ class _SignInFormSectionState extends State<SignInFormSection> {
             hintText: 'Password',
             isPassword: true,
             keyboardType: TextInputType.visiblePassword,
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Password is required';
-              }
-              return null;
-            },
+            validator: (value)=>Validator.password(value, minLength: 8),
           ),
           HeightSpace(height: 30),
           RemeberForgetPasswordSection(),

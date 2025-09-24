@@ -1,0 +1,5 @@
+enum AvailableToAddCar {
+  yes,
+  no,
+  
+}

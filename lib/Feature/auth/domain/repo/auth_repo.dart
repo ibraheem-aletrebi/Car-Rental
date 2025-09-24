@@ -1,7 +1,7 @@
 import 'package:car_rental/Feature/auth/data/model/auth_response.dart';
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
 import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
-import 'package:car_rental/Feature/auth/data/model/register_request_model.dart';
+import 'package:car_rental/Feature/auth/data/model/sign_up_request_model.dart';
 import 'package:car_rental/Feature/auth/data/model/token_model.dart';
 import 'package:car_rental/Feature/auth/data/model/verify_phone_response_model.dart';
 import 'package:car_rental/core/Error/failure.dart';
@@ -13,7 +13,7 @@ abstract class AuthRepo {
     required String password,
   });
   Future<Either<Failure, AuthResponseModel>> signUp({
-    required RegisterRequestModel registerRequestModel,
+    required SignUpRequestModel registerRequestModel,
   });
   Future<Either<Failure, Unit>> logout();
 
@@ -42,5 +42,7 @@ abstract class AuthRepo {
     required String confirmPassword,
   });
 
-  Future<Either<Failure, List<CountryModel>>> fetchCountries({ required int page});
+  Future<Either<Failure, List<CountryModel>>> fetchCountries({
+    required int page,
+  });
 }

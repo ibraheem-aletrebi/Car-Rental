@@ -1,6 +1,7 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
-import 'package:car_rental/Feature/auth/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
+import 'package:car_rental/Feature/auth/presentation/manager/cubit/signup_cubit.dart';
 import 'package:car_rental/Feature/auth/presentation/components/sign_up_view_body.dart';
+import 'package:car_rental/core/helper/buid_animated_snackbar.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,26 +11,25 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SignUpCubit, SignUpState>(
+    return BlocConsumer<SignupCubit, SignupState>(
       listener: (context, state) {
-        if (state is SignUpSuccess) {
-          AnimatedSnackBar.material(
-            'We are happy to have you join us',
+        if (state is SignupSuccess) {
+          showAnimatedSnackBar(
+            context: context,
+            message: 'We are happy to have you join us',
             type: AnimatedSnackBarType.success,
-            mobilePositionSettings: const MobilePositionSettings(
-              topOnAppearance: 100,
-            ),
-          ).show(context);
-          Navigator.pushReplacementNamed(context, Routes.kSignInView);
+          );
+          Navigator.pushReplacementNamed(
+            context,
+            Routes.kVerifyPhoneNumberView,
+          );
         }
-        if (state is SignUpError) {
-          AnimatedSnackBar.material(
-            state.message,
+        if (state is SignupFailure) {
+          showAnimatedSnackBar(
+            context: context,
+            message: state.message,
             type: AnimatedSnackBarType.error,
-            mobilePositionSettings: const MobilePositionSettings(
-              topOnAppearance: 100,
-            ),
-          ).show(context);
+          );
         }
       },
       builder: (context, state) {

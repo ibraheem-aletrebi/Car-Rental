@@ -2,6 +2,7 @@ import 'package:car_rental/Feature/auth/presentation/components/custom_logo.dart
 import 'package:car_rental/Feature/auth/presentation/components/redirect_text.dart';
 import 'package:car_rental/Feature/auth/presentation/components/title_subtitle_section.dart';
 import 'package:car_rental/Feature/auth/presentation/manager/forgot_password_cubit/forgot_password_cubit.dart';
+import 'package:car_rental/core/helper/validator.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
@@ -45,12 +46,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                       CustomTextFormField(
                         hintText: 'Email',
                         keyboardType: TextInputType.emailAddress,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Email is required';
-                          }
-                          return null;
-                        },
+                        validator: (value) => Validator.email(value),
                         onSaved: (value) {
                           email = value!;
                         },

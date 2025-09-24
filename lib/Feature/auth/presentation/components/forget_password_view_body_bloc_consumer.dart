@@ -1,6 +1,7 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:car_rental/Feature/auth/presentation/components/forget_password_view_body.dart';
 import 'package:car_rental/Feature/auth/presentation/manager/forgot_password_cubit/forgot_password_cubit.dart';
+import 'package:car_rental/core/helper/buid_animated_snackbar.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,13 +14,11 @@ class ForgetPasswordViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<ForgotPasswordCubit, ForgotPasswordState>(
       listener: (context, state) {
         if (state is ForgotPasswordCodeSent) {
-          AnimatedSnackBar.material(
-            'Code sent! check your email',
+          showAnimatedSnackBar(
+            context: context,
+            message: 'Code sent! check your email',
             type: AnimatedSnackBarType.success,
-            mobilePositionSettings: const MobilePositionSettings(
-              topOnAppearance: 100,
-            ),
-          ).show(context);
+          );
           Navigator.pushNamed(
             context,
             Routes.kEmailVerificationView,
@@ -27,13 +26,11 @@ class ForgetPasswordViewBodyBlocConsumer extends StatelessWidget {
           );
         }
         if (state is ForgotPasswordError) {
-          AnimatedSnackBar.material(
-            state.message,
+          showAnimatedSnackBar(
+            context: context,
+            message: state.message,
             type: AnimatedSnackBarType.error,
-            mobilePositionSettings: const MobilePositionSettings(
-              topOnAppearance: 100,
-            ),
-          ).show(context);
+          );
         }
       },
       builder: (context, state) {

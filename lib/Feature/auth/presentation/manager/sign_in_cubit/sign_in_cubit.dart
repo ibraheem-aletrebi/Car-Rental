@@ -34,6 +34,12 @@ class SignInCubit extends Cubit<SignInState> {
         emit(SignInError(failure.errorMessage));
       },
       (authResponse) async {
+        await secureStorageService.saveAccessToken(
+          authResponse.tokenModel.token,
+        );
+        await secureStorageService.saveRefreshToken(
+          authResponse.tokenModel.refreshToken,
+        );
         await handleRememberMe(tokenModel: authResponse.tokenModel);
         emit(SignInSuccess(authResponse));
       },
@@ -43,12 +49,8 @@ class SignInCubit extends Cubit<SignInState> {
   Future<void> handleRememberMe({required TokenModel tokenModel}) async {
     if (rememberMe) {
       await PreferenceManegar().setBool(StorageKey.isSignedIn, true);
-      await secureStorageService.saveAccessToken(tokenModel.token);
-      await secureStorageService.saveRefreshToken(tokenModel.refreshToken);
     } else {
       await PreferenceManegar().setBool(StorageKey.isSignedIn, false);
-      await secureStorageService.deleteAccessToken();
-      await secureStorageService.deleteRefreshToken();
     }
   }
 }

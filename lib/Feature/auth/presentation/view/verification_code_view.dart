@@ -1,6 +1,6 @@
 import 'package:car_rental/Feature/auth/domain/repo/phone_verify_repo.dart';
 import 'package:car_rental/Feature/auth/presentation/components/verification_code_view_body_bloc_consumer.dart';
-import 'package:car_rental/Feature/auth/presentation/manager/verify_phone_cubit/verify_phone_cubit.dart';
+import 'package:car_rental/Feature/auth/manager/verify_phone_cubit/verify_phone_cubit.dart';
 import 'package:car_rental/core/services/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -22,7 +22,7 @@ class CarBrandItem extends StatelessWidget {
               imageUrl: brandModel.image,
               height: 60.h,
               width: 60.w,
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
               errorWidget: (context, url, error) =>
                   Icon(Icons.error, size: 40.w),
               placeholder: (context, url) => Container(

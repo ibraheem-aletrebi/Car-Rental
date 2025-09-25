@@ -1,6 +1,6 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:car_rental/Feature/auth/presentation/components/verification_code_view_body.dart';
-import 'package:car_rental/Feature/auth/presentation/manager/verify_phone_cubit/verify_phone_cubit.dart';
+import 'package:car_rental/Feature/auth/manager/verify_phone_cubit/verify_phone_cubit.dart';
 import 'package:car_rental/core/utils/helper/buid_animated_snackbar.dart';
 import 'package:car_rental/core/utils/helper/show_flushbar.dart';
 import 'package:car_rental/core/routing/routes.dart';

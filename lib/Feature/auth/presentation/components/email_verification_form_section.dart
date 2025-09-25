@@ -1,6 +1,6 @@
 import 'package:car_rental/Feature/auth/presentation/components/custom_otp_input.dart';
 import 'package:car_rental/Feature/auth/presentation/components/redirect_text.dart';
-import 'package:car_rental/Feature/auth/presentation/manager/forgot_password_cubit/forgot_password_cubit.dart';
+import 'package:car_rental/Feature/auth/manager/reset_password/password_reset_controller.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
@@ -11,18 +11,18 @@ class EmailVerificationFormSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = ForgotPasswordCubit.get(context);
+    var controller = PasswordResetController.get(context);
     return Column(
       children: [
         Form(
-          key: controller.formKey,
+          key: controller.codeFormKey,
           child: CustomOtpInput(
-            onSubmitted: (value){
-               if (controller.formKey.currentState?.validate() ?? false) {
-              context.read<ForgotPasswordCubit>().verifyCode(
-                code: controller.code!,
-              );
-            }
+            onSubmitted: (value) {
+              if (controller.codeFormKey.currentState?.validate() ?? false) {
+                context.read<PasswordResetController>().verifyCode(
+                  // code: controller.code!,
+                );
+              }
             },
             onCompleted: (value) {
               controller.code = value;
@@ -33,13 +33,11 @@ class EmailVerificationFormSection extends StatelessWidget {
         CustomButton(
           text: 'Continue',
           isLoading:
-              context.watch<ForgotPasswordCubit>().state
-                  is ForgotPasswordLoading,
+              context.watch<PasswordResetController>().state
+                  is PasswordResetLoadingState,
           onPressed: () {
-            if (controller.formKey.currentState?.validate() ?? false) {
-              context.read<ForgotPasswordCubit>().verifyCode(
-                code: controller.code!,
-              );
+            if (controller.codeFormKey.currentState?.validate() ?? false) {
+              context.read<PasswordResetController>().verifyCode();
             }
           },
         ),
@@ -48,7 +46,7 @@ class EmailVerificationFormSection extends StatelessWidget {
           message: 'Didn’t receive the OTP?',
           actionText: 'Resend.',
           onTap: () {
-            context.read<ForgotPasswordCubit>().resendCode();
+            context.read<PasswordResetController>().resendCode();
           },
         ),
       ],

@@ -11,7 +11,7 @@ showFlushBar({
     dismissDirection: FlushbarDismissDirection.HORIZONTAL,
     flushbarPosition: FlushbarPosition.TOP,
     message: message,
-    duration: const Duration(seconds: 3),
+    duration: const Duration(seconds: 5),
     mainButton: TextButton(onPressed: onPressed, child: child),
     backgroundColor: Colors.black87,
     margin: const EdgeInsets.all(8),

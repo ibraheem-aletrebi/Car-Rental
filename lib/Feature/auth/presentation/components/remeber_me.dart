@@ -1,4 +1,4 @@
-import 'package:car_rental/Feature/auth/presentation/manager/sign_in_cubit/sign_in_cubit.dart';
+import 'package:car_rental/Feature/auth/manager/sign_in_cubit/sign_in_cubit.dart';
 import 'package:car_rental/core/styles/app_styles.dart';
 import 'package:car_rental/core/widgets/custom_check_box.dart';
 import 'package:flutter/material.dart';

@@ -2,7 +2,7 @@ import 'package:car_rental/Feature/auth/presentation/components/custom_logo.dart
 import 'package:car_rental/Feature/auth/presentation/components/redirect_text.dart';
 import 'package:car_rental/Feature/auth/presentation/components/custom_otp_input.dart';
 import 'package:car_rental/Feature/auth/presentation/components/title_subtitle_section.dart';
-import 'package:car_rental/Feature/auth/presentation/manager/verify_phone_cubit/verify_phone_cubit.dart';
+import 'package:car_rental/Feature/auth/manager/verify_phone_cubit/verify_phone_cubit.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:car_rental/core/styles/app_colors.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';

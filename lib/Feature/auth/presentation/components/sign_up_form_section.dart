@@ -3,7 +3,7 @@ import 'package:car_rental/Feature/auth/data/model/sign_up_request_model.dart';
 import 'package:car_rental/Feature/auth/presentation/components/available_to_add_car_widget.dart';
 import 'package:car_rental/Feature/auth/presentation/components/paginated_country_dropdown.dart';
 import 'package:car_rental/Feature/auth/presentation/components/paginated_location_dropdown.dart';
-import 'package:car_rental/Feature/auth/presentation/manager/sign_up_cubit/signup_cubit.dart';
+import 'package:car_rental/Feature/auth/manager/sign_up_cubit/signup_cubit.dart';
 import 'package:car_rental/core/enums/avialable_add_car.dart';
 import 'package:car_rental/core/utils/helper/validator.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';

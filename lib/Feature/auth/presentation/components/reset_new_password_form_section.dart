@@ -1,4 +1,4 @@
-import 'package:car_rental/Feature/auth/presentation/manager/forgot_password_cubit/forgot_password_cubit.dart';
+import 'package:car_rental/Feature/auth/manager/reset_password/password_reset_controller.dart';
 import 'package:car_rental/core/utils/helper/validator.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
@@ -11,9 +11,9 @@ class ResetNewPasswordFormSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = ForgotPasswordCubit.get(context);
+    var controller = PasswordResetController.get(context);
     return Form(
-      key: controller.formKey,
+      key: controller.resetFormKey,
       autovalidateMode: controller.autovalidateMode,
       child: Column(
         children: [
@@ -22,14 +22,14 @@ class ResetNewPasswordFormSection extends StatelessWidget {
             isPassword: true,
             keyboardType: TextInputType.visiblePassword,
             validator: (value) => Validator.password(value),
-            onSaved: (value) => controller.updatePassword(value!),
+            onSaved: (value) => controller.password = value!,
           ),
           HeightSpace(height: 28),
 
           CustomTextFormField(
             validator: (value) =>
                 Validator.confirmPassword(value, controller.password),
-            onSaved: (value) => controller.updateConfirmPassword(value!),
+            onSaved: (value) => controller.confirmPassword = value!,
             hintText: 'Confirm Password',
             isPassword: true,
             keyboardType: TextInputType.visiblePassword,
@@ -38,12 +38,12 @@ class ResetNewPasswordFormSection extends StatelessWidget {
           CustomButton(
             text: 'Reset Password',
             isLoading:
-                context.watch<ForgotPasswordCubit>().state
-                    is ForgotPasswordLoading,
+                context.watch<PasswordResetController>().state
+                    is PasswordResetLoadingState,
             onPressed: () async {
-              controller.formKey.currentState!.save();
-              if (controller.formKey.currentState!.validate()) {
-                await context.read<ForgotPasswordCubit>().resetPassword();
+              controller.resetFormKey.currentState!.save();
+              if (controller.resetFormKey.currentState!.validate()) {
+                await context.read<PasswordResetController>().resetPassword();
               } else {
                 controller.updateAutovalidateMode(AutovalidateMode.always);
               }

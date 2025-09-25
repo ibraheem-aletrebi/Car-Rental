@@ -1,8 +1,6 @@
-import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
-import 'package:car_rental/Feature/auth/presentation/view/email_verification_view.dart';
-import 'package:car_rental/Feature/auth/presentation/view/forget_password_view.dart';
-import 'package:car_rental/Feature/auth/presentation/view/reset_new_password_view.dart';
-import 'package:car_rental/Feature/auth/presentation/view/reset_password_success_view.dart';
+
+import 'package:car_rental/Feature/auth/presentation/view/reset_password_flow.dart';
+
 import 'package:car_rental/Feature/auth/presentation/view/sign_in_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/sign_up_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/verification_code_view.dart';
@@ -30,30 +28,7 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
         builder: (context) => SignUpView(),
         settings: settings,
       );
-    case Routes.kForgotPasswordView:
-      return MaterialPageRoute(
-        builder: (context) => ForgetPasswordView(),
-        settings: settings,
-      );
-    case Routes.kEmailVerificationView:
-      return MaterialPageRoute(
-        builder: (context) => EmailVerificationView(
-          args: settings.arguments as ForgotPassordArgs,
-        ),
-        settings: settings,
-      );
-    case Routes.kResetNewPasswordView:
-      return MaterialPageRoute(
-        builder: (context) =>
-            ResetNewPasswordView(args: settings.arguments as ForgotPassordArgs),
-        settings: settings,
-      );
-
-    case Routes.kResetPasswordSuccessView:
-      return MaterialPageRoute(
-        builder: (context) => ResetPasswordSuccessView(),
-        settings: settings,
-      );
+ 
 
     case Routes.kVerificationCodeView:
       return MaterialPageRoute(
@@ -66,7 +41,11 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
         builder: (context) => MainView(),
         settings: settings,
       );
-
+    case Routes.kResetPasswordStepsView:
+      return MaterialPageRoute(
+        builder: (context) => ResetPasswordSteps(),
+        settings: settings,
+      );
     default:
       return MaterialPageRoute(
         builder: (context) => Scaffold(),
@@ -75,9 +54,3 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
   }
 }
 
-class ForgotPassordArgs {
-  final PasswordResetResponseModel response;
-  final String email;
-
-  ForgotPassordArgs({required this.response, required this.email});
-}

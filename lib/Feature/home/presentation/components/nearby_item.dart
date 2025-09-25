@@ -17,7 +17,7 @@ class NearbyItem extends StatelessWidget {
         ),
         child: CachedNetworkImage(
           imageUrl: imagePath,
-          fit: BoxFit.cover,
+          fit: BoxFit.contain,
           errorWidget: (context, url, error) =>
               const Icon(Icons.error, size: 40),
         ),

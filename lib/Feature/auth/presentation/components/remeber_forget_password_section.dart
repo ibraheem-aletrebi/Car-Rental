@@ -15,7 +15,7 @@ class RemeberForgetPasswordSection extends StatelessWidget {
         RemeberMe(),
         GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, Routes.kForgotPasswordView);
+            Navigator.pushNamed(context, Routes.kResetPasswordStepsView);
           },
           child: Text(
             'Forgot Password?',

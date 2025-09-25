@@ -95,6 +95,7 @@ class PasswordResetController extends Cubit<PasswordResetState> {
           StorageKey.forgotPasswordVerifiedCode,
           response.code,
         );
+        resetToken = response.resetToken;
         emit(PasswordResetCodeResentState(response));
       },
     );

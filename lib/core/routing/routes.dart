@@ -4,10 +4,7 @@ abstract class Routes {
   static const String kSignInView = 'signInView';
   static const String kSignUpView = 'signUpView';
 
-  static const String kForgotPasswordView = 'forgotPasswordView';
-  static const String kEmailVerificationView = 'emailVerificationView';
-  static const String kResetNewPasswordView = 'resetNewPasswordView';
-  static const String kResetPasswordSuccessView = 'resetPasswordSuccessView';
+
 
   
   static const String kVerifyPhoneNumberView = 'verifyPhoneNumberView';

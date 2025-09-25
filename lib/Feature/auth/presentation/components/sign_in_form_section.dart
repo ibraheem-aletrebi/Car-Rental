@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:car_rental/Feature/auth/manager/sign_in_cubit/sign_in_cubit.dart';
+import 'package:car_rental/Feature/auth/controllers/sign_in_cubit/sign_in_cubit.dart';
 import 'package:car_rental/Feature/auth/presentation/components/remeber_forget_password_section.dart';
 import 'package:car_rental/core/utils/helper/validator.dart';
 

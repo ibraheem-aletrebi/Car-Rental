@@ -1,6 +1,6 @@
 import 'package:car_rental/Feature/auth/presentation/components/redirect_text.dart';
 import 'package:car_rental/Feature/auth/presentation/components/title_subtitle_section.dart';
-import 'package:car_rental/Feature/auth/manager/reset_password/password_reset_controller.dart';
+import 'package:car_rental/Feature/auth/controllers/reset_password/password_reset_controller.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:car_rental/core/utils/helper/validator.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';

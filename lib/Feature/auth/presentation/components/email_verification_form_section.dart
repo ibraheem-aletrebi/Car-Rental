@@ -1,6 +1,6 @@
 import 'package:car_rental/Feature/auth/presentation/components/custom_otp_input.dart';
 import 'package:car_rental/Feature/auth/presentation/components/redirect_text.dart';
-import 'package:car_rental/Feature/auth/manager/reset_password/password_reset_controller.dart';
+import 'package:car_rental/Feature/auth/controllers/reset_password/password_reset_controller.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:car_rental/Feature/auth/manager/sign_in_cubit/sign_in_cubit.dart';
+import 'package:car_rental/Feature/auth/controllers/sign_in_cubit/sign_in_cubit.dart';
 import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
 import 'package:car_rental/Feature/auth/presentation/components/sign_in_view_body_bloc_consumer.dart';
 import 'package:car_rental/core/services/local_services/secure_storage_services.dart';

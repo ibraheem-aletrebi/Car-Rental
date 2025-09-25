@@ -1,5 +1,5 @@
 import 'package:car_rental/Feature/auth/presentation/components/custom_logo.dart';
-import 'package:car_rental/Feature/auth/manager/reset_password/password_reset_controller.dart';
+import 'package:car_rental/Feature/auth/controllers/reset_password/password_reset_controller.dart';
 import 'package:flutter/material.dart';
 
 class ResetPasswordStepsViewBody extends StatelessWidget {

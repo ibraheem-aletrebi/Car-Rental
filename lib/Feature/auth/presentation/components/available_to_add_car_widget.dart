@@ -1,4 +1,4 @@
-import 'package:car_rental/Feature/auth/manager/sign_up_cubit/signup_cubit.dart';
+import 'package:car_rental/Feature/auth/controllers/sign_up_cubit/signup_cubit.dart';
 import 'package:car_rental/core/enums/avialable_add_car.dart';
 import 'package:car_rental/core/widgets/custom_text_icon_button.dart';
 import 'package:flutter/material.dart';

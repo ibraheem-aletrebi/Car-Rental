@@ -1,4 +1,4 @@
-import 'package:car_rental/Feature/auth/manager/reset_password/password_reset_controller.dart';
+import 'package:car_rental/Feature/auth/controllers/reset_password/password_reset_controller.dart';
 import 'package:car_rental/core/utils/helper/validator.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';

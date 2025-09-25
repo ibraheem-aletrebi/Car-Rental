@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'package:car_rental/Feature/auth/data/model/auth_response.dart';
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
 import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
-import 'package:car_rental/Feature/auth/data/model/sign_up_request_model.dart';
 import 'package:car_rental/Feature/auth/data/model/token_model.dart';
 import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
 import 'package:car_rental/core/Error/failure.dart';
@@ -43,24 +42,7 @@ class AuthRepoImp extends AuthRepo {
     throw UnimplementedError();
   }
 
-  @override
-  Future<Either<Failure, AuthResponseModel>> signUp({
-    required SignUpRequestModel registerRequestModel,
-  }) async {
-    try {
-      var response = await apiService.post(
-        endPoint: BackEndEndPoint.signUpEndPoint,
-        data: registerRequestModel.toJson(),
-      );
-      return Right(AuthResponseModel.fromJson(response));
-    } catch (e) {
-      log('error: ${e.toString()} From -> auth repo imp sign up');
-      if ((e is DioException)) {
-        return left(ServerFailure.fromDioError(e));
-      }
-      return Left(ServerFailure(e.toString()));
-    }
-  }
+
 
   @override
   Future<Either<Failure, TokenModel>> refreshToken({

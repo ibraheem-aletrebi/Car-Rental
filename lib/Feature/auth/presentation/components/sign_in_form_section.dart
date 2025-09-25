@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:car_rental/Feature/auth/presentation/manager/sign_in_cubit/sign_in_cubit.dart';
 import 'package:car_rental/Feature/auth/presentation/components/remeber_forget_password_section.dart';
-import 'package:car_rental/core/helper/validator.dart';
+import 'package:car_rental/core/utils/helper/validator.dart';
 
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';

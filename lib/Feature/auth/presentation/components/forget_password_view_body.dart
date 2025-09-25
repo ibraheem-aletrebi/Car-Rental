@@ -2,7 +2,7 @@ import 'package:car_rental/Feature/auth/presentation/components/custom_logo.dart
 import 'package:car_rental/Feature/auth/presentation/components/redirect_text.dart';
 import 'package:car_rental/Feature/auth/presentation/components/title_subtitle_section.dart';
 import 'package:car_rental/Feature/auth/presentation/manager/forgot_password_cubit/forgot_password_cubit.dart';
-import 'package:car_rental/core/helper/validator.dart';
+import 'package:car_rental/core/utils/helper/validator.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
@@ -10,24 +10,17 @@ import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ForgetPasswordViewBody extends StatefulWidget {
+class ForgetPasswordViewBody extends StatelessWidget {
   const ForgetPasswordViewBody({super.key});
 
   @override
-  State<ForgetPasswordViewBody> createState() => _ForgetPasswordViewBodyState();
-}
-
-class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
-  final GlobalKey<FormState> formKey = GlobalKey();
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String email = '';
-  @override
   Widget build(BuildContext context) {
+    var controller = ForgotPasswordCubit.get(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Form(
-        key: formKey,
-        autovalidateMode: autovalidateMode,
+        key: controller.formKey,
+        autovalidateMode: controller.autovalidateMode,
         child: Column(
           children: [
             CustomLogo(),
@@ -47,9 +40,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                         hintText: 'Email',
                         keyboardType: TextInputType.emailAddress,
                         validator: (value) => Validator.email(value),
-                        onSaved: (value) {
-                          email = value!;
-                        },
+                        onSaved: (value) => controller.updateEmail(value!),
                       ),
                       HeightSpace(height: 28),
                       CustomButton(
@@ -58,15 +49,16 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                             context.watch<ForgotPasswordCubit>().state
                                 is ForgotPasswordLoading,
                         onPressed: () async {
-                          formKey.currentState?.save();
-                          if (formKey.currentState?.validate() ?? false) {
+                          controller.formKey.currentState?.save();
+                          if (controller.formKey.currentState?.validate() ??
+                              false) {
                             await context
                                 .read<ForgotPasswordCubit>()
-                                .sendResetCode(email: email);
+                                .sendResetCode(email: controller.email!);
                           } else {
-                            setState(() {
-                              autovalidateMode = AutovalidateMode.always;
-                            });
+                            controller.updateAutovalidateMode(
+                              AutovalidateMode.always,
+                            );
                           }
                         },
                       ),
@@ -81,7 +73,6 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                 ),
               ),
             ),
-
             RedirectText(
               message: 'Create a ',
               actionText: 'New Account',

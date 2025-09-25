@@ -6,27 +6,28 @@ import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class EmailVerificationFormSection extends StatefulWidget {
+class EmailVerificationFormSection extends StatelessWidget {
   const EmailVerificationFormSection({super.key});
 
   @override
-  State<EmailVerificationFormSection> createState() =>
-      _EmailVerificationFormSectionState();
-}
-
-class _EmailVerificationFormSectionState
-    extends State<EmailVerificationFormSection> {
-  String? code;
-  @override
   Widget build(BuildContext context) {
+    var controller = ForgotPasswordCubit.get(context);
     return Column(
       children: [
-        CustomOtpInput(
-          onCompleted: (value) {
-            setState(() {
-              code = value;
-            });
-          },
+        Form(
+          key: controller.formKey,
+          child: CustomOtpInput(
+            onSubmitted: (value){
+               if (controller.formKey.currentState?.validate() ?? false) {
+              context.read<ForgotPasswordCubit>().verifyCode(
+                code: controller.code!,
+              );
+            }
+            },
+            onCompleted: (value) {
+              controller.code = value;
+            },
+          ),
         ),
         HeightSpace(height: 40),
         CustomButton(
@@ -35,14 +36,20 @@ class _EmailVerificationFormSectionState
               context.watch<ForgotPasswordCubit>().state
                   is ForgotPasswordLoading,
           onPressed: () {
-            context.read<ForgotPasswordCubit>().verifyCode(code: code!);
+            if (controller.formKey.currentState?.validate() ?? false) {
+              context.read<ForgotPasswordCubit>().verifyCode(
+                code: controller.code!,
+              );
+            }
           },
         ),
         HeightSpace(height: 30),
         RedirectText(
           message: 'Didn’t receive the OTP?',
           actionText: 'Resend.',
-          onTap: () {},
+          onTap: () {
+            context.read<ForgotPasswordCubit>().resendCode();
+          },
         ),
       ],
     );

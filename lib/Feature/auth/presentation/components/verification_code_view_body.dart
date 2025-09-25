@@ -35,12 +35,15 @@ class VerificationCodeViewBody extends StatelessWidget {
                       key: controller.formKey,
                       child: CustomOtpInput(
                         onSubmitted: (value) {
-                          controller.verifyOtp(
-                            verifyToken: controller
-                                .verifyPhoneResponseModel!
-                                .verifyToken,
-                            otp: value,
-                          );
+                          if (controller.formKey.currentState?.validate() ??
+                              false) {
+                            controller.verifyOtp(
+                              verifyToken: controller
+                                  .verifyPhoneResponseModel!
+                                  .verifyToken,
+                              otp: value,
+                            );
+                          }
                         },
                         onCompleted: (value) {
                           controller.otpCode = value;
@@ -52,7 +55,7 @@ class VerificationCodeViewBody extends StatelessWidget {
                       isLoading: controller.state is VerifyPhoneLoading,
                       text: 'Continue',
                       onPressed: () {
-                        if (controller.formKey.currentState!.validate()) {
+                        if (controller.formKey.currentState?.validate()??false) {
                           controller.verifyOtp(
                             verifyToken: controller
                                 .verifyPhoneResponseModel!

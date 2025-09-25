@@ -1,7 +1,7 @@
 import 'package:car_rental/Feature/auth/data/model/auth_response.dart';
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
 import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
-import 'package:car_rental/Feature/auth/data/model/sign_up_request_model.dart';
+
 import 'package:car_rental/Feature/auth/data/model/token_model.dart';
 import 'package:car_rental/core/Error/failure.dart';
 import 'package:dartz/dartz.dart';
@@ -11,9 +11,7 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
-  Future<Either<Failure, AuthResponseModel>> signUp({
-    required SignUpRequestModel registerRequestModel,
-  });
+
   Future<Either<Failure, Unit>> logout();
 
   Future<Either<Failure, TokenModel>> refreshToken({

@@ -2,7 +2,7 @@ import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:car_rental/Feature/auth/data/model/user_model.dart';
 import 'package:car_rental/Feature/auth/presentation/manager/sign_in_cubit/sign_in_cubit.dart';
 import 'package:car_rental/Feature/auth/presentation/components/sign_in_view_body.dart';
-import 'package:car_rental/core/helper/buid_animated_snackbar.dart';
+import 'package:car_rental/core/utils/helper/buid_animated_snackbar.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

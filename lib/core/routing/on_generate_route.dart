@@ -38,17 +38,14 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     case Routes.kEmailVerificationView:
       return MaterialPageRoute(
         builder: (context) => EmailVerificationView(
-          passwordResetResponseModel:
-              settings.arguments as PasswordResetResponseModel,
+          args: settings.arguments as ForgotPassordArgs,
         ),
         settings: settings,
       );
     case Routes.kResetNewPasswordView:
       return MaterialPageRoute(
-        builder: (context) => ResetNewPasswordView(
-          passwordResetResponseModel:
-              settings.arguments as PasswordResetResponseModel,
-        ),
+        builder: (context) =>
+            ResetNewPasswordView(args: settings.arguments as ForgotPassordArgs),
         settings: settings,
       );
 
@@ -76,4 +73,11 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
         settings: settings,
       );
   }
+}
+
+class ForgotPassordArgs {
+  final PasswordResetResponseModel response;
+  final String email;
+
+  ForgotPassordArgs({required this.response, required this.email});
 }

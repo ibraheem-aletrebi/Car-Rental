@@ -1,9 +1,11 @@
 import 'package:car_rental/Feature/auth/data/repo/auth_repo_imp.dart';
 import 'package:car_rental/Feature/auth/data/repo/location_repo_imp.dart';
+import 'package:car_rental/Feature/auth/data/repo/password_repo_imp.dart';
 import 'package:car_rental/Feature/auth/data/repo/phone_verify_repo_imp.dart';
 import 'package:car_rental/Feature/auth/data/repo/sign_up_repo_imp.dart';
 import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
 import 'package:car_rental/Feature/auth/domain/repo/location_repo.dart';
+import 'package:car_rental/Feature/auth/domain/repo/password_repo.dart';
 import 'package:car_rental/Feature/auth/domain/repo/phone_verify_repo.dart';
 import 'package:car_rental/Feature/auth/domain/repo/sign_up_repo.dart';
 import 'package:car_rental/Feature/home/data/repos/home_repo_imp.dart';
@@ -25,14 +27,15 @@ void setUpServiceLocator() {
       secureStorageService: getIt<SecureStorageService>(),
     ),
   );
-
   getIt.registerSingleton<PhoneVerifyRepo>(
     PhoneVerifyRepoImpl(
       apiService: getIt<ApiService>(),
       secureStorageService: getIt<SecureStorageService>(),
     ),
   );
-
+  getIt.registerSingleton<PasswordRepo>(
+    PasswordRepoImpl(apiService: getIt<ApiService>()),
+  );
   getIt.registerLazySingleton<SignUpRepo>(
     () => SignUpRepoImp(apiService: getIt<ApiService>()),
   );

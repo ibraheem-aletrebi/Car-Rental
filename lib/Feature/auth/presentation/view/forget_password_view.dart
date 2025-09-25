@@ -1,4 +1,4 @@
-import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
+import 'package:car_rental/Feature/auth/domain/repo/password_repo.dart';
 import 'package:car_rental/Feature/auth/presentation/components/forget_password_view_body_bloc_consumer.dart';
 import 'package:car_rental/Feature/auth/presentation/manager/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:car_rental/core/services/service_locator.dart';
@@ -14,7 +14,7 @@ class ForgetPasswordView extends StatelessWidget {
       body: SafeArea(
         child: BlocProvider(
           create: (context) => ForgotPasswordCubit(
-            getIt<AuthRepo>(),
+            getIt<PasswordRepo>(),
           ),
           child: ForgetPasswordViewBodyBlocConsumer(),
         ),

@@ -1,4 +1,5 @@
 import 'package:car_rental/Feature/home/presentation/components/best_car_item.dart';
+import 'package:car_rental/Feature/home/presentation/components/best_car_loading_section.dart';
 import 'package:car_rental/Feature/home/presentation/components/section_header.dart';
 import 'package:car_rental/Feature/home/presentation/manager/best_car_cubit/best_car_cubit.dart';
 import 'package:car_rental/core/styles/app_styles.dart';
@@ -41,7 +42,7 @@ class BestCarsSection extends StatelessWidget {
             ],
           );
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const BestCarLoadingSection();
         }
       },
     );

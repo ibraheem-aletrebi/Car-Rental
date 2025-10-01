@@ -9,6 +9,8 @@ sealed class BestCarState extends Equatable {
 
 final class BestCarInitialState extends BestCarState {}
 final class BestCarLoadingState extends BestCarState {}
+
+final class BestCarLoadingMoreState extends BestCarState {}
 final class BestCarSuccessState extends BestCarState {
   final List<CarModel> cars;  
   const BestCarSuccessState(this.cars);

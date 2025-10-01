@@ -1,4 +1,5 @@
 import 'package:car_rental/Feature/home/presentation/components/nearby_item.dart';
+import 'package:car_rental/Feature/home/presentation/components/nearby_loading_section.dart';
 import 'package:car_rental/Feature/home/presentation/components/section_header.dart';
 import 'package:car_rental/Feature/home/presentation/manager/nearby_cars_cubit/nearby_cars_cubit.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
@@ -37,7 +38,7 @@ class NearbySection extends StatelessWidget {
             ],
           );
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const NearbyLoadingSection();
         }
       },
     );

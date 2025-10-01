@@ -17,7 +17,6 @@ class CarBrandItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12.r),
-
             child: CachedNetworkImage(
               imageUrl: brandModel.image,
               height: 60.h,

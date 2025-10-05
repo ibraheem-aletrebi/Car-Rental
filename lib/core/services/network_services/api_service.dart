@@ -4,13 +4,18 @@ import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
 import 'package:car_rental/core/services/local_services/secure_storage_services.dart';
 import 'package:car_rental/core/services/service_locator.dart';
 import 'package:dio/dio.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class ApiService {
   ApiService({required this.dio}) {
+    dio.interceptors.add(PrettyDioLogger(
+      requestBody: false,
+      responseBody: false,
+    ));
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          log('REQUEST[${options.method}] => PATH: ${options.path}');
+          // log('REQUEST[${options.method}] => PATH: ${options.path}');
 
           final accessToken = await SecureStorageService().getAccessToken();
           if (accessToken != null) {
@@ -19,12 +24,11 @@ class ApiService {
           return handler.next(options);
         },
         onResponse: (response, handler) {
-        
-          log('RESPONSE[${response.statusCode}] => DATA: ${response.data}');
+          // log('RESPONSE[${response.statusCode}] => DATA: ${response.data}');
           return handler.next(response);
         },
         onError: (DioException e, handler) async {
-          log('ERROR[${e.response?.statusCode}] => DATA: ${e.response?.data}');
+          // log('ERROR[${e.response?.statusCode}] => DATA: ${e.response?.data}');
           if (e.response?.statusCode == 401) {
             try {
               final refreshToken = await getIt<SecureStorageService>()
@@ -50,8 +54,14 @@ class ApiService {
   final Dio dio;
   final String baseUrl = 'https://qent.up.railway.app/api/';
 
-  Future<Map<String, dynamic>> get({required String endPoint}) async {
-    var response = await dio.get('$baseUrl$endPoint');
+  Future<Map<String, dynamic>> get({
+    required String endPoint,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    var response = await dio.get(
+      '$baseUrl$endPoint',
+      queryParameters: queryParameters,
+    );
     return response.data;
   }
 

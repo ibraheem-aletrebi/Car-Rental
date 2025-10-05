@@ -48,9 +48,9 @@ class SignInCubit extends Cubit<SignInState> {
 
   Future<void> handleRememberMe({required TokenModel tokenModel}) async {
     if (rememberMe) {
-      await PreferenceManegar().setBool(StorageKey.isSignedIn, true);
+      await PreferenceManager().setBool(StorageKey.isSignedIn, true);
     } else {
-      await PreferenceManegar().setBool(StorageKey.isSignedIn, false);
+      await PreferenceManager().setBool(StorageKey.isSignedIn, false);
     }
   }
 }

@@ -4,7 +4,7 @@ import 'package:car_rental/Feature/auth/data/model/country_model.dart';
 import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
 import 'package:car_rental/Feature/auth/data/model/token_model.dart';
 import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
-import 'package:car_rental/core/Error/failure.dart';
+import 'package:car_rental/core/error/failure.dart';
 import 'package:car_rental/core/services/local_services/secure_storage_services.dart';
 import 'package:car_rental/core/services/network_services/api_service.dart';
 import 'package:car_rental/core/services/network_services/back_end_end_point.dart';

@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:car_rental/Feature/auth/data/model/verify_phone_response_model.dart';
 import 'package:car_rental/Feature/auth/domain/repo/phone_verify_repo.dart';
-import 'package:car_rental/core/Error/failure.dart';
+import 'package:car_rental/core/error/failure.dart';
 import 'package:car_rental/core/services/local_services/secure_storage_services.dart';
 import 'package:car_rental/core/services/network_services/api_service.dart';
 import 'package:car_rental/core/services/network_services/back_end_end_point.dart';

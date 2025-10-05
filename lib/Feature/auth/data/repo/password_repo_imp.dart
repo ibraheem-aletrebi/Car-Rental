@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
 import 'package:car_rental/Feature/auth/data/model/reset_password_request_model.dart';
 import 'package:car_rental/Feature/auth/domain/repo/password_repo.dart';
-import 'package:car_rental/core/Error/failure.dart';
+import 'package:car_rental/core/error/failure.dart';
 import 'package:car_rental/core/services/network_services/api_service.dart';
 import 'package:car_rental/core/services/network_services/back_end_end_point.dart';
 import 'package:dartz/dartz.dart';

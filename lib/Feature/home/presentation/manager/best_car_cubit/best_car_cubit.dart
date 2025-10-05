@@ -9,16 +9,37 @@ class BestCarCubit extends Cubit<BestCarState> {
   BestCarCubit({required this.homeRepo}) : super(BestCarInitialState());
   final HomeRepo homeRepo;
 
-  void fetchBestCars() async {
-    emit(BestCarLoadingState());
-    var result = await homeRepo.fetchBestCars();
+  List<CarModel> cars = [];
+  int page = 1;
+  bool isLoadingMore = false;
+  bool hasMore = true;
+
+  void fetchBestCars({bool loadMore = false}) async {
+    if (isLoadingMore || !hasMore) return;
+
+    if (loadMore) {
+      page++;
+      isLoadingMore = true;
+      emit(BestCarLoadingMoreState(cars));
+    } else {
+      emit(BestCarLoadingState());
+      page = 1;
+      cars = [];
+      hasMore = true;
+    }
+
+    var result = await homeRepo.fetchBestCars(page: page);
     result.fold(
       (failure) {
         emit(BestCarErrorState(failure.errorMessage));
       },
-      (cars) {
-        emit(BestCarSuccessState(cars));
+      (paginatedCars) {
+        cars.addAll(paginatedCars.cars);
+        hasMore = paginatedCars.hasMore;
+        emit(BestCarSuccessState(cars, hasMore));
       },
     );
+
+    isLoadingMore = false;
   }
 }

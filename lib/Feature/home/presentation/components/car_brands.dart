@@ -1,7 +1,7 @@
 import 'package:car_rental/Feature/home/presentation/components/car_brands_list_view_builder.dart';
 import 'package:car_rental/Feature/home/presentation/components/car_brands_loading_section.dart';
 import 'package:car_rental/Feature/home/presentation/manager/brand_cubit/brands_cubit.dart';
-import 'package:car_rental/core/styles/app_styles.dart';
+import 'package:car_rental/core/resources/app_styles.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

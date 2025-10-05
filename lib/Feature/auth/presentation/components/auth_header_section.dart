@@ -1,5 +1,5 @@
 import 'package:car_rental/Feature/auth/presentation/components/custom_logo.dart';
-import 'package:car_rental/core/styles/app_styles.dart';
+import 'package:car_rental/core/resources/app_styles.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 

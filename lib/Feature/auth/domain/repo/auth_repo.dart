@@ -3,7 +3,7 @@ import 'package:car_rental/Feature/auth/data/model/country_model.dart';
 import 'package:car_rental/Feature/auth/data/model/password_reset_response_model.dart';
 
 import 'package:car_rental/Feature/auth/data/model/token_model.dart';
-import 'package:car_rental/core/Error/failure.dart';
+import 'package:car_rental/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class AuthRepo {

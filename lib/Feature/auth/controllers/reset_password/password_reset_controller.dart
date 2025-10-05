@@ -42,7 +42,7 @@ class PasswordResetController extends Cubit<PasswordResetState> {
     response.fold(
       (failure) => emit(PasswordResetFailureState(failure.errorMessage)),
       (response) {
-        PreferenceManegar().setString(
+        PreferenceManager().setString(
           StorageKey.forgotPasswordVerifiedCode,
           response.code,
         );
@@ -55,7 +55,7 @@ class PasswordResetController extends Cubit<PasswordResetState> {
   Future<void> verifyCode() async {
     emit(PasswordResetLoadingState());
     String correctCode =
-        PreferenceManegar().getString(StorageKey.forgotPasswordVerifiedCode) ??
+        PreferenceManager().getString(StorageKey.forgotPasswordVerifiedCode) ??
         '';
     final success = correctCode == code;
     if (success) {
@@ -91,7 +91,7 @@ class PasswordResetController extends Cubit<PasswordResetState> {
     response.fold(
       (failure) => emit(PasswordResetFailureState(failure.errorMessage)),
       (response) {
-        PreferenceManegar().setString(
+        PreferenceManager().setString(
           StorageKey.forgotPasswordVerifiedCode,
           response.code,
         );

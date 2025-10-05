@@ -4,7 +4,7 @@ import 'package:car_rental/Feature/auth/presentation/components/custom_otp_input
 import 'package:car_rental/Feature/auth/presentation/components/title_subtitle_section.dart';
 import 'package:car_rental/Feature/auth/controllers/verify_phone_cubit/verify_phone_cubit.dart';
 import 'package:car_rental/core/routing/routes.dart';
-import 'package:car_rental/core/styles/app_colors.dart';
+import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';

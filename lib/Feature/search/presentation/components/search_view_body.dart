@@ -3,7 +3,7 @@ import 'package:car_rental/Feature/search/presentation/components/brand_selector
 import 'package:car_rental/Feature/search/presentation/components/popular_section.dart';
 import 'package:car_rental/Feature/search/presentation/components/recommended_section.dart';
 import 'package:car_rental/Feature/search/presentation/components/search_view_app_bar.dart';
-import 'package:car_rental/core/styles/app_colors.dart';
+import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 

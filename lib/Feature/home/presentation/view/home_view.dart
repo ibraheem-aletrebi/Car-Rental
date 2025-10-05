@@ -22,7 +22,7 @@ class HomeView extends StatelessWidget {
           create: (context) =>
               BestCarCubit(homeRepo: getIt<HomeRepo>())..fetchBestCars(),
         ),
- 
+
         BlocProvider(
           create: (context) =>
               NearbyCarsCubit(homeRepo: getIt<HomeRepo>())..fetchNearbyCars(),

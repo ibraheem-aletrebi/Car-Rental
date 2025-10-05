@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:car_rental/core/styles/app_colors.dart';
-import 'package:car_rental/core/styles/assets.dart';
+import 'package:car_rental/core/resources/app_colors.dart';
+import 'package:car_rental/core/resources/assets.dart';
 import 'package:car_rental/core/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

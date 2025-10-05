@@ -1,8 +1,9 @@
 import 'package:shared_preferences/shared_preferences.dart';
-class PreferenceManegar {
-  static final PreferenceManegar _instance = PreferenceManegar._internals();
 
-  factory PreferenceManegar() {
+class PreferenceManager {
+  static final PreferenceManager _instance = PreferenceManager._internals();
+
+  factory PreferenceManager() {
     return _instance;
   }
 
@@ -36,5 +37,5 @@ class PreferenceManegar {
     _preferences.clear();
   }
 
-  PreferenceManegar._internals();
+  PreferenceManager._internals();
 }

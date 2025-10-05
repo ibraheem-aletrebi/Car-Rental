@@ -1,4 +1,4 @@
-import 'package:car_rental/core/styles/app_colors.dart';
+import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextIconButton extends StatelessWidget {

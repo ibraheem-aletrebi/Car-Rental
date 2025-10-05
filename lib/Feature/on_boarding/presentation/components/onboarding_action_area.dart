@@ -31,7 +31,7 @@ class OnboardingActionArea extends StatelessWidget {
 
   goToNext(OnboardingCubit onboardingControllers, BuildContext context) async {
     if (onboardingControllers.isLastPage()) {
-      await PreferenceManegar().setBool(StorageKey.shownOnBoarding, true);
+      await PreferenceManager().setBool(StorageKey.shownOnBoarding, true);
       if (context.mounted) {
         Navigator.pushReplacementNamed(context, Routes.kSignInView);
       }

@@ -54,7 +54,7 @@ class SignupCubit extends Cubit<SignupState> {
       result.fold((failure) => emit(SignupFailure(failure.errorMessage)), (
         authResponse,
       ) async {
-        await  PreferenceManegar().setBool(StorageKey.isSignedIn, true);
+        await PreferenceManager().setBool(StorageKey.isSignedIn, true);
         await secureStorageService.saveAccessToken(
           authResponse.tokenModel.token,
         );

@@ -9,9 +9,14 @@ sealed class NearbyCarsState extends Equatable {
 
 final class NearbyCarsInitialState extends NearbyCarsState {}
 final class NearbyCarsLoadingState extends NearbyCarsState {}
+final class NearbyCarsLoadingMoreState extends NearbyCarsState {
+  final List<CarModel> cars;
+  const NearbyCarsLoadingMoreState({required this.cars});
+}
 final class NearbyCarsLoadedState extends NearbyCarsState {
   final List<CarModel> cars;
-  const NearbyCarsLoadedState({required this.cars});
+  final bool hasMore;
+  const NearbyCarsLoadedState({required this.cars, required this.hasMore});
 }
 
 

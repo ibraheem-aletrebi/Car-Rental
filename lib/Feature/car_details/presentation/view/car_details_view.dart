@@ -1,7 +1,7 @@
 import 'package:car_rental/Feature/car_details/presentation/components/car_details_view_body.dart';
 import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
-import 'package:car_rental/core/widgets/custom_icon_button.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,23 +11,6 @@ class CarDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Car Details'),
-        leadingWidth: 65.w,
-        leading: CustomIconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icons.arrow_back,
-        ),
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(16.h),
-          child: Container(color: AppColors.kStokeColor, height: 1.h),
-        ),
-        actions: [CustomIconButton(onPressed: () {}, icon: Icons.more_horiz)],
-        actionsPadding: EdgeInsets.symmetric(horizontal: 16.w),
-      ),
       body: SafeArea(child: CarDetailsViewBody()),
 
       bottomNavigationBar: Container(

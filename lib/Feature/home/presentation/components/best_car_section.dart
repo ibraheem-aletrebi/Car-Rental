@@ -3,6 +3,7 @@ import 'package:car_rental/Feature/home/presentation/components/best_car_loading
 import 'package:car_rental/Feature/home/presentation/components/section_header.dart';
 import 'package:car_rental/Feature/home/presentation/manager/best_car_cubit/best_car_cubit.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
+import 'package:car_rental/core/routing/routes.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:car_rental/core/widgets/width_space.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +71,12 @@ class _BestCarsSectionState extends State<BestCarsSection> {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               if (index < cars.length) {
-                return BestCarItem(carModel: cars[index]);
+                return GestureDetector( 
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.kCarDetailsView,
+                        arguments: cars[index].id);
+                  },
+                  child: BestCarItem(carModel: cars[index]));
               } else {
                 return const Center(
                   child: Padding(

@@ -1,3 +1,4 @@
+import 'package:car_rental/Feature/car_details/presentation/components/car_images.dart';
 import 'package:flutter/cupertino.dart';
 
 class CarDetailsViewBody extends StatelessWidget {
@@ -5,6 +6,6 @@ class CarDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(children: [CarImages()]);
   }
 }

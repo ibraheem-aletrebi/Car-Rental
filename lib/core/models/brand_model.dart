@@ -11,10 +11,17 @@ class BrandModel {
 
   factory BrandModel.fromJson(Map<String, dynamic> json) {
     return BrandModel(
-      id: json['id'],
-      name: json['name'],
-      image: json['image'],
+      id: json['id'] ?? 0,
+      name: json['name'] ?? '',
+      image: json['image']?.toString() ?? '',
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'image': image,
+    };
+  }
 }

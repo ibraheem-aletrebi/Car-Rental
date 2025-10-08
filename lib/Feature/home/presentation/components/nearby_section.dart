@@ -67,7 +67,7 @@ class _NearbySectionState extends State<NearbySection> {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               if (index < cars.length) {
-                return NearbyItem(imagePath: cars[index].image);
+                return NearbyItem(imagePath: cars[index].firstImage);
               } else {
                 return const Center(
                   child: Padding(

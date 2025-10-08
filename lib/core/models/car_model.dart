@@ -7,13 +7,14 @@ import 'package:car_rental/core/models/review_model.dart';
 class CarModel {
   final int id;
   final String name;
-  final String image;
   final String description;
+  final String firstImage;
+  final List<String> images;
   final String carType;
   final BrandModel brand;
   final ColorModel color;
-  final List<CarFeatureModel> features;
-  final int seatingCapacity;
+  final List<CarFeatureModel> carFeatures;
+  final String seatingCapacity;
   final LocationModel location;
   final int averageRate;
   final bool isForRent;
@@ -25,15 +26,19 @@ class CarModel {
   final double? price;
   final bool availableToBook;
   final List<ReviewModel> reviews;
+  final int reviewsCount;
+  final double reviewsAvg;
+
   CarModel({
     required this.id,
     required this.name,
-    required this.image,
     required this.description,
+    required this.firstImage,
+    required this.images,
     required this.carType,
     required this.brand,
     required this.color,
-    required this.features,
+    required this.carFeatures,
     required this.seatingCapacity,
     required this.location,
     required this.averageRate,
@@ -46,36 +51,46 @@ class CarModel {
     this.price,
     required this.availableToBook,
     required this.reviews,
+    required this.reviewsCount,
+    required this.reviewsAvg,
   });
 
   factory CarModel.fromJson(Map<String, dynamic> json) {
     return CarModel(
-      id: json['id'],
-      name: json['name'],
-      image: json['image'],
-      description: json['description'],
-      carType: json['car_type'],
+      id: json['id'] ?? 0,
+      name: json['name'] ?? '',
+      description: json['description'] ?? '',
+      firstImage: json['first_image'] ?? '',
+      images: (json['images'] as List?)
+              ?.map((x) => x['image']?.toString() ?? '')
+              .toList() ??
+          [],
+      carType: json['car_type'] ?? '',
       brand: BrandModel.fromJson(json['brand']),
       color: ColorModel.fromJson(json['color']),
-      features:
-          (json['features'] as List?)
+      carFeatures: (json['car_features'] as List?)
               ?.map((x) => CarFeatureModel.fromJson(x))
               .toList() ??
           [],
-      seatingCapacity: json['seating_capacity'],
+      seatingCapacity: json['seating_capacity']?.toString() ?? '',
       location: LocationModel.fromJson(json['location']),
-      averageRate: json['average_rate'],
-      isForRent: json['is_for_rent'],
-      dailyRent: json['daily_rent'],
-      weeklyRent: json['weekly_rent'],
-      monthlyRent: json['monthly_rent'],
-      yearlyRent: json['yearly_rent'],
-      isForPay: json['is_for_pay'],
-      price: json['price'],
-      availableToBook: json['available_to_book'],
-      reviews: List<ReviewModel>.from(
-        json['reviews'].map((x) => ReviewModel.fromJson(x)).toList(),
-      ),
+      averageRate: json['average_rate'] ?? 0,
+      isForRent: json['is_for_rent'] ?? false,
+      dailyRent: double.tryParse(json['daily_rent']?.toString() ?? ''),
+      weeklyRent: double.tryParse(json['weekly_rent']?.toString() ?? ''),
+      monthlyRent: double.tryParse(json['monthly_rent']?.toString() ?? ''),
+      yearlyRent: double.tryParse(json['yearly_rent']?.toString() ?? ''),
+      isForPay: json['is_for_pay'] ?? false,
+      price: json['price'] == null
+          ? null
+          : double.tryParse(json['price'].toString()),
+      availableToBook: json['available_to_book'] ?? false,
+      reviews: (json['reviews'] as List?)
+              ?.map((x) => ReviewModel.fromJson(x))
+              .toList() ??
+          [],
+      reviewsCount: json['reviews_count'] ?? 0,
+      reviewsAvg: double.tryParse(json['reviews_avg']?.toString() ?? '0.0') ?? 0.0,
     );
   }
 }

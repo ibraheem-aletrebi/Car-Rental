@@ -23,7 +23,7 @@ class BestCarItem extends StatelessWidget {
           children: [
             Expanded(
               child: CarImageHeader(
-                imagePath: carModel.image,
+                imagePath: carModel.firstImage,
                 isFavorite: false,
                 onFavoritePressed: () {},
               ),

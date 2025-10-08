@@ -1,14 +1,11 @@
-class CarFeatureModel {
-  final int id;
-  final String name;
-  final String value;
-  final String image;
+import 'package:car_rental/core/entities/car_feature_entity.dart';
 
+class CarFeatureModel extends CarFeatureEntity {
   CarFeatureModel({
-    required this.id,
-    required this.name,
-    required this.value,
-    required this.image,
+    required super.id,
+    required super.name,
+    required super.value,
+    required super.image,
   });
 
   factory CarFeatureModel.fromJson(Map<String, dynamic> json) {

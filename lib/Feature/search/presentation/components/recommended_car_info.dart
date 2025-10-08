@@ -1,5 +1,5 @@
-import 'package:car_rental/Feature/home/domain/entities/car_entity.dart';
 import 'package:car_rental/Feature/home/presentation/components/icon_text_row.dart';
+import 'package:car_rental/core/entities/car_entity.dart';
 import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
 import 'package:car_rental/core/resources/assets.dart';
@@ -29,13 +29,13 @@ class RecommendedCarInfo extends StatelessWidget {
 
           IconTextRow(
             iconPath: Assets.iconsRating,
-            text: carEntity.rating.toString(),
+            text: carEntity.averageRate.toString(),
             textStyle: AppStyles.semiBold12,
           ),
 
           IconTextRow(
             iconPath: Assets.iconsLocation,
-            text: carEntity.location,
+            text: carEntity.locationName,
             textStyle: AppStyles.regular12,
           ),
 
@@ -46,7 +46,7 @@ class RecommendedCarInfo extends StatelessWidget {
                 fit: BoxFit.contain,
                 child: IconTextRow(
                   iconPath: Assets.iconsMoney,
-                  text: '\$${carEntity.pricePerDay}/Day',
+                  text: '\$${carEntity.dailyRent}/Day',
                   textStyle: AppStyles.semiBold12.copyWith(
                     color: AppColors.kPrimaryColor,
                   ),

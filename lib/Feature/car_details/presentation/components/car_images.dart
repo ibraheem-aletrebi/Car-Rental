@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:car_rental/core/resources/app_colors.dart';
+import 'package:car_rental/core/resources/assets.dart';
+import 'package:car_rental/core/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -75,21 +77,16 @@ class _ProductImagesWidgetState extends State<CarImages> {
                 ),
               ),
 
-              // زر رجوع
-              Positioned(
-                top: 10,
-                left: 10,
-                child: IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: const Icon(Icons.arrow_back_ios),
-                ),
-              ),
-
               // زر wishlist
               Positioned(
                 top: 10,
                 right: 10,
-                child: IconButton(onPressed: () {}, icon: Icon(Icons.favorite)),
+                child: CustomIconButton(
+                  backgroundColor: AppColors.kWhiteColor,
+                  onPressed: () {},
+                  iconPath: Assets.iconsFavorate,
+                  padding: 16,
+                ),
               ),
 
               // ✅ مؤشر أسفل الصور

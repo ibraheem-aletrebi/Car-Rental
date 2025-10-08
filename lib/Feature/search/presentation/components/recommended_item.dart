@@ -22,7 +22,8 @@ class RecommendedItem extends StatelessWidget {
         children: [
           Expanded(
             child: CarImageHeader(
-              imagePath: Assets.imagesFerrariCar,
+              imagePath:
+                  'https://imgs.search.brave.com/0fMwmRiS2R6AdLpZWMxv3w9qa-jRWeWVjjGEMhjujGE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by90dW5lZC1zcG9y/dHMtcmFjaW5nLWNh/ci13aXRoLWFyY2gt/ZXh0ZW5zaW9ucy1h/aXItc3VzcGVuc2lv/bi1odWdlLXNwb2ls/ZXItM2QtcmVuZGVy/aW5nXzEwMTI2Ni0x/OTE2MS5qcGc_c2Vt/dD1haXNfaW5jb21p/bmcmdz03NDAmcT04/MA',
               isFavorite: false,
               onFavoritePressed: () {},
             ),

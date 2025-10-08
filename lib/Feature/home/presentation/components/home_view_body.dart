@@ -3,7 +3,7 @@ import 'package:car_rental/Feature/home/presentation/components/car_brands.dart'
 import 'package:car_rental/Feature/home/presentation/components/home_app_bar.dart';
 import 'package:car_rental/Feature/home/presentation/components/nearby_section.dart';
 import 'package:car_rental/Feature/home/presentation/components/rounded_container.dart';
-import 'package:car_rental/Feature/home/presentation/components/search_with_filter_section.dart';
+// import 'package:car_rental/Feature/home/presentation/components/search_with_filter_section.dart';
 import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +24,8 @@ class HomeViewBody extends StatelessWidget {
               HeightSpace(height: 20),
               Divider(color: AppColors.kStokeColor),
               HeightSpace(),
-              SearchWithFilterBar(),
-              HeightSpace(),
+              // SearchWithFilterBar(),
+              // HeightSpace(),
               CarBrands(),
               HeightSpace(height: 27),
             ],

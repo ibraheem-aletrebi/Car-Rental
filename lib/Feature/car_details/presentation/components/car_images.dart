@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:car_rental/Feature/car_details/presentation/manager/car_details/car_details_cubit.dart';
 import 'package:car_rental/core/resources/app_colors.dart';
@@ -10,8 +11,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CarImages extends StatefulWidget {
-  const CarImages({super.key,});
- 
+  const CarImages({super.key});
+
   @override
   State<CarImages> createState() => _ProductImagesWidgetState();
 }
@@ -36,10 +37,10 @@ class _ProductImagesWidgetState extends State<CarImages> {
     _pageController.dispose();
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
-    var car=context.read<CarDetailsCubit>().car;
+    var car = context.read<CarDetailsCubit>().car;
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: _resetTimer,
@@ -109,46 +110,50 @@ class _ProductImagesWidgetState extends State<CarImages> {
                   bottom: 40,
                   left: 0,
                   right: 0,
-                  child: AnimatedOpacity(
-                    opacity: _showThumbnails ? 1.0 : 0.0,
-                    duration: const Duration(milliseconds: 400),
-                    child: SizedBox(
-                      height: 100,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: car.images.length,
-                        itemBuilder: (context, index) {
-                          final isSelected = index == _selectedIndex;
-                          return GestureDetector(
-                            onTap: () {
-                              _pageController.jumpToPage(index);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.only(end: 8),
-                              child: Container(
-                                clipBehavior: Clip.hardEdge,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: isSelected
-                                        ? AppColors.kWhiteColor
-                                        : Colors.transparent,
-                                    width: 3,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12.r),
+                  child: FadeInUp(
+                    child: AnimatedOpacity(
+                      opacity: _showThumbnails ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 400),
+                      child: SizedBox(
+                        height: 100,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: car.images.length,
+                          itemBuilder: (context, index) {
+                            final isSelected = index == _selectedIndex;
+                            return GestureDetector(
+                              onTap: () {
+                                _pageController.jumpToPage(index);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.only(
+                                  end: 8,
                                 ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(12.r),
-                                  child: CachedNetworkImage(
-                                    imageUrl:car.images[index],
-                                    height: 100.h,
-                                    width: 100.w,
-                                    fit: BoxFit.cover,
+                                child: Container(
+                                  clipBehavior: Clip.hardEdge,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: isSelected
+                                          ? AppColors.kWhiteColor
+                                          : Colors.transparent,
+                                      width: 3,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.r),
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12.r),
+                                    child: CachedNetworkImage(
+                                      imageUrl: car.images[index],
+                                      height: 100.h,
+                                      width: 100.w,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),

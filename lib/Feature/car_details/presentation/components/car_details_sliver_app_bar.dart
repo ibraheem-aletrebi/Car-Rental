@@ -10,14 +10,12 @@ class CarDetailsSliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      pinned: false, // تثبيت العنوان أثناء السكرول
-      floating: false, // ما يتحرك مع التمرير السريع
+      pinned: false,
+      floating: false,
       centerTitle: true,
-      backgroundColor: Colors.white,
       elevation: 0,
-      expandedHeight: 0, // بدون صورة علوية
+      expandedHeight: 0,
       title: const Text('Car Details', style: TextStyle(color: Colors.black)),
-
       leadingWidth: 65.w,
       leading: CustomIconButton(
         onPressed: () => Navigator.pop(context),
@@ -27,8 +25,6 @@ class CarDetailsSliverAppBar extends StatelessWidget {
       actions: [CustomIconButton(onPressed: () {}, icon: Icons.more_horiz)],
       actionsIconTheme: const IconThemeData(color: Colors.black),
       actionsPadding: EdgeInsets.symmetric(horizontal: 16.w),
-
-      // الخط الفاصل أسفل الـ AppBar
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(16.h),
         child: Container(color: AppColors.kStokeColor, height: 1.h),

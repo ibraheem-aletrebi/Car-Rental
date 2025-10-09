@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animate_do: ^4.2.0
   animated_snack_bar: ^0.4.0
   another_flushbar: ^1.12.32
   bloc: ^9.0.0

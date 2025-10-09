@@ -5,50 +5,34 @@ import 'package:car_rental/Feature/auth/presentation/view/verification_code_view
 import 'package:car_rental/Feature/car_details/presentation/view/car_details_view.dart';
 import 'package:car_rental/Feature/home/presentation/view/main_view.dart';
 import 'package:car_rental/Feature/on_boarding/presentation/view/on_boarding_view.dart';
+import 'package:car_rental/core/animations/base_routes.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic>? onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case Routes.kOnboardingView:
-      return MaterialPageRoute(
-        builder: (context) => OnBoardingView(),
-        settings: settings,
-      );
+      return BaseRoute(page: OnBoardingView());
+
     case Routes.kSignInView:
-      return MaterialPageRoute(
-        builder: (context) => SignInView(),
-        settings: settings,
-      );
+      return BaseRoute(page: SignInView());
+
     case Routes.kSignUpView:
-      return MaterialPageRoute(
-        builder: (context) => SignUpView(),
-        settings: settings,
-      );
+      return BaseRoute(page: SignUpView());
+
     case Routes.kVerificationCodeView:
-      return MaterialPageRoute(
-        builder: (context) =>
-            VerificationCodeView(phone: settings.arguments as String),
-        settings: settings,
+      return BaseRoute(
+        page: VerificationCodeView(phone: settings.arguments as String),
       );
+
     case Routes.kMainView:
-      return MaterialPageRoute(
-        builder: (context) => MainView(),
-        settings: settings,
-      );
+      return BaseRoute(page: MainView());
+
     case Routes.kResetPasswordStepsView:
-      return MaterialPageRoute(
-        builder: (context) => ResetPasswordSteps(),
-        settings: settings,
-      );
+      return BaseRoute(page: ResetPasswordSteps());
 
     case Routes.kCarDetailsView:
-      return MaterialPageRoute(
-        builder: (context) =>
-            CarDetailsView(carId: settings.arguments as int),
-        settings: settings,
-      );
-
+      return BaseRoute(page: CarDetailsView(carId: settings.arguments as int));
 
     default:
       return MaterialPageRoute(

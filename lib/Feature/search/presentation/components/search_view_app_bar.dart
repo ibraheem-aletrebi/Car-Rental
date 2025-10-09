@@ -1,6 +1,7 @@
 import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
 import 'package:car_rental/core/widgets/custom_icon_button.dart';
+import 'package:car_rental/core/widgets/width_space.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -14,12 +15,7 @@ class SearchViewAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CustomIconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icons.arrow_back_ios_new_rounded,
-          ),
+          const WidthSpace(width: 40),
           Text(
             'Search',
             style: AppStyles.bold18.copyWith(color: AppColors.kPrimaryColor),

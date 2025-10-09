@@ -3,6 +3,7 @@ import 'package:car_rental/Feature/home/presentation/components/nearby_loading_s
 import 'package:car_rental/Feature/home/presentation/components/section_header.dart';
 import 'package:car_rental/Feature/home/presentation/manager/nearby_cars_cubit/nearby_cars_cubit.dart';
 import 'package:car_rental/core/models/car_model.dart';
+import 'package:car_rental/core/routing/routes.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:car_rental/core/widgets/width_space.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +68,16 @@ class _NearbySectionState extends State<NearbySection> {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               if (index < cars.length) {
-                return NearbyItem(imagePath: cars[index].firstImage);
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      Routes.kCarDetailsView,
+                      arguments: cars[index].id,
+                    );
+                  },
+                  child: NearbyItem(imagePath: cars[index].firstImage),
+                );
               } else {
                 return const Center(
                   child: Padding(

@@ -18,6 +18,20 @@ class CarFeatureModel extends CarFeatureEntity {
   }
 
   Map<String, dynamic> toJson() {
-    return {'id': id, 'name': name, 'value': value, 'image': image};
+    return {
+      'id': id,
+      'name': name,
+      'value': value,
+      'image': image,
+    };
+  }
+
+  CarFeatureEntity toEntity() {
+    return CarFeatureEntity(
+      id: id,
+      name: name,
+      value: value,
+      image: image,
+    );
   }
 }

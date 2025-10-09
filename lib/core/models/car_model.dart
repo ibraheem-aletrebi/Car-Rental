@@ -1,3 +1,4 @@
+import 'package:car_rental/core/entities/car_entity.dart';
 import 'package:car_rental/core/models/brand_model.dart';
 import 'package:car_rental/core/models/car_feature_model.dart';
 import 'package:car_rental/core/models/color_model.dart';
@@ -61,14 +62,16 @@ class CarModel {
       name: json['name'] ?? '',
       description: json['description'] ?? '',
       firstImage: json['first_image'] ?? '',
-      images: (json['images'] as List?)
+      images:
+          (json['images'] as List?)
               ?.map((x) => x['image']?.toString() ?? '')
               .toList() ??
           [],
       carType: json['car_type'] ?? '',
       brand: BrandModel.fromJson(json['brand']),
       color: ColorModel.fromJson(json['color']),
-      carFeatures: (json['car_features'] as List?)
+      carFeatures:
+          (json['car_features'] as List?)
               ?.map((x) => CarFeatureModel.fromJson(x))
               .toList() ??
           [],
@@ -85,12 +88,43 @@ class CarModel {
           ? null
           : double.tryParse(json['price'].toString()),
       availableToBook: json['available_to_book'] ?? false,
-      reviews: (json['reviews'] as List?)
+      reviews:
+          (json['reviews'] as List?)
               ?.map((x) => ReviewModel.fromJson(x))
               .toList() ??
           [],
       reviewsCount: json['reviews_count'] ?? 0,
-      reviewsAvg: double.tryParse(json['reviews_avg']?.toString() ?? '0.0') ?? 0.0,
+      reviewsAvg:
+          double.tryParse(json['reviews_avg']?.toString() ?? '0.0') ?? 0.0,
     );
   }
+
+
+    CarEntity toEntity() {
+    return CarEntity(
+      id: id,
+      name: name,
+      description: description,
+      firstImage: firstImage,
+      images: images,
+      carType: carType,
+      brandName: brand.name,
+      colorName: color.name,
+      colorHex: color.hexValue,
+      carFeatures: carFeatures
+          .map((f) => f.toEntity()) // ← استخدم دالة تحويل داخل CarFeatureModel
+          .toList(),
+      seatingCapacity: seatingCapacity,
+      locationName: location.name,
+      averageRate: averageRate.toDouble(),
+      isForRent: isForRent,
+      dailyRent: dailyRent,
+      availableToBook: availableToBook,
+      reviews:
+          reviews.map((r) => r.toEntity()).toList(), // ← نفس الشيء في ReviewModel
+      reviewsCount: reviewsCount,
+      reviewsAvg: reviewsAvg,
+    );
+  }
+
 }

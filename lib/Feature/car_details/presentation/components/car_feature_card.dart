@@ -1,13 +1,18 @@
-import 'package:car_rental/core/resources/app_colors.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CarFeatureCard extends StatelessWidget {
-  const CarFeatureCard({super.key, required this.title, required this.value, required this.icon});
+  const CarFeatureCard({
+    super.key,
+    required this.title,
+    required this.value,
+    required this.imagePath,
+  });
   final String title;
   final String value;
-  final IconData icon;
+  final String imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +27,13 @@ class CarFeatureCard extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
+            decoration: BoxDecoration(shape: BoxShape.circle),
+            child: CachedNetworkImage(
+              imageUrl: imagePath,
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+              height: 24.h,
+              width: 24.w,
             ),
-            child: Icon(icon, color: AppColors.kPrimaryColor, size: 24),
           ),
           SizedBox(height: 4.h),
           Text(title, style: AppStyles.regular14.copyWith(fontSize: 12.sp)),

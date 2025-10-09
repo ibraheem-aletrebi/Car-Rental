@@ -18,7 +18,7 @@ class CarFeaturesSection extends StatelessWidget {
           style: AppStyles.semiBold16.copyWith(fontSize: 18.sp),
         ),
         HeightSpace(),
-        CarFeaturesGrid(),
+        const CarFeaturesGrid(),
       ],
     );
   }

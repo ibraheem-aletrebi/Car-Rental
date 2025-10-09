@@ -8,6 +8,8 @@ import 'package:car_rental/Feature/auth/domain/repo/location_repo.dart';
 import 'package:car_rental/Feature/auth/domain/repo/password_repo.dart';
 import 'package:car_rental/Feature/auth/domain/repo/phone_verify_repo.dart';
 import 'package:car_rental/Feature/auth/domain/repo/sign_up_repo.dart';
+import 'package:car_rental/Feature/car_details/data/repo/car_details_repo_imp.dart';
+import 'package:car_rental/Feature/car_details/domain/repo/car_details_repo.dart';
 import 'package:car_rental/Feature/home/data/repos/home_repo_imp.dart';
 import 'package:car_rental/Feature/home/domain/repos/home_repo.dart';
 import 'package:car_rental/core/services/local_services/preference_manager.dart';
@@ -23,6 +25,7 @@ Future<void> setUpServiceLocator() async {
   _initApiService();
   _initAuth();
   _initHome();
+  _initCarDetails();
 }
 
 Future<void> _initCore() async {
@@ -66,5 +69,11 @@ void _initAuth() {
 void _initHome() {
   getIt.registerSingleton<HomeRepo>(
     HomeRepoImp(apiService: getIt<ApiService>()),
+  );
+}
+
+void _initCarDetails() {
+  getIt.registerLazySingleton<CarDetailsRepo>(
+    () => CarDetailsRepoImp(apiService: getIt<ApiService>()),
   );
 }

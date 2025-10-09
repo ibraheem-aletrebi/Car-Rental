@@ -1,13 +1,13 @@
-import 'package:car_rental/core/resources/app_colors.dart';
+import 'package:car_rental/core/entities/review_entity.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
-
+import 'package:car_rental/core/widgets/user_avater.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CarDetailsReviewCard extends StatelessWidget {
-  const CarDetailsReviewCard({super.key});
-
+  const CarDetailsReviewCard({super.key, required this.review});
+  final ReviewEntity review;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,15 +32,9 @@ class CarDetailsReviewCard extends StatelessWidget {
             // user info
             Row(
               children: [
-                CircleAvatar(
-                  radius: 20.r,
-                  backgroundColor: AppColors.kStokeColor,
-                  child: Text(
-                    'i', // أول حرف من الاسم مثلاً
-                    style: AppStyles.semiBold16.copyWith(
-                      color: AppColors.kPrimaryColor,
-                    ),
-                  ),
+                UserAvatar(
+                  imageUrl: review.userImage,
+                  username: review.username,
                 ),
                 SizedBox(width: 10.w),
                 Expanded(
@@ -48,7 +42,7 @@ class CarDetailsReviewCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'ibraheem',
+                        review.username,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: AppStyles.semiBold16.copyWith(fontSize: 14.sp),
@@ -56,7 +50,7 @@ class CarDetailsReviewCard extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '4.9',
+                            review.rate.toString(),
                             style: AppStyles.semiBold16.copyWith(
                               fontSize: 14.sp,
                             ),
@@ -75,7 +69,7 @@ class CarDetailsReviewCard extends StatelessWidget {
             ),
             SizedBox(height: 10.h),
             Text(
-              'Great experience! The car was clean and the process was easy.',
+              review.review,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: AppStyles.regular14.copyWith(color: Colors.grey.shade700),

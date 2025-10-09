@@ -1,16 +1,17 @@
 import 'dart:async';
-
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:car_rental/Feature/car_details/presentation/manager/car_details/car_details_cubit.dart';
 import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/resources/assets.dart';
 import 'package:car_rental/core/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CarImages extends StatefulWidget {
-  const CarImages({super.key});
-
+  const CarImages({super.key,});
+ 
   @override
   State<CarImages> createState() => _ProductImagesWidgetState();
 }
@@ -20,17 +21,6 @@ class _ProductImagesWidgetState extends State<CarImages> {
   Timer? _hideTimer;
   int _selectedIndex = 0;
   final PageController _pageController = PageController();
-
-  final List<String> images = [
-    'https://picsum.photos/id/1018/800/600',
-    'https://picsum.photos/id/1015/800/600',
-    'https://picsum.photos/id/1016/800/600',
-    'https://picsum.photos/id/1020/800/600',
-    'https://picsum.photos/id/1021/800/600',
-    'https://picsum.photos/id/1022/800/600',
-    'https://picsum.photos/id/1023/800/600',
-    'https://picsum.photos/id/1024/800/600',
-  ];
 
   void _resetTimer() {
     setState(() => _showThumbnails = true);
@@ -46,9 +36,10 @@ class _ProductImagesWidgetState extends State<CarImages> {
     _pageController.dispose();
     super.dispose();
   }
-
+  
   @override
   Widget build(BuildContext context) {
+    var car=context.read<CarDetailsCubit>().car;
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: _resetTimer,
@@ -57,13 +48,12 @@ class _ProductImagesWidgetState extends State<CarImages> {
         children: [
           Stack(
             children: [
-              // ✅ الصور الكبيرة بقت Scrollable
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.4,
                 width: double.infinity,
                 child: PageView.builder(
                   controller: _pageController,
-                  itemCount: images.length,
+                  itemCount: car.images.length,
                   onPageChanged: (index) {
                     setState(() {
                       _selectedIndex = index;
@@ -71,13 +61,12 @@ class _ProductImagesWidgetState extends State<CarImages> {
                     });
                   },
                   itemBuilder: (context, index) => CachedNetworkImage(
-                    imageUrl: images[index],
-                    fit: BoxFit.cover,
+                    imageUrl: car.images[index],
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
 
-              // زر wishlist
               Positioned(
                 top: 10,
                 right: 10,
@@ -89,7 +78,6 @@ class _ProductImagesWidgetState extends State<CarImages> {
                 ),
               ),
 
-              // ✅ مؤشر أسفل الصور
               Positioned(
                 bottom: 10,
                 left: 0,
@@ -103,7 +91,7 @@ class _ProductImagesWidgetState extends State<CarImages> {
                     ),
                     child: SmoothPageIndicator(
                       controller: _pageController,
-                      count: images.length,
+                      count: car.images.length,
                       effect: ExpandingDotsEffect(
                         dotHeight: 8,
                         dotWidth: 8,
@@ -116,7 +104,6 @@ class _ProductImagesWidgetState extends State<CarImages> {
                 ),
               ),
 
-              // ✅ لو مش أول صورة، أظهر الـ thumbnails
               if (_selectedIndex != 0)
                 Positioned(
                   bottom: 40,
@@ -129,7 +116,7 @@ class _ProductImagesWidgetState extends State<CarImages> {
                       height: 100,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: images.length,
+                        itemCount: car.images.length,
                         itemBuilder: (context, index) {
                           final isSelected = index == _selectedIndex;
                           return GestureDetector(
@@ -152,7 +139,7 @@ class _ProductImagesWidgetState extends State<CarImages> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(12.r),
                                   child: CachedNetworkImage(
-                                    imageUrl: images[index],
+                                    imageUrl:car.images[index],
                                     height: 100.h,
                                     width: 100.w,
                                     fit: BoxFit.cover,

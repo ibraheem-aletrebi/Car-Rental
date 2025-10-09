@@ -15,20 +15,18 @@ class CarBrandItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12.r),
+          Container(
+            height: 60.h,
+            width: 60.w,
+            decoration: const BoxDecoration(shape: BoxShape.circle),
+            clipBehavior: Clip.antiAlias,
             child: CachedNetworkImage(
               imageUrl: brandModel.image,
-              height: 60.h,
-              width: 60.w,
               fit: BoxFit.contain,
               errorWidget: (context, url, error) =>
-                  Icon(Icons.error, size: 40.w),
-              placeholder: (context, url) => Container(
-                width: 60.w,
-                height: 60.h,
-                color: Colors.grey.shade300,
-              ),
+                  Icon(Icons.error, size: 30.w),
+              placeholder: (context, url) =>
+                  Container(color: Colors.grey.shade300),
             ),
           ),
           SizedBox(height: 8.h),

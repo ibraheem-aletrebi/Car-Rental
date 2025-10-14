@@ -61,6 +61,7 @@ class Assets {
   static const String imagesTeslaLogo = "assets/images/tesla_logo.svg";
 
   static const String imagesUser = "assets/images/user.jpeg";
-  
+
+  static const String lottieCarLoading = "assets/lottie/car_loading.json";
 }
 

@@ -48,6 +48,9 @@ class CarDetailsReviewCard extends StatelessWidget {
                         style: AppStyles.semiBold16.copyWith(fontSize: 14.sp),
                       ),
                       Row(
+                        spacing: 5,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
                         children: [
                           Text(
                             review.rate.toString(),
@@ -58,7 +61,7 @@ class CarDetailsReviewCard extends StatelessWidget {
                           const Icon(
                             CupertinoIcons.star_fill,
                             color: Colors.amber,
-                            size: 16,
+                            size: 18,
                           ),
                         ],
                       ),
@@ -70,7 +73,7 @@ class CarDetailsReviewCard extends StatelessWidget {
             SizedBox(height: 10.h),
             Text(
               review.review,
-              maxLines: 3,
+              maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: AppStyles.regular14.copyWith(color: Colors.grey.shade700),
             ),

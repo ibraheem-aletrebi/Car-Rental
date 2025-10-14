@@ -27,7 +27,7 @@ class ReviewsSection extends StatelessWidget {
           )
         else
           SizedBox(
-            height: MediaQuery.sizeOf(context).height * 0.2,
+            height: MediaQuery.sizeOf(context).height * 0.18,
             child: CarDetailsReviewList(reviews: carReviews),
           ),
       ],

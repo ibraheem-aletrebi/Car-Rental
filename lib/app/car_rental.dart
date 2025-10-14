@@ -2,6 +2,7 @@ import 'package:car_rental/core/routing/on_generate_route.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:car_rental/core/services/local_services/preference_manager.dart';
 import 'package:car_rental/core/services/local_services/storage_key.dart';
+import 'package:car_rental/core/services/service_locator.dart';
 import 'package:car_rental/core/theme/ligth_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,9 +17,10 @@ class CarRental extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp(
+          navigatorKey: getIt<GlobalKey<NavigatorState>>(),
           theme: lightTheme,
           onGenerateRoute: onGenerateRoute,
-          initialRoute: getInitialRoute(), 
+          initialRoute: getInitialRoute(),
         );
       },
     );

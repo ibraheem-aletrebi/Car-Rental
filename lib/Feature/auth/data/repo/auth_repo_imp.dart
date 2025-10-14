@@ -42,8 +42,6 @@ class AuthRepoImp extends AuthRepo {
     throw UnimplementedError();
   }
 
-
-
   @override
   Future<Either<Failure, TokenModel>> refreshToken({
     required String refreshToken,

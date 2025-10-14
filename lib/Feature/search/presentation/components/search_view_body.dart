@@ -30,9 +30,9 @@ class SearchViewBody extends StatelessWidget {
           ),
         ),
         SliverToBoxAdapter(child: RecommendedSection()),
-        SliverToBoxAdapter(child: HeightSpace(height: 28)),
-        SliverToBoxAdapter(child: PopularSection()),
-        SliverToBoxAdapter(child: HeightSpace(height: 120)),
+         SliverToBoxAdapter(child: HeightSpace(height: 28)),
+         SliverToBoxAdapter(child: PopularSection()),
+         SliverToBoxAdapter(child: HeightSpace(height: 120)),
       ],
     );
   }

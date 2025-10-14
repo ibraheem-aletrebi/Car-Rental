@@ -16,12 +16,14 @@ import 'package:car_rental/core/services/local_services/preference_manager.dart'
 import 'package:car_rental/core/services/local_services/secure_storage_services.dart';
 import 'package:car_rental/core/services/network_services/api_service.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> setUpServiceLocator() async {
   await _initCore();
+  _initNavigatorKey();
   _initApiService();
   _initAuth();
   _initHome();
@@ -75,5 +77,11 @@ void _initHome() {
 void _initCarDetails() {
   getIt.registerLazySingleton<CarDetailsRepo>(
     () => CarDetailsRepoImp(apiService: getIt<ApiService>()),
+  );
+}
+
+void _initNavigatorKey() {
+  getIt.registerSingleton<GlobalKey<NavigatorState>>(
+    GlobalKey<NavigatorState>(),
   );
 }

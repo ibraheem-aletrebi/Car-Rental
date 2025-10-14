@@ -3,15 +3,15 @@ import 'dart:developer';
 import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
 import 'package:car_rental/core/services/local_services/secure_storage_services.dart';
 import 'package:car_rental/core/services/service_locator.dart';
+import 'package:car_rental/core/utils/helper/redirect_to_login.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class ApiService {
   ApiService({required this.dio}) {
-    dio.interceptors.add(PrettyDioLogger(
-      requestBody: false,
-      responseBody: false,
-    ));
+    dio.interceptors.add(
+      PrettyDioLogger(requestBody: false, responseBody: false),
+    );
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
@@ -36,12 +36,15 @@ class ApiService {
               await getIt<AuthRepo>().refreshToken(refreshToken: refreshToken!);
               final newAccessToken = await getIt<SecureStorageService>()
                   .getAccessToken();
+
               e.requestOptions.headers['Authorization'] =
                   'Bearer $newAccessToken';
               final clonedRequest = await dio.fetch(e.requestOptions);
               return handler.resolve(clonedRequest);
             } catch (error) {
-              log('error: ${e.toString()} From -> ApiService -> onError');
+              log('Refresh token expired, redirecting to login');
+              await getIt<SecureStorageService>().clearStorage();
+              redirectToLogin();
               return handler.reject(e);
             }
           }

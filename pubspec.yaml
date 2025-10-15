@@ -117,7 +117,7 @@ flutter_assets:
     - assets/images/
     - assets/icons/
     - assets/lottie/
-  output_path: lib/core/styles/
+  output_path: lib/core/resources/
   filename: assets.dart
   field_prefix: null
   ignore_comments: true

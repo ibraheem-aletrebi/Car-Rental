@@ -13,7 +13,6 @@ class ReviewsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final carReviews = context.read<CarDetailsCubit>().car.reviews;
-
     return Column(
       children: [
         const ReviewsSectionHeader(),

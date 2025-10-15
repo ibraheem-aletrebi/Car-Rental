@@ -3,6 +3,7 @@ import 'package:car_rental/Feature/auth/presentation/view/sign_in_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/sign_up_view.dart';
 import 'package:car_rental/Feature/auth/presentation/view/verification_code_view.dart';
 import 'package:car_rental/Feature/car_details/presentation/view/car_details_view.dart';
+import 'package:car_rental/Feature/car_details/presentation/view/car_reviews_view.dart';
 import 'package:car_rental/Feature/home/presentation/view/main_view.dart';
 import 'package:car_rental/Feature/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:car_rental/core/animations/base_routes.dart';
@@ -33,7 +34,8 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
 
     case Routes.kCarDetailsView:
       return BaseRoute(page: CarDetailsView(carId: settings.arguments as int));
-
+  case Routes.kCarReviewsView:
+      return BaseRoute(page: CarReviewsView(carId: settings.arguments as int));
     default:
       return MaterialPageRoute(
         builder: (context) => Scaffold(),

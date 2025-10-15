@@ -19,4 +19,5 @@ abstract class BackEndEndPoint {
   static const String nearbyCarsEndPoint = 'cars/nearest';
 
   static const String carDetailsEndPoint = 'cars/';
+  static const String carReviewsEndPoint = 'reviews';
 }

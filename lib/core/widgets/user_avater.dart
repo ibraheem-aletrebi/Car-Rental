@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:car_rental/core/resources/app_colors.dart';
@@ -8,48 +7,46 @@ class UserAvatar extends StatelessWidget {
   final String? imageUrl;
   final String? username;
   final double radius;
+  final Color? borderColor;
+  final double borderWidth;
 
   const UserAvatar({
     super.key,
     this.imageUrl,
     this.username,
     this.radius = 20,
+    this.borderColor,
+    this.borderWidth = 0,
   });
 
   @override
   Widget build(BuildContext context) {
-    final double size = radius * 2;
-
-    if (imageUrl != null && imageUrl!.isNotEmpty) {
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(radius),
-        child: CachedNetworkImage(
-          imageUrl: imageUrl!,
-          height: size.h,
-          width: size.w,
-          fit: BoxFit.cover,
-          errorWidget: (context, url, error) => _buildInitial(),
-          placeholder: (context, url) => _buildInitial(),
-        ),
-      );
-    }
-
-    return _buildInitial();
-  }
-
-  Widget _buildInitial() {
     final initial = (username?.isNotEmpty ?? false)
         ? username![0].toUpperCase()
         : '?';
 
-    return CircleAvatar(
-      radius: radius.r,
-      backgroundColor: AppColors.kStokeColor,
-      child: Text(
-        initial,
-        style: AppStyles.semiBold16.copyWith(
-          color: AppColors.kPrimaryColor,
-        ),
+    return Container(
+      width: radius * 2,
+      height: radius * 2,
+      padding: EdgeInsets.all(borderWidth),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: borderColor ?? Colors.transparent,
+      ),
+      child: CircleAvatar(
+        radius: radius.r,
+        backgroundColor: AppColors.kStokeColor,
+        backgroundImage: (imageUrl != null && imageUrl!.isNotEmpty)
+            ? NetworkImage(imageUrl!)
+            : null,
+        child: (imageUrl == null || imageUrl!.isEmpty)
+            ? Text(
+                initial,
+                style: AppStyles.semiBold16.copyWith(
+                  color: AppColors.kPrimaryColor,
+                ),
+              )
+            : null,
       ),
     );
   }

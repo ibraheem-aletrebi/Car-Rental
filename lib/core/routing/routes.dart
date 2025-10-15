@@ -15,4 +15,5 @@ abstract class Routes {
   static const String kResetPasswordStepsView = 'resetPasswordStepsView';
 
   static const String kCarDetailsView = 'carDetailsView';
+  static const String kCarReviewsView = 'carReviewsView';
 }

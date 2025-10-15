@@ -16,6 +16,7 @@ class CarInfoSection extends StatelessWidget {
       padding: EdgeInsets.all(10.0.r),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             carModel.name,
@@ -41,21 +42,25 @@ class CarInfoSection extends StatelessWidget {
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              IconTextRow(
-                iconPath: Assets.iconsSeats,
-                text: '${carModel.seatingCapacity} Seats',
-                textStyle: AppStyles.semiBold12,
+              Flexible(
+                child: IconTextRow(
+                  iconPath: Assets.iconsSeats,
+                  text: carModel.seatingCapacity,
+                  textStyle: AppStyles.semiBold12,
+                ),
               ),
-              carModel.dailyRent == null
-                  ? const SizedBox.shrink()
-                  : IconTextRow(
-                      iconPath: Assets.iconsMoney,
-                      text: '\$${carModel.dailyRent?.round()}/Day',
-                      textStyle: AppStyles.semiBold12.copyWith(
-                        color: AppColors.kPrimaryColor,
-                      ),
+              if (carModel.dailyRent != null)
+                Flexible(
+                  child: IconTextRow(
+                    iconPath: Assets.iconsMoney,
+                    text: '\$${carModel.dailyRent?.round()}/Day',
+                    textStyle: AppStyles.semiBold12.copyWith(
+                      color: AppColors.kPrimaryColor,
                     ),
+                  ),
+                ),
             ],
           ),
         ],

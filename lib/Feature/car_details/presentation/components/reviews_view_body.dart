@@ -6,6 +6,7 @@ import 'package:car_rental/domain/entities/review_entity.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ReviewsViewBody extends StatelessWidget {
   const ReviewsViewBody({super.key, required this.reviews});
@@ -36,7 +37,13 @@ class LoadingReviewesViewBody extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       slivers: [
         CarReviewsSliverAppBar(),
-        SliverToBoxAdapter(child: LoadingReviewesHeader()),
+        SliverToBoxAdapter(
+          child: Shimmer.fromColors(
+            baseColor: Colors.grey.shade300,
+            highlightColor: Colors.grey.shade100,
+            child: LoadingReviewesHeader(),
+          ),
+        ),
         SliverToBoxAdapter(child: HeightSpace(height: 10.h)),
         SliverPadding(
           padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 100.h),

@@ -1,34 +1,43 @@
-import 'package:car_rental/Feature/home/presentation/components/car_brand_item_loading.dart';
+import 'package:car_rental/core/widgets/build_box.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
+import 'package:car_rental/core/widgets/loading_horizontal_list_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CarBrandsLoadingSection extends StatelessWidget {
   const CarBrandsLoadingSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          width: 80.w,
-          height: 20.h,
-          decoration: BoxDecoration(
-            color: Colors.grey.shade300,
+    return Shimmer.fromColors(
+      baseColor: Colors.grey.shade300,
+      highlightColor: Colors.grey.shade100,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildBox(
+            height: 12.h,
+            width: 80.w,
             borderRadius: BorderRadius.circular(12.r),
           ),
-        ),
-        const HeightSpace(),
-        SizedBox(
-          height: MediaQuery.sizeOf(context).height * .1,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 12,
-            itemBuilder: (context, index) => const CarBrandItemLoading(),
+          const HeightSpace(),
+          LoadingHorizontalListBuilder(
+            itemBuilder: Column(
+              children: [
+                buildBox(shape: BoxShape.circle, height: 80.h, width: 80.h),
+                const HeightSpace(),
+                buildBox(
+                  height: 12.h,
+                  width: 60.w,
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+              ],
+            ),
+            height: MediaQuery.sizeOf(context).height * .1,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

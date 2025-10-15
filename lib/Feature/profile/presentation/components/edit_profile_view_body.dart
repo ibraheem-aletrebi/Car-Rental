@@ -1,4 +1,6 @@
+import 'package:car_rental/core/cubits/user_cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 
@@ -11,6 +13,7 @@ class EditProfileViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final profileController = context.read<UserCubit>();
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Center(
@@ -22,9 +25,8 @@ class EditProfileViewBody extends StatelessWidget {
               children: [
                 UserAvatar(
                   radius: 60.r,
-                  imageUrl:
-                      'https://tabler.io/_next/image?url=%2Favatars%2Fdefault%2F2244af71ad0c25f2cb0a8efa167491fb.png&w=280&q=85',
-                  username: 'ibraheem',
+                  imageUrl: '',
+                  username: profileController.user?.fullName,
                 ),
                 Container(
                   padding: EdgeInsets.all(4.r),
@@ -44,24 +46,24 @@ class EditProfileViewBody extends StatelessWidget {
             ),
             HeightSpace(height: 8),
             Text(
-              'Ibraheem al-etrebi',
+              profileController.user?.fullName ?? ' ',
               style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
             ),
             HeightSpace(height: 30),
             CustomTextFormField(
               hintText: 'Full Name',
-              initialValue: 'ibraheem al-etrebi',
+              initialValue: profileController.user!.fullName,
             ),
 
             HeightSpace(height: 16),
             CustomTextFormField(
               hintText: 'Email',
-              initialValue: 'ibraheem.al-etrebi',
+              initialValue: profileController.user!.email,
             ),
             HeightSpace(height: 16),
             CustomTextFormField(
               hintText: 'Phone',
-              initialValue: '+962 7 1234 5678',
+              initialValue: profileController.user!.phone,
             ),
             HeightSpace(height: 25),
             CustomButton(text: 'Save Changes', onPressed: () {}),

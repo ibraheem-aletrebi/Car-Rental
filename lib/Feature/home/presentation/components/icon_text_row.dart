@@ -18,19 +18,22 @@ class IconTextRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.min, // Take only required space
+      mainAxisSize: MainAxisSize.min, // يخلي الـ Row تاخد حجم المحتوى فقط
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SvgPicture.asset(iconPath),
+        SvgPicture.asset(iconPath, width: 14, height: 14),
         SizedBox(width: spacing ?? 5),
-
-        Text(
-          text,
-          style: textStyle,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+        Flexible(
+          fit: FlexFit.loose,
+          child: Text(
+            text,
+            style: textStyle,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ],
     );
   }
 }
+

@@ -24,9 +24,8 @@ class CarRental extends StatelessWidget {
             FocusManager.instance.primaryFocus?.unfocus();
           },
           child: BlocProvider(
-            create: (context) =>
-                UserCubit(userProfileRepo: getIt<UserProfileRepo>())
-                  ..fetchUserProfile(),
+            create: (context) => UserCubit(userProfileRepo: getIt<UserProfileRepo>())
+              ..fetchUserProfile(),
             child: MaterialApp(
               navigatorKey: getIt<GlobalKey<NavigatorState>>(),
               theme: lightTheme,

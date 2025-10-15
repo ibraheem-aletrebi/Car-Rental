@@ -1,6 +1,8 @@
+import 'package:car_rental/core/cubits/user_cubit/user_cubit.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:car_rental/core/widgets/user_avater.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -8,6 +10,7 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final profileController = context.read<UserCubit>();
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Row(
@@ -15,9 +18,8 @@ class ProfileHeader extends StatelessWidget {
         children: [
           UserAvatar(
             radius: 42.r,
-            imageUrl:
-                'https://tabler.io/_next/image?url=%2Favatars%2Fdefault%2F2244af71ad0c25f2cb0a8efa167491fb.png&w=280&q=85',
-            username: 'ibraheem',
+            imageUrl: '',
+            username: profileController.user?.fullName,
           ),
 
           Expanded(
@@ -25,7 +27,7 @@ class ProfileHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Benjamin JackBenjamin JackBenjamin JackBenjamin Jack",
+                  profileController.user?.fullName??'',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -35,7 +37,7 @@ class ProfileHeader extends StatelessWidget {
                 ),
                 SizedBox(height: 4.h),
                 Text(
-                  "benjaminJack@gmail.combenjaminJack@gmail.combenjaminJack@gmail.com",
+                  profileController.user?.email??'',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(color: Colors.grey[600], fontSize: 13.sp),

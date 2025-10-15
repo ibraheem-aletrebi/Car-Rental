@@ -1,5 +1,5 @@
 import 'package:car_rental/Feature/home/presentation/components/section_header.dart';
-import 'package:car_rental/Feature/search/presentation/components/recommended_item.dart';
+import 'package:car_rental/core/widgets/car_card.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,10 +26,10 @@ class RecommendedSection extends StatelessWidget {
               crossAxisCount: 2,
               mainAxisSpacing: 10.w,
               crossAxisSpacing: 5.w,
-              childAspectRatio: .62.sp,
+              childAspectRatio: .75.sp,
             ),
             itemBuilder: (BuildContext context, int index) {
-              return RecommendedItem();
+              return CarCard(carModel: car);
             },
             itemCount: 4,
           ),

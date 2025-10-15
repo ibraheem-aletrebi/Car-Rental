@@ -11,7 +11,7 @@ class UserCubit extends Cubit<UserState> {
       super(UserInitial());
 
   final UserProfileRepo _repo;
-  late UserProfileEntity user;
+  UserProfileEntity? user;
   Future<void> fetchUserProfile() async {
     var result = await _repo.fetchUser();
     result.fold((failure) => emit(UserError(failure.errorMessage)), (user) {

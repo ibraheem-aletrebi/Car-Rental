@@ -2,6 +2,7 @@ import 'package:car_rental/Feature/car_details/presentation/components/loading_r
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 
 class LoadingReviewsSliverListBuilder extends StatelessWidget {
   const LoadingReviewsSliverListBuilder({super.key});
@@ -9,7 +10,11 @@ class LoadingReviewsSliverListBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList.separated(
-      itemBuilder: (context, index) => const LoadingReviewCard(),
+      itemBuilder: (context, index) => Shimmer.fromColors(
+        baseColor: Colors.grey.shade300,
+        highlightColor: Colors.grey.shade100,
+        child: const LoadingReviewCard(),
+      ),
       separatorBuilder: (context, index) => HeightSpace(height: 10.h),
       itemCount: 10,
     );

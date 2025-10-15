@@ -1,12 +1,19 @@
-import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
 import 'package:flutter/material.dart';
 
 final ThemeData lightTheme = ThemeData(
-  // scaffoldBackgroundColor: Color(0xFFEDEDED),
-  colorScheme: ColorScheme.fromSeed(
-    seedColor: AppColors.kPrimaryColor,
-    primary: AppColors.kPrimaryColor,
+  brightness: Brightness.light,
+  scaffoldBackgroundColor: Color(0xFFEDEDED),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+    iconTheme: IconThemeData(color: Colors.black),
+    titleTextStyle: TextStyle(
+      color: Colors.black,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      fontFamily: AppStyles.kFontFamily,
+    ),
   ),
   fontFamily: AppStyles.kFontFamily,
 );

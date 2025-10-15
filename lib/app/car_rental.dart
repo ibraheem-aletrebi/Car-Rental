@@ -16,11 +16,16 @@ class CarRental extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return MaterialApp(
-          navigatorKey: getIt<GlobalKey<NavigatorState>>(),
-          theme: lightTheme,
-          onGenerateRoute: onGenerateRoute,
-          initialRoute: getInitialRoute(),
+        return GestureDetector(
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: MaterialApp(
+            navigatorKey: getIt<GlobalKey<NavigatorState>>(),
+            theme: lightTheme,
+            onGenerateRoute: onGenerateRoute,
+            initialRoute: getInitialRoute(),
+          ),
         );
       },
     );

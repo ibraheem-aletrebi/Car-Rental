@@ -11,7 +11,7 @@ class PopularSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+      padding: EdgeInsets.symmetric(horizontal: 16.0.w),
       child: Column(
         children: [
           SectionHeader(

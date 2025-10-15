@@ -1,5 +1,6 @@
 import 'package:car_rental/Feature/home/presentation/components/custom_bottom_navigation_bar.dart';
 import 'package:car_rental/Feature/home/presentation/view/home_view.dart';
+import 'package:car_rental/Feature/profile/presentation/view/profile_view.dart';
 import 'package:car_rental/Feature/search/presentation/view/search_view.dart';
 import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,13 @@ class _MainViewBodyState extends State<MainViewBody> {
           color: AppColors.kDarkWhite,
           child: IndexedStack(
             index: _currentIndex,
-            children: [HomeView(), SearchView(), HomeView()],
+            children: [
+              HomeView(),
+              SearchView(),
+              HomeView(),
+              SearchView(),
+              ProfileView(),
+            ],
           ),
         ),
         Positioned(

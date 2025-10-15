@@ -10,7 +10,7 @@ class RecommendedSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+      padding: EdgeInsets.symmetric(horizontal: 16.0.w),
       child: Column(
         children: [
           SectionHeader(
@@ -22,11 +22,11 @@ class RecommendedSection extends StatelessWidget {
           GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              mainAxisSpacing: 15,
-              crossAxisSpacing: 5,
-              childAspectRatio: .65,
+              mainAxisSpacing: 10.w,
+              crossAxisSpacing: 5.w,
+              childAspectRatio: .62.sp,
             ),
             itemBuilder: (BuildContext context, int index) {
               return RecommendedItem();

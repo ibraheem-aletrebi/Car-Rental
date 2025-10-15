@@ -16,4 +16,8 @@ abstract class Routes {
 
   static const String kCarDetailsView = 'carDetailsView';
   static const String kCarReviewsView = 'carReviewsView';
+
+
+
+  static const String kProfileEditView = 'profileEditView';
 }

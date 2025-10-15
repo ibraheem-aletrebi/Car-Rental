@@ -2,6 +2,7 @@ import 'package:car_rental/Feature/search/domain/entities/brand_entity.dart';
 import 'package:car_rental/Feature/search/presentation/components/brand_item.dart';
 import 'package:car_rental/core/resources/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BrandSelectorSection extends StatefulWidget {
   const BrandSelectorSection({super.key});
@@ -15,7 +16,7 @@ class _BrandSelectorSectionState extends State<BrandSelectorSection> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(

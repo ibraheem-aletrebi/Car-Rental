@@ -1,9 +1,9 @@
-import 'package:car_rental/core/entities/car_entity.dart';
-import 'package:car_rental/core/models/brand_model.dart';
-import 'package:car_rental/core/models/car_feature_model.dart';
-import 'package:car_rental/core/models/color_model.dart';
-import 'package:car_rental/core/models/location_model.dart';
-import 'package:car_rental/core/models/review_model.dart';
+import 'package:car_rental/domain/entities/car_entity.dart';
+import 'package:car_rental/data/models/brand_model.dart';
+import 'package:car_rental/data/models/car_feature_model.dart';
+import 'package:car_rental/data/models/color_model.dart';
+import 'package:car_rental/data/models/location_model.dart';
+import 'package:car_rental/data/models/review_model.dart';
 
 class CarModel {
   final int id;

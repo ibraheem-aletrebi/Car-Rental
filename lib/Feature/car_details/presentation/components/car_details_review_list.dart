@@ -1,5 +1,5 @@
 import 'package:car_rental/Feature/car_details/presentation/components/car_details_review_card.dart';
-import 'package:car_rental/core/entities/review_entity.dart';
+import 'package:car_rental/domain/entities/review_entity.dart';
 import 'package:flutter/cupertino.dart';
 
 

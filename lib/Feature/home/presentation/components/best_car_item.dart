@@ -1,6 +1,6 @@
 import 'package:car_rental/Feature/home/presentation/components/car_image_header.dart';
 import 'package:car_rental/Feature/home/presentation/components/car_info_section.dart';
-import 'package:car_rental/core/models/car_model.dart';
+import 'package:car_rental/data/models/car_model.dart';
 import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

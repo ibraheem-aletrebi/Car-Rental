@@ -1,4 +1,4 @@
-import 'package:car_rental/core/entities/car_feature_entity.dart';
+import 'package:car_rental/domain/entities/car_feature_entity.dart';
 
 class CarFeatureModel extends CarFeatureEntity {
   CarFeatureModel({

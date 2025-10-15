@@ -1,5 +1,5 @@
 import 'package:car_rental/Feature/home/presentation/components/car_brand_item.dart';
-import 'package:car_rental/core/models/brand_model.dart';
+import 'package:car_rental/data/models/brand_model.dart';
 import 'package:car_rental/core/widgets/width_space.dart';
 import 'package:flutter/material.dart';
 

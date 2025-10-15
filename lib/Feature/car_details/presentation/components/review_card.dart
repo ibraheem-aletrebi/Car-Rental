@@ -1,4 +1,4 @@
-import 'package:car_rental/core/entities/review_entity.dart';
+import 'package:car_rental/domain/entities/review_entity.dart';
 import 'package:car_rental/core/widgets/user_avater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

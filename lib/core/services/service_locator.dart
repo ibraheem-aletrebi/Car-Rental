@@ -15,6 +15,8 @@ import 'package:car_rental/Feature/home/domain/repos/home_repo.dart';
 import 'package:car_rental/core/services/local_services/preference_manager.dart';
 import 'package:car_rental/core/services/local_services/secure_storage_services.dart';
 import 'package:car_rental/core/services/network_services/api_service.dart';
+import 'package:car_rental/data/repos/user_profile_repo_imp.dart';
+import 'package:car_rental/domain/repos/user_profile_repo.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -26,6 +28,7 @@ Future<void> setUpServiceLocator() async {
   _initNavigatorKey();
   _initApiService();
   _initAuth();
+  _initUserProfile();
   _initHome();
   _initCarDetails();
 }
@@ -83,5 +86,11 @@ void _initCarDetails() {
 void _initNavigatorKey() {
   getIt.registerSingleton<GlobalKey<NavigatorState>>(
     GlobalKey<NavigatorState>(),
+  );
+}
+
+void _initUserProfile() {
+  getIt.registerSingleton<UserProfileRepo>(
+    UserProfileRepoImpl(apiService: getIt<ApiService>()),
   );
 }

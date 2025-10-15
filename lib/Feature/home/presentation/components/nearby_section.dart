@@ -2,7 +2,7 @@ import 'package:car_rental/Feature/home/presentation/components/nearby_item.dart
 import 'package:car_rental/Feature/home/presentation/components/nearby_loading_section.dart';
 import 'package:car_rental/Feature/home/presentation/components/section_header.dart';
 import 'package:car_rental/Feature/home/presentation/manager/nearby_cars_cubit/nearby_cars_cubit.dart';
-import 'package:car_rental/core/models/car_model.dart';
+import 'package:car_rental/data/models/car_model.dart';
 import 'package:car_rental/core/routing/routes.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:car_rental/core/widgets/width_space.dart';

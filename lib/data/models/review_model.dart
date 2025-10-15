@@ -1,4 +1,4 @@
-import 'package:car_rental/core/entities/review_entity.dart';
+import 'package:car_rental/domain/entities/review_entity.dart';
 
 class ReviewModel extends ReviewEntity {
   const ReviewModel({

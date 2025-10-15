@@ -8,7 +8,7 @@ import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:car_rental/core/widgets/width_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:car_rental/core/models/car_model.dart';
+import 'package:car_rental/data/models/car_model.dart';
 
 class BestCarsSection extends StatefulWidget {
   const BestCarsSection({super.key});

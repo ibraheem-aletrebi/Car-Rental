@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:car_rental/Feature/home/domain/repos/home_repo.dart';
-import 'package:car_rental/core/models/car_model.dart';
+import 'package:car_rental/data/models/car_model.dart';
 import 'package:equatable/equatable.dart';
 
 part 'best_car_state.dart';

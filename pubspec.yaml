@@ -33,6 +33,7 @@ dependencies:
   another_flushbar: ^1.12.32
   bloc: ^9.0.0
   cached_network_image: ^3.4.1
+  connectivity_plus: ^7.0.0
   country_code_picker: ^3.4.0
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
@@ -81,7 +82,6 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/lottie/
-
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

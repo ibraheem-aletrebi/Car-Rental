@@ -1,6 +1,6 @@
 import 'package:car_rental/Feature/home/data/models/paginated_cars_model.dart';
 import 'package:car_rental/core/error/failure.dart';
-import 'package:car_rental/core/models/brand_model.dart';
+import 'package:car_rental/data/models/brand_model.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class HomeRepo {

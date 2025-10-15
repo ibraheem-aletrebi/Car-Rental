@@ -1,5 +1,5 @@
 import 'package:car_rental/Feature/home/presentation/components/icon_text_row.dart';
-import 'package:car_rental/core/models/car_model.dart';
+import 'package:car_rental/data/models/car_model.dart';
 import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
 import 'package:car_rental/core/resources/assets.dart';

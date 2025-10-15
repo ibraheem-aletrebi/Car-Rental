@@ -1,7 +1,7 @@
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
-import 'package:car_rental/core/models/location_model.dart';
+import 'package:car_rental/data/models/location_model.dart';
 
-class UserEntity {
+class UserProfileEntity {
   final int id;
   final String fullName;
   final String email;
@@ -11,7 +11,7 @@ class UserEntity {
   final LocationModel location;
   final bool availableToCreateCar;
 
-  const UserEntity({
+  const UserProfileEntity({
     required this.id,
     required this.fullName,
     required this.email,

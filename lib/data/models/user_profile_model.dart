@@ -1,9 +1,9 @@
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
-import 'package:car_rental/core/entities/user_entity.dart';
-import 'package:car_rental/core/models/location_model.dart';
+import 'package:car_rental/domain/entities/user_entity.dart';
+import 'package:car_rental/data/models/location_model.dart';
 
-class UserModel extends UserEntity {
-  UserModel({
+class UserProfileModel extends UserProfileEntity {
+  UserProfileModel({
     required super.id,
     required super.fullName,
     required super.email,
@@ -14,8 +14,8 @@ class UserModel extends UserEntity {
     required super.availableToCreateCar,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
+  factory UserProfileModel.fromJson(Map<String, dynamic> json) {
+    return UserProfileModel(
       id: json['id'],
       fullName: json['full_name'],
       email: json['email'],
@@ -40,5 +40,5 @@ class UserModel extends UserEntity {
     };
   }
 
-  UserEntity toEntity() => this;
+  UserProfileEntity toEntity() => this;
 }

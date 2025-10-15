@@ -1,10 +1,10 @@
 import 'dart:developer';
 import 'package:car_rental/Feature/car_details/domain/repo/car_details_repo.dart';
-import 'package:car_rental/core/entities/car_entity.dart';
-import 'package:car_rental/core/entities/review_entity.dart';
+import 'package:car_rental/domain/entities/car_entity.dart';
+import 'package:car_rental/domain/entities/review_entity.dart';
 import 'package:car_rental/core/error/failure.dart';
-import 'package:car_rental/core/models/car_model.dart';
-import 'package:car_rental/core/models/review_model.dart';
+import 'package:car_rental/data/models/car_model.dart';
+import 'package:car_rental/data/models/review_model.dart';
 import 'package:car_rental/core/services/network_services/api_service.dart';
 import 'package:car_rental/core/services/network_services/back_end_end_point.dart';
 import 'package:dartz/dartz.dart';

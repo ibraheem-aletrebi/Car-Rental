@@ -34,4 +34,6 @@ class UserModel {
       'country': country.toJson(),
     };
   }
+
+  
 }

@@ -1,8 +1,8 @@
 import 'package:car_rental/Feature/home/presentation/components/car_image_header.dart';
 import 'package:car_rental/Feature/search/presentation/components/recommended_car_info.dart';
-import 'package:car_rental/core/entities/car_entity.dart';
-import 'package:car_rental/core/entities/car_feature_entity.dart';
-import 'package:car_rental/core/entities/review_entity.dart';
+import 'package:car_rental/domain/entities/car_entity.dart';
+import 'package:car_rental/domain/entities/car_feature_entity.dart';
+import 'package:car_rental/domain/entities/review_entity.dart';
 
 import 'package:car_rental/core/resources/app_colors.dart';
 

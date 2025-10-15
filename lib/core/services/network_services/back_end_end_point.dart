@@ -1,6 +1,9 @@
 abstract class BackEndEndPoint {
   static const String signInEndPoint = 'auth/login/';
   static const String signUpEndPoint = 'auth/register/';
+  static const String userProfileEndPoint = 'auth/profile/';
+  static const String userProfileEditEndPoint = '/auth/profile/edit';
+
   static const String logOutEndPoint = 'auth/logout/';
   static const String refreshTokenEndPoint = 'auth/token/refresh/';
 
@@ -20,4 +23,5 @@ abstract class BackEndEndPoint {
 
   static const String carDetailsEndPoint = 'cars/';
   static const String carReviewsEndPoint = 'reviews';
+
 }

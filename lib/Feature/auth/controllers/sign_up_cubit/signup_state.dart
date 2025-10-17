@@ -34,7 +34,7 @@ class SignupFormUpdated extends SignupState {
   final String? phone;
   final String? password;
   final CountryModel? country;
-  final LocationResponseModel? location;
+  final LocationModel? location;
   final AvailableToAddCar availableToAddCar;
 
   const SignupFormUpdated({

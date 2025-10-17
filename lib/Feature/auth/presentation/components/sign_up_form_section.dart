@@ -1,8 +1,7 @@
-
 import 'package:car_rental/Feature/auth/data/model/sign_up_request_model.dart';
-import 'package:car_rental/Feature/auth/presentation/components/available_to_add_car_widget.dart';
-import 'package:car_rental/Feature/auth/presentation/components/paginated_country_dropdown.dart';
-import 'package:car_rental/Feature/auth/presentation/components/paginated_location_dropdown.dart';
+import 'package:car_rental/core/widgets/custom_to_option_selector.dart';
+import 'package:car_rental/core/widgets/paginated_country_dropdown.dart';
+import 'package:car_rental/core/widgets/paginated_location_dropdown.dart';
 import 'package:car_rental/Feature/auth/controllers/sign_up_cubit/signup_cubit.dart';
 import 'package:car_rental/core/enums/avialable_add_car.dart';
 import 'package:car_rental/core/utils/helper/validator.dart';
@@ -59,7 +58,17 @@ class SignUpFormSection extends StatelessWidget {
             onChanged: (value) => controller.changeCountry(value!),
           ),
           HeightSpace(),
-          AvailableToAddCarWidget(),
+          CustomTwoOptionSelector<AvailableToAddCar>(
+            title: "Available to add car",
+            initialValue: controller.availableToAddCar,
+            firstValue: AvailableToAddCar.no,
+            secondValue: AvailableToAddCar.yes,
+            firstLabel: "No",
+            secondLabel: "Yes",
+            firstIcon: Icons.close,
+            secondIcon: Icons.check,
+            onChanged: controller.changeAvailableToAddCar,
+          ),
           HeightSpace(height: 30),
           CustomButton(
             isLoading: context.watch<SignupCubit>().state is SignupLoading,
@@ -76,8 +85,11 @@ class SignUpFormSection extends StatelessWidget {
                     password: controller.password!,
                     locationId: controller.locationModel!.id,
                     countryId: controller.countryModel!.id,
-                    isAvialableToAddCar: controller.availableToAddCar == AvailableToAddCar.yes ? 1 : 0,
-                  )
+                    isAvialableToAddCar:
+                        controller.availableToAddCar == AvailableToAddCar.yes
+                        ? 1
+                        : 0,
+                  ),
                 );
               } else {
                 SignupCubit.get(context).toggleAutovalidateMode();
@@ -85,16 +97,6 @@ class SignUpFormSection extends StatelessWidget {
               // Navigator.pushNamed(context, Routes.kVerifyPhoneNumberView);
             },
           ),
-
-          // CustomButton(
-          //   textColor: AppColors.kPrimaryColor,
-          //   borderColor: AppColors.kPrimaryColor,
-          //   backgroundColor: AppColors.kStokeColor,
-          //   text: 'Sign In',
-          //   onPressed: () {
-          //     Navigator.pop(context);
-          //   },
-          // ),
         ],
       ),
     );

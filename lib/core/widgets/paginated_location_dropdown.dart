@@ -1,8 +1,8 @@
-import 'package:car_rental/Feature/auth/data/model/location_response_model.dart';
 import 'package:car_rental/Feature/auth/domain/repo/location_repo.dart';
 import 'package:car_rental/core/services/service_locator.dart';
 import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
+import 'package:car_rental/data/models/location_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,32 +15,41 @@ class PaginatedLocationDropdown extends StatefulWidget {
     this.isEnabled = true,
     this.initialValue,
   });
-  final ValueChanged<LocationResponseModel?> onChanged;
+  final ValueChanged<LocationModel?> onChanged;
   final bool isEnabled;
-  final LocationResponseModel? initialValue;
+  final LocationModel? initialValue;
   @override
   State<PaginatedLocationDropdown> createState() =>
       _PaginatedCountryDropdownState();
 }
 
 class _PaginatedCountryDropdownState extends State<PaginatedLocationDropdown> {
-  LocationResponseModel? selectedLocation;
-  final GlobalKey<FormFieldState<LocationResponseModel>> _formKey =
-      GlobalKey<FormFieldState<LocationResponseModel>>();
+  LocationModel? selectedLocation;
+  final GlobalKey<FormFieldState<LocationModel>> _formKey =
+      GlobalKey<FormFieldState<LocationModel>>();
+  MenuItemModel<LocationModel>? selectedMenuItem;
+  @override
+  void initState() {
+    if (widget.initialValue != null) {
+      selectedLocation = widget.initialValue!;
+      selectedMenuItem = MenuItemModel<LocationModel>(
+        value: widget.initialValue!,
+        label: widget.initialValue!.name,
+        child: _locationWidget(widget.initialValue!),
+      );
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return PaginatedSearchDropdownFormField<LocationResponseModel>.paginated(
+    return PaginatedSearchDropdownFormField<LocationModel>.paginated(
       isEnabled: widget.isEnabled,
-
-      initialValue: widget.initialValue == null
-          ? null
-          : MenuItemModel<LocationResponseModel>(
-              value: widget.initialValue,
-              label: widget.initialValue!.name,
-              child: _locationWidget(widget.initialValue!),
-            ),
+      initialValue: selectedMenuItem,
       formKey: _formKey,
       requestItemCount: 5,
+      leadingIcon: Icon(Icons.location_on_outlined),
+
       trailingClearIcon: Icon(
         FontAwesomeIcons.trash,
         color: AppColors.kSecondaryColor,
@@ -53,7 +62,7 @@ class _PaginatedCountryDropdownState extends State<PaginatedLocationDropdown> {
         final result = await _fetchLocations(page: page);
         return result
             ?.map(
-              (e) => MenuItemModel<LocationResponseModel>(
+              (e) => MenuItemModel<LocationModel>(
                 value: e,
                 label: e.name,
                 child: _locationWidget(e),
@@ -65,7 +74,7 @@ class _PaginatedCountryDropdownState extends State<PaginatedLocationDropdown> {
         if (val == null) return 'Can\'t be empty';
         return null;
       },
-      onChanged: (LocationResponseModel? value) {
+      onChanged: (LocationModel? value) {
         widget.onChanged(value);
         setState(() {
           selectedLocation = value;
@@ -77,7 +86,7 @@ class _PaginatedCountryDropdownState extends State<PaginatedLocationDropdown> {
     );
   }
 
-  Text _locationWidget(LocationResponseModel e) {
+  Text _locationWidget(LocationModel e) {
     return Text(e.name, style: AppStyles.regular14);
   }
 
@@ -101,9 +110,8 @@ class _PaginatedCountryDropdownState extends State<PaginatedLocationDropdown> {
     );
   }
 
-  Future<List<LocationResponseModel>?> _fetchLocations({int page = 1}) async {
+  Future<List<LocationModel>?> _fetchLocations({int page = 1}) async {
     final result = await getIt<LocationRepo>().fetchLocations(page: page);
-
     return result;
   }
 }

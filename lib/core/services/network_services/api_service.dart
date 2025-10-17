@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
 import 'package:car_rental/core/services/local_services/secure_storage_services.dart';
 import 'package:car_rental/core/services/service_locator.dart';
@@ -68,9 +67,9 @@ class ApiService {
     return response.data;
   }
 
-  Future<Map<String, dynamic>> post({
+  Future<dynamic> post({
     required String endPoint,
-    required Map<String, dynamic> data,
+    required dynamic data,
     Options? options,
   }) async {
     var response = await dio.post(
@@ -81,11 +80,12 @@ class ApiService {
     return response.data;
   }
 
-  Future<Map<String, dynamic>> put({
-    required String endPoint,
-    required Map<String, dynamic> data,
-  }) async {
-    var response = await dio.put('$baseUrl$endPoint', data: data);
+  Future<dynamic> put({required String endPoint, required dynamic data, Options? options}) async {
+    final response = await dio.put(
+      '$baseUrl$endPoint',
+      data: data,
+      options: options,
+    );
     return response.data;
   }
 
@@ -94,8 +94,11 @@ class ApiService {
     return response.data;
   }
 
-  Future<Map<String, dynamic>> patch({required String endPoint}) async {
-    var response = await dio.patch('$baseUrl$endPoint');
+  Future<Map<String, dynamic>> patch({
+    required String endPoint,
+    required Map<String, dynamic> data,
+  }) async {
+    var response = await dio.patch('$baseUrl$endPoint', data: data);
     return response.data;
   }
 }

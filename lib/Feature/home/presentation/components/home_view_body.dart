@@ -24,8 +24,6 @@ class HomeViewBody extends StatelessWidget {
               HeightSpace(height: 20),
               Divider(color: AppColors.kStokeColor),
               HeightSpace(),
-              // SearchWithFilterBar(),
-              // HeightSpace(),
               CarBrands(),
               HeightSpace(height: 27),
             ],

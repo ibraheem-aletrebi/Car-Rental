@@ -1,5 +1,7 @@
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
+import 'package:car_rental/core/enums/avialable_add_car.dart';
 import 'package:car_rental/data/models/location_model.dart';
+import 'package:car_rental/data/models/user_profile_model.dart';
 
 class UserProfileEntity {
   final int id;
@@ -9,7 +11,7 @@ class UserProfileEntity {
   final bool phoneIsVerified;
   final CountryModel country;
   final LocationModel location;
-  final bool availableToCreateCar;
+  final AvailableToAddCar availableToCreateCar;
 
   const UserProfileEntity({
     required this.id,
@@ -21,4 +23,15 @@ class UserProfileEntity {
     required this.location,
     required this.availableToCreateCar,
   });
+
+  UserProfileModel toModel() => UserProfileModel(
+        id: id,
+        fullName: fullName,
+        email: email,
+        phone: phone,
+        phoneIsVerified: phoneIsVerified,
+        availableToCreateCar: availableToCreateCar,
+        country: country,
+        location: location,
+      );
 }

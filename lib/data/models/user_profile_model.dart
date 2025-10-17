@@ -1,4 +1,5 @@
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
+import 'package:car_rental/core/enums/avialable_add_car.dart';
 import 'package:car_rental/domain/entities/user_entity.dart';
 import 'package:car_rental/data/models/location_model.dart';
 
@@ -21,7 +22,7 @@ class UserProfileModel extends UserProfileEntity {
       email: json['email'],
       phone: json['phone'],
       phoneIsVerified: json['phone_is_verified'],
-      availableToCreateCar: json['available_to_create_car'],
+      availableToCreateCar: json['available_to_create_car']==true?AvailableToAddCar.yes:AvailableToAddCar.no,
       country: CountryModel.fromJson(json['country']),
       location: LocationModel.fromJson(json['location']),
     );
@@ -34,7 +35,7 @@ class UserProfileModel extends UserProfileEntity {
       'email': email,
       'phone': phone,
       'phone_is_verified': phoneIsVerified,
-      'available_to_create_car': availableToCreateCar,
+      'available_to_create_car': availableToCreateCar==AvailableToAddCar.yes?1:0,
       'country': country.toJson(),
       'location': location.toJson(),
     };

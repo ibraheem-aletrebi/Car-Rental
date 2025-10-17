@@ -1,75 +1,66 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
+import 'package:car_rental/Feature/profile/presentation/components/update_profile_form.dart';
+import 'package:car_rental/Feature/profile/presentation/manager/cubit/profile_cubit.dart';
 import 'package:car_rental/core/cubits/user_cubit/user_cubit.dart';
+import 'package:car_rental/core/utils/helper/buid_animated_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
-
-import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
-import 'package:car_rental/core/widgets/user_avater.dart';
 
 class EditProfileViewBody extends StatelessWidget {
   const EditProfileViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final profileController = context.read<UserCubit>();
-    return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: Center(
-        child: Column(
-          children: [
-            HeightSpace(height: 30),
-            Stack(
-              alignment: Alignment.bottomRight,
+    return BlocConsumer<ProfileCubit, ProfileState>(
+      listenWhen: (previous, current) => previous != current,
+      listener: (context, state) {
+        if (state is ProfileUpdateSuccess) {
+          showAnimatedSnackBar(
+            context: context,
+            message: 'Profile updated successfully',
+            type: AnimatedSnackBarType.success,
+          );
+          context.read<UserCubit>().fetchUserProfile();
+        }
+        if (state is ProfileUpdateFailure) {
+          showAnimatedSnackBar(
+            context: context,
+            message: state.errorMessage,
+            type: AnimatedSnackBarType.error,
+          );
+        }
+      },
+      builder: (context, state) {
+        return SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Center(
+            child: Column(
               children: [
-                UserAvatar(
-                  radius: 60.r,
-                  imageUrl: '',
-                  username: profileController.user?.fullName,
-                ),
-                Container(
-                  padding: EdgeInsets.all(4.r),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: .1),
-                        blurRadius: 2,
-                      ),
-                    ],
-                  ),
-                  child: Icon(Icons.edit, size: 18.sp, color: Colors.grey[700]),
+                HeightSpace(height: 30),
+                UpdateProfileForm(),
+                HeightSpace(height: 25),
+                CustomButton(
+                  isLoading: state is ProfileUpdateLoading,
+                  text: 'Save Changes',
+                  onPressed: state is ProfileUpdateLoading
+                      ? null
+                      : () {
+                          var controller = context.read<ProfileCubit>();
+                          controller.profileFormKey.currentState!.save();
+                          if (controller.profileFormKey.currentState!
+                              .validate()) {
+                            controller.updateUserProfile();
+                          }
+                        },
                 ),
               ],
             ),
-            HeightSpace(height: 8),
-            Text(
-              profileController.user?.fullName ?? ' ',
-              style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
-            ),
-            HeightSpace(height: 30),
-            CustomTextFormField(
-              hintText: 'Full Name',
-              initialValue: profileController.user!.fullName,
-            ),
-
-            HeightSpace(height: 16),
-            CustomTextFormField(
-              hintText: 'Email',
-              initialValue: profileController.user!.email,
-            ),
-            HeightSpace(height: 16),
-            CustomTextFormField(
-              hintText: 'Phone',
-              initialValue: profileController.user!.phone,
-            ),
-            HeightSpace(height: 25),
-            CustomButton(text: 'Save Changes', onPressed: () {}),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

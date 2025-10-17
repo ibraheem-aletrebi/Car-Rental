@@ -9,6 +9,7 @@ import 'package:car_rental/Feature/on_boarding/presentation/view/on_boarding_vie
 import 'package:car_rental/Feature/profile/presentation/view/profile_edit_view.dart';
 import 'package:car_rental/core/animations/base_routes.dart';
 import 'package:car_rental/core/routing/routes.dart';
+import 'package:car_rental/domain/entities/user_entity.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic>? onGenerateRoute(RouteSettings settings) {
@@ -39,7 +40,9 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
       return BaseRoute(page: CarReviewsView(carId: settings.arguments as int));
 
     case Routes.kProfileEditView:
-      return BaseRoute(page: const ProfileEditView());
+      return BaseRoute(page:  ProfileEditView(
+        user:  settings.arguments as UserProfileEntity,
+      ));
     default:
       return MaterialPageRoute(
         builder: (context) => Scaffold(),

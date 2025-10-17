@@ -11,6 +11,7 @@ class CarBrandsListViewBuilder extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * .1,
       child: ListView.separated(
+        padding: EdgeInsets.zero,
         separatorBuilder: (context, index) => WidthSpace(width: 22),
         scrollDirection: Axis.horizontal,
         itemCount: brands.length,

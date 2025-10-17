@@ -10,24 +10,20 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profileController = context.read<UserCubit>();
+    final user = context.read<UserCubit>().user;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       child: Row(
-        spacing: 16,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          UserAvatar(
-            radius: 42.r,
-            imageUrl: '',
-            username: profileController.user?.fullName,
-          ),
-
+          UserAvatar(radius: 42.r, username: user?.fullName),
+          SizedBox(width: 16.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  profileController.user?.fullName??'',
+                  user?.fullName ?? '',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -37,7 +33,7 @@ class ProfileHeader extends StatelessWidget {
                 ),
                 SizedBox(height: 4.h),
                 Text(
-                  profileController.user?.email??'',
+                  user?.email ?? '',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(color: Colors.grey[600], fontSize: 13.sp),
@@ -46,16 +42,17 @@ class ProfileHeader extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.kProfileEditView);
-            },
+            onTap: () => Navigator.of(
+              context,
+            ).pushNamed(Routes.kProfileEditView, arguments: user),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.edit_outlined, size: 16.sp, color: Colors.grey[700]),
-                SizedBox(width: 4.w),
+                Icon(Icons.edit_outlined, size: 18.sp, color: Colors.grey[700]),
+                SizedBox(height: 2.h),
                 Text(
-                  "Edit profile",
-                  style: TextStyle(fontSize: 13.sp, color: Colors.grey[700]),
+                  "Edit",
+                  style: TextStyle(fontSize: 12.sp, color: Colors.grey[700]),
                 ),
               ],
             ),

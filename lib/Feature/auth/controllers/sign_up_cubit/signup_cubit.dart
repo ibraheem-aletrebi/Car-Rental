@@ -1,12 +1,12 @@
 import 'package:car_rental/Feature/auth/data/model/auth_response.dart';
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
-import 'package:car_rental/Feature/auth/data/model/location_response_model.dart';
 import 'package:car_rental/Feature/auth/data/model/sign_up_request_model.dart';
 import 'package:car_rental/Feature/auth/domain/repo/sign_up_repo.dart';
 import 'package:car_rental/core/enums/avialable_add_car.dart';
 import 'package:car_rental/core/services/local_services/preference_manager.dart';
 import 'package:car_rental/core/services/local_services/secure_storage_services.dart';
 import 'package:car_rental/core/services/local_services/storage_key.dart';
+import 'package:car_rental/data/models/location_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +24,7 @@ class SignupCubit extends Cubit<SignupState> {
 
   String? fullName, email, phone, password;
   CountryModel? countryModel;
-  LocationResponseModel? locationModel;
+  LocationModel? locationModel;
   AvailableToAddCar availableToAddCar = AvailableToAddCar.no;
 
   static SignupCubit get(BuildContext context) => BlocProvider.of(context);
@@ -78,7 +78,7 @@ class SignupCubit extends Cubit<SignupState> {
     _emitUpdated();
   }
 
-  void changeLocation(LocationResponseModel locationModel) {
+  void changeLocation(LocationModel locationModel) {
     this.locationModel = locationModel;
     _emitUpdated();
   }

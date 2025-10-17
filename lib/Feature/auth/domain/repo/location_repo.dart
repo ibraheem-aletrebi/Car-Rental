@@ -1,5 +1,5 @@
-import 'package:car_rental/Feature/auth/data/model/location_response_model.dart';
+import 'package:car_rental/data/models/location_model.dart';
 
 abstract class LocationRepo {
-  Future<List<LocationResponseModel>> fetchLocations({ int page=1});
+  Future<List<LocationModel>> fetchLocations({ int page=1});
 }

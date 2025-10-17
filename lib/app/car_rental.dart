@@ -5,7 +5,7 @@ import 'package:car_rental/core/services/local_services/preference_manager.dart'
 import 'package:car_rental/core/services/local_services/storage_key.dart';
 import 'package:car_rental/core/services/service_locator.dart';
 import 'package:car_rental/core/theme/ligth_theme.dart';
-import 'package:car_rental/domain/repos/user_profile_repo.dart';
+import 'package:car_rental/domain/repos/user_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,8 +24,9 @@ class CarRental extends StatelessWidget {
             FocusManager.instance.primaryFocus?.unfocus();
           },
           child: BlocProvider(
-            create: (context) => UserCubit(userProfileRepo: getIt<UserProfileRepo>())
-              ..fetchUserProfile(),
+            create: (context) =>
+                UserCubit(userProfileRepo: getIt<UserRepo>())
+                  ..fetchUserProfile(),
             child: MaterialApp(
               navigatorKey: getIt<GlobalKey<NavigatorState>>(),
               theme: lightTheme,

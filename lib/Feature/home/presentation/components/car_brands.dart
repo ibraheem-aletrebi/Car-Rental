@@ -5,6 +5,7 @@ import 'package:car_rental/core/resources/app_styles.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CarBrands extends StatelessWidget {
   const CarBrands({super.key});
@@ -12,7 +13,7 @@ class CarBrands extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: BlocBuilder<BrandsCubit, BrandsState>(
         builder: (context, state) {
           if (state is BrandsErrorState) {

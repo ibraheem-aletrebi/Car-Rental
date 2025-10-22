@@ -6,6 +6,7 @@ import 'package:car_rental/core/services/local_services/storage_key.dart';
 import 'package:car_rental/core/services/service_locator.dart';
 import 'package:car_rental/core/theme/ligth_theme.dart';
 import 'package:car_rental/domain/repos/user_repo.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,6 +29,9 @@ class CarRental extends StatelessWidget {
                 UserCubit(userProfileRepo: getIt<UserRepo>())
                   ..fetchUserProfile(),
             child: MaterialApp(
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
               navigatorKey: getIt<GlobalKey<NavigatorState>>(),
               theme: lightTheme,
               onGenerateRoute: onGenerateRoute,

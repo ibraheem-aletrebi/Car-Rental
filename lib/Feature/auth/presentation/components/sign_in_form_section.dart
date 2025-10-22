@@ -2,11 +2,13 @@ import 'dart:developer';
 
 import 'package:car_rental/Feature/auth/controllers/sign_in_cubit/sign_in_cubit.dart';
 import 'package:car_rental/Feature/auth/presentation/components/remeber_forget_password_section.dart';
+import 'package:car_rental/core/resources/app_strings_keys.dart';
 import 'package:car_rental/core/utils/helper/validator.dart';
 
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,7 +36,7 @@ class _SignInFormSectionState extends State<SignInFormSection> {
                 email = value!;
               });
             },
-            hintText: 'Email',
+            hintText: context.tr(AppStringsKeys.email),
             validator: (value) => Validator.email(value),
           ),
           HeightSpace(),
@@ -42,17 +44,17 @@ class _SignInFormSectionState extends State<SignInFormSection> {
             onSaved: (value) {
               password = value!;
             },
-            hintText: 'Password',
+            hintText: context.tr(AppStringsKeys.password),
             isPassword: true,
             keyboardType: TextInputType.visiblePassword,
-            validator: (value)=>Validator.password(value, minLength: 8),
+            validator: (value) => Validator.password(value, minLength: 8),
           ),
           HeightSpace(height: 30),
           RemeberForgetPasswordSection(),
           HeightSpace(height: 30),
           CustomButton(
             isLoading: context.watch<SignInCubit>().state is SignInLoading,
-            text: 'Sign In',
+            text: context.tr(AppStringsKeys.signIn),
             onPressed: () {
               _formKey.currentState!.save();
               if (_formKey.currentState!.validate()) {

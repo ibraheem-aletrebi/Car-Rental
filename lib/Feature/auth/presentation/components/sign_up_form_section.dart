@@ -1,4 +1,5 @@
 import 'package:car_rental/Feature/auth/data/model/sign_up_request_model.dart';
+import 'package:car_rental/core/resources/app_strings_keys.dart';
 import 'package:car_rental/core/widgets/custom_to_option_selector.dart';
 import 'package:car_rental/core/widgets/paginated_country_dropdown.dart';
 import 'package:car_rental/core/widgets/paginated_location_dropdown.dart';
@@ -8,6 +9,7 @@ import 'package:car_rental/core/utils/helper/validator.dart';
 import 'package:car_rental/core/widgets/custom_button.dart';
 import 'package:car_rental/core/widgets/custom_text_form_field.dart';
 import 'package:car_rental/core/widgets/height_space.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,20 +25,20 @@ class SignUpFormSection extends StatelessWidget {
       child: Column(
         children: [
           CustomTextFormField(
-            hintText: 'Full Name',
+            hintText: context.tr(AppStringsKeys.fullName),
             onSaved: (value) => controller.changeFullName(value!),
             validator: (value) => Validator.required(value),
           ),
           HeightSpace(),
           CustomTextFormField(
-            hintText: 'Email',
+            hintText: context.tr(AppStringsKeys.email),
             onSaved: (value) => controller.changeEmail(value!),
             validator: (value) => Validator.email(value),
             keyboardType: TextInputType.emailAddress,
           ),
           HeightSpace(),
           CustomTextFormField(
-            hintText: 'Phone Number',
+            hintText: context.tr(AppStringsKeys.phoneNumber),
             validator: (value) => Validator.number(value),
             onSaved: (value) => controller.changePhone(value!),
             keyboardType: TextInputType.phone,
@@ -44,7 +46,7 @@ class SignUpFormSection extends StatelessWidget {
           HeightSpace(),
           CustomTextFormField(
             onSaved: (value) => controller.changePassword(value!),
-            hintText: 'Password',
+            hintText: context.tr(AppStringsKeys.password),
             isPassword: true,
             keyboardType: TextInputType.visiblePassword,
             validator: (value) => Validator.password(value, minLength: 8),
@@ -59,12 +61,12 @@ class SignUpFormSection extends StatelessWidget {
           ),
           HeightSpace(),
           CustomTwoOptionSelector<AvailableToAddCar>(
-            title: "Available to add car",
+            title: context.tr(AppStringsKeys.availableToAddCar),
             initialValue: controller.availableToAddCar,
             firstValue: AvailableToAddCar.no,
             secondValue: AvailableToAddCar.yes,
-            firstLabel: "No",
-            secondLabel: "Yes",
+            firstLabel: context.tr(AppStringsKeys.no),
+            secondLabel: context.tr(AppStringsKeys.yes),
             firstIcon: Icons.close,
             secondIcon: Icons.check,
             onChanged: controller.changeAvailableToAddCar,
@@ -72,7 +74,7 @@ class SignUpFormSection extends StatelessWidget {
           HeightSpace(height: 30),
           CustomButton(
             isLoading: context.watch<SignupCubit>().state is SignupLoading,
-            text: 'Sign up',
+            text: context.tr(AppStringsKeys.signUp),
             onPressed: () {
               controller.formKey.currentState?.save();
 

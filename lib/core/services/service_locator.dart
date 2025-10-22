@@ -18,6 +18,7 @@ import 'package:car_rental/core/services/network_services/api_service.dart';
 import 'package:car_rental/data/repos/user_repo_imp.dart';
 import 'package:car_rental/domain/repos/user_repo.dart';
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -35,6 +36,7 @@ Future<void> setUpServiceLocator() async {
 
 Future<void> _initCore() async {
   await PreferenceManager().init();
+  await _initLocalization();
   getIt.registerSingleton<SecureStorageService>(SecureStorageService());
 }
 
@@ -93,4 +95,8 @@ void _initUserProfile() {
   getIt.registerSingleton<UserRepo>(
     UserRepoImpl(apiService: getIt<ApiService>()),
   );
+}
+
+Future _initLocalization() async {
+  await EasyLocalization.ensureInitialized();
 }

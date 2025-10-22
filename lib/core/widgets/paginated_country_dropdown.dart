@@ -1,8 +1,10 @@
 import 'package:car_rental/Feature/auth/data/model/country_model.dart';
 import 'package:car_rental/Feature/auth/domain/repo/auth_repo.dart';
+import 'package:car_rental/core/resources/app_strings_keys.dart';
 import 'package:car_rental/core/services/service_locator.dart';
 import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:high_q_paginated_drop_down/high_q_paginated_drop_down.dart';
@@ -49,6 +51,7 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
     return PaginatedSearchDropdownFormField<CountryModel>.paginated(
       isEnabled: widget.isEnabled,
       formKey: _formKey,
+      padding: EdgeInsets.zero,
       initialValue: selectedMenuItem,
       requestItemCount: 5,
       leadingIcon: Text(
@@ -61,7 +64,10 @@ class _PaginatedCountryDropdownState extends State<PaginatedCountryDropdown> {
       ),
       dropDownMaxHeight: MediaQuery.sizeOf(context).height / 5,
       backgroundDecoration: (child) => _buildBackgroundDecoration(child),
-      hintText: Text(' Country', style: AppStyles.regular14),
+      hintText: Text(
+        context.tr(AppStringsKeys.country),
+        style: AppStyles.regular14,
+      ),
       paginatedRequest: (int page, String? searchText) async {
         final result = await _fetchCountries(page: page);
         return result

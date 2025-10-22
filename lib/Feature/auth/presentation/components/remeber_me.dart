@@ -1,6 +1,8 @@
 import 'package:car_rental/Feature/auth/controllers/sign_in_cubit/sign_in_cubit.dart';
+import 'package:car_rental/core/resources/app_strings_keys.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
 import 'package:car_rental/core/widgets/custom_check_box.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +25,10 @@ class RemeberMe extends StatelessWidget {
           onTap: () {
             controller.toggleRememberMe(!controller.rememberMe);
           },
-          child: Text('Remember Me', style: AppStyles.regular14),
+          child: Text(
+            context.tr(AppStringsKeys.rememberMe),
+            style: AppStyles.regular14,
+          ),
         ),
       ],
     );

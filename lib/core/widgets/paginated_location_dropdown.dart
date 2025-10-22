@@ -44,6 +44,7 @@ class _PaginatedCountryDropdownState extends State<PaginatedLocationDropdown> {
   @override
   Widget build(BuildContext context) {
     return PaginatedSearchDropdownFormField<LocationModel>.paginated(
+      padding: EdgeInsets.zero,
       isEnabled: widget.isEnabled,
       initialValue: selectedMenuItem,
       formKey: _formKey,

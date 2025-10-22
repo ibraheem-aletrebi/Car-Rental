@@ -1,4 +1,4 @@
-import 'package:car_rental/Feature/home/presentation/components/search_with_filter_section.dart';
+import 'package:car_rental/Feature/search/presentation/components/search_with_filter_section.dart';
 import 'package:car_rental/Feature/search/presentation/components/brand_selector_section.dart';
 import 'package:car_rental/Feature/search/presentation/components/popular_section.dart';
 import 'package:car_rental/Feature/search/presentation/components/recommended_section.dart';

@@ -1,3 +1,4 @@
+import 'package:car_rental/Feature/search/presentation/components/filter_dialog.dart';
 import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/resources/assets.dart';
 import 'package:car_rental/core/widgets/custom_icon_button.dart';
@@ -24,7 +25,9 @@ class SearchWithFilterBar extends StatelessWidget {
           ),
           WidthSpace(width: 25),
           CustomIconButton(
-            onPressed: () {},
+            onPressed: () {
+              showFilterBottomSheet(context);
+            },
             iconPath: Assets.iconsFilter,
             backgroundColor: AppColors.kWhiteColor,
             padding: 14,

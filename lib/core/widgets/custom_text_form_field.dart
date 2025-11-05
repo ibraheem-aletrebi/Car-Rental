@@ -1,6 +1,7 @@
 import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
@@ -12,7 +13,8 @@ class CustomTextFormField extends StatefulWidget {
     this.keyboardType,
     this.initialValue,
     this.enabled = true,
-    this.controller, this.onTap,
+    this.controller,
+    this.onTap,
   });
 
   final void Function(String?)? onSaved;
@@ -20,7 +22,7 @@ class CustomTextFormField extends StatefulWidget {
   final TextInputType? keyboardType;
   final String hintText;
   final bool isPassword;
-final void Function()? onTap;
+  final void Function()? onTap;
   final String? initialValue;
   final bool enabled;
   final TextEditingController? controller;
@@ -41,7 +43,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onTap:widget.onTap ,
+      onTap: widget.onTap,
       controller: widget.controller,
       initialValue: widget.controller == null ? widget.initialValue : null,
       keyboardType: widget.keyboardType,
@@ -51,10 +53,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       enabled: widget.enabled,
       obscuringCharacter: '*',
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 18,
-        ),
+        contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
         filled: true,
         fillColor: AppColors.kWhiteColor,
         border: buildBorder(color: const Color(0xFF7F7F7F)),

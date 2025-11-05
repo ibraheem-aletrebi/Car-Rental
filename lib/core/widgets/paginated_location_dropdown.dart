@@ -4,6 +4,7 @@ import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
 import 'package:car_rental/data/models/location_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:high_q_paginated_drop_down/high_q_paginated_drop_down.dart';
@@ -99,7 +100,7 @@ class _PaginatedCountryDropdownState extends State<PaginatedLocationDropdown> {
       enabledBorder: _buildBorder(),
       focusedBorder: _buildBorder(),
       errorBorder: _buildBorder(color: Colors.red),
-      contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
+      contentPadding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 10.w),
     ),
     child: child,
   );

@@ -1,5 +1,6 @@
 import 'package:car_rental/core/resources/app_colors.dart';
 import 'package:car_rental/core/resources/app_styles.dart';
+import 'package:car_rental/core/widgets/custom_circle_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -35,10 +36,11 @@ class CustomButton extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(62)),
         side: BorderSide(color: borderColor ?? Colors.transparent, width: 1),
       ),
+
       onPressed: isLoading ? null : onPressed,
       child: FittedBox(
         child: isLoading
-            ? const CircularProgressIndicator()
+            ? const CustomCircleLoading()
             : Text(
                 text,
                 style: textStyle ?? AppStyles.bold18.copyWith(color: textColor),

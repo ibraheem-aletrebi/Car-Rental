@@ -63,5 +63,9 @@ class Assets {
   static const String imagesUser = "assets/images/user.jpeg";
 
   static const String lottieCarLoading = "assets/lottie/car_loading.json";
+
+  static const String lottieCircleLoading = "assets/lottie/circle_loading.json";
+
+  static const String lottieLoading = "assets/lottie/loading.json";
 }
 

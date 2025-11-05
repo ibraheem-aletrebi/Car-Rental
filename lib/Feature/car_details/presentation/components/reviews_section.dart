@@ -12,12 +12,12 @@ class ReviewsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final carReviews = context.read<CarDetailsCubit>().car.reviews;
+    final carReviews = context.read<CarDetailsCubit>().car?.reviews;
     return Column(
       children: [
         const ReviewsSectionHeader(),
         HeightSpace(),
-        if (carReviews.isEmpty)
+        if (carReviews?.isEmpty ?? true)
           Center(
             child: Text(
               'No Reviews Yet',
@@ -27,7 +27,7 @@ class ReviewsSection extends StatelessWidget {
         else
           SizedBox(
             height: MediaQuery.sizeOf(context).height * 0.18,
-            child: CarDetailsReviewList(reviews: carReviews),
+            child: CarDetailsReviewList(reviews: carReviews??[]),
           ),
       ],
     );

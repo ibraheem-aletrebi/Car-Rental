@@ -54,7 +54,7 @@ class _ProductImagesWidgetState extends State<CarImages> {
                 width: double.infinity,
                 child: PageView.builder(
                   controller: _pageController,
-                  itemCount: car.images.length,
+                  itemCount: car?.images.length??4,
                   onPageChanged: (index) {
                     setState(() {
                       _selectedIndex = index;
@@ -62,7 +62,7 @@ class _ProductImagesWidgetState extends State<CarImages> {
                     });
                   },
                   itemBuilder: (context, index) => CachedNetworkImage(
-                    imageUrl: car.images[index],
+                    imageUrl: car?.images[index] ?? '',
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -92,7 +92,7 @@ class _ProductImagesWidgetState extends State<CarImages> {
                     ),
                     child: SmoothPageIndicator(
                       controller: _pageController,
-                      count: car.images.length,
+                      count: car?.images.length??4,
                       effect: ExpandingDotsEffect(
                         dotHeight: 8,
                         dotWidth: 8,
@@ -118,7 +118,7 @@ class _ProductImagesWidgetState extends State<CarImages> {
                         height: 100,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: car.images.length,
+                          itemCount: car?.images.length ?? 4,
                           itemBuilder: (context, index) {
                             final isSelected = index == _selectedIndex;
                             return GestureDetector(
@@ -143,7 +143,7 @@ class _ProductImagesWidgetState extends State<CarImages> {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(12.r),
                                     child: CachedNetworkImage(
-                                      imageUrl: car.images[index],
+                                      imageUrl: car?.images[index]??'',
                                       height: 100.h,
                                       width: 100.w,
                                       fit: BoxFit.cover,

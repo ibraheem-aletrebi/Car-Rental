@@ -10,7 +10,7 @@ class CarDetailsCubit extends Cubit<CarDetailsState> {
 
   final CarDetailsRepo repo;
 
-  late CarEntity car;
+   CarEntity? car;
 
   Future<void> getCarDetails(int id) async {
     emit(CarDetailsLoadingState());

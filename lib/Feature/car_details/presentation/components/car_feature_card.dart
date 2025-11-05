@@ -26,7 +26,7 @@ class CarFeatureCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.all(8),
+            padding: EdgeInsets.all(8.sp),
             decoration: BoxDecoration(shape: BoxShape.circle),
             child: CachedNetworkImage(
               imageUrl: imagePath,
@@ -36,8 +36,18 @@ class CarFeatureCard extends StatelessWidget {
             ),
           ),
           SizedBox(height: 4.h),
-          Text(title, style: AppStyles.regular14.copyWith(fontSize: 12.sp)),
-          Text(value, style: AppStyles.semiBold16.copyWith(fontSize: 14.sp)),
+          Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: AppStyles.regular14.copyWith(fontSize: 12.sp),
+          ),
+          Text(
+            value,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: AppStyles.semiBold16.copyWith(fontSize: 14.sp),
+          ),
         ],
       ),
     );

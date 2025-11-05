@@ -20,12 +20,12 @@ class CarOverViewSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                car.name,
+                car?.name ?? '',
                 style: AppStyles.semiBold16.copyWith(fontSize: 20.sp),
               ),
               SizedBox(height: 6.h),
               Text(
-                car.description,
+                car?.description ?? '',
                 style: AppStyles.regular14.copyWith(
                   color: Colors.grey[600],
                   height: 1.4,
@@ -41,7 +41,7 @@ class CarOverViewSection extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  car.averageRate.toString(),
+                  car?.averageRate.toString() ?? '',
                   style: AppStyles.semiBold16.copyWith(fontSize: 18.sp),
                 ),
                 SizedBox(width: 5),
@@ -53,7 +53,7 @@ class CarOverViewSection extends StatelessWidget {
               ],
             ),
             Text(
-              '(${car.reviewsCount}+Reviews)',
+              '(${car?.reviewsCount}+Reviews)',
               style: AppStyles.regular14.copyWith(color: Colors.grey[600]),
             ),
           ],

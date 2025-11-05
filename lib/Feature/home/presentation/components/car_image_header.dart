@@ -22,10 +22,7 @@ class CarImageHeader extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          decoration: BoxDecoration(
-            color: AppColors.kStokeColor,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(15.r)),
-          ),
+          decoration: BoxDecoration(color: AppColors.kStokeColor),
           child: Center(
             child: CachedNetworkImage(
               imageUrl: imagePath,

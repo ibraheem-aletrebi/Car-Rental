@@ -16,13 +16,13 @@ class ReviewsSectionHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Reviews (${car.reviews.length})',
+          'Reviews (${car?.reviews.length})',
           style: AppStyles.semiBold16.copyWith(fontSize: 18.sp),
         ),
 
         GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, Routes.kCarReviewsView, arguments: car.id);
+            Navigator.pushNamed(context, Routes.kCarReviewsView, arguments: car?.id);
           },
           child: Text(
             'See All',
